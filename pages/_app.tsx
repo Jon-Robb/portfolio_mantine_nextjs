@@ -4,6 +4,7 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
+import { useHotkeys } from '@mantine/hooks';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -14,6 +15,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
+  useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
   return (
     <>
@@ -24,7 +26,42 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       </Head>
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <MantineProvider theme={{ colorScheme, fontFamily: 'Open Sans, sans serif', spacing: { xs: '1rem', sm: '1.2rem', md: '1.8rem', lg: '2.2rem', xl: '2.8rem' } }} withGlobalStyles withNormalizeCSS>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            colorScheme,
+            fontFamily: 'Open Sans, sans serif',
+            fontSizes: {
+              xs: '0.6rem',
+              sm: '0.75rem',
+              md: '0.9rem',
+              lg: '1rem',
+              xl: '1.2rem',
+            },
+            spacing: { xs: '1rem', sm: '1.2rem', md: '1.8rem', lg: '2.2rem', xl: '2.8rem' },
+            activeStyles: { transform: 'scale(0.95)' },
+            defaultGradient: { from: 'orange', to: 'red', deg: 45 },
+            cursorType: 'pointer',
+            globalStyles: (theme) => ({
+              '*, *::before, *::after': {
+                boxSizing: 'border-box',
+              },
+              body: {
+                ...theme.fn.fontStyles(),
+                backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+                color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+                lineHeight: theme.lineHeight,
+              },
+              // '.your-class': {
+              //   backgroundColor: 'red',
+              // },
+              // '#your-id > [data-active]': {
+              //   backgroundColor: 'pink',
+              // },
+            }),
+          }}
+        >
           <Component {...pageProps} />
           <Notifications />
         </MantineProvider>

@@ -1,4 +1,4 @@
-import { createStyles, getStylesRef, rem } from '@mantine/core';
+import { Checkbox, Button, createStyles, getStylesRef, rem } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -40,6 +40,8 @@ export function CreateStylesDemo() {
   return (
     <div className={classes.wrapper}>
       <div className={classes.child}>createStyles demo</div>
+        <Button variant="gradient">Button</Button>
+        <Checkbox>Checkbox</Checkbox>
     </div>
   );
 }
