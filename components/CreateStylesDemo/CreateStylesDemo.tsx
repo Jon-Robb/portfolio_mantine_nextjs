@@ -40,7 +40,8 @@ export function CreateStylesDemo() {
   return (
     <div className={classes.wrapper}>
       <div className={classes.child}>createStyles demo</div>
-        <Button variant="gradient">Button</Button>
+        <Button variant="success">Success</Button>
+        <Button variant="danger">Danger</Button>
         <Checkbox>Checkbox</Checkbox>
     </div>
   );
