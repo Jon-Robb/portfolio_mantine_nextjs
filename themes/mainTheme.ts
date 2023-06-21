@@ -5,11 +5,11 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         colorScheme,
         fontFamily: 'Open Sans, sans serif',
         fontSizes: {
-            xs: '0.6rem',
-            sm: '0.75rem',
-            md: '0.9rem',
-            lg: '1rem',
-            xl: '1.2rem',
+            xs: '1rem',
+            sm: '1.125rem',
+            md: '1.25rem',
+            lg: '1.365rem',
+            xl: '1.5rem',
         },
         headings: {
             sizes: {
@@ -23,6 +23,10 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         defaultGradient: { from: 'orange', to: 'red', deg: 45 },
         cursorType: 'pointer',
         loader: 'oval',
+        colors: {
+            green: ['#F0FFF4', '#C6F6D5', '#9AE6B4', '#68D391', '#48BB78', '#38A169', '#2F855A', '#276749', '#22543D', '#1C4532'],
+        },
+        primaryColor: 'green',
         globalStyles: (theme) => ({
             '*, *::before, *::after': {
                 boxSizing: 'border-box',

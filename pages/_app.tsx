@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { useHotkeys } from '@mantine/hooks';
-import getMainTheme from '../themes/main';
+import getMainTheme from '../themes/mainTheme';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
