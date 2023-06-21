@@ -38,12 +38,19 @@ export function CreateStylesDemo() {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.child}>createStyles demo</div>
+    <div>
+      <div className={classes.wrapper}>
+        <div className={classes.child}>createStyles demo</div>
         <Button variant="success">Success</Button>
         <Button variant="danger">Danger</Button>
         <Button>Default</Button>
         <Checkbox>Checkbox</Checkbox>
+      </div>
+      <div>
+        <Button variant="filled">filled</Button>
+        <Button variant="light">light</Button>
+        <Button variant="outline">outline</Button>
+      </div>
     </div>
   );
 }
