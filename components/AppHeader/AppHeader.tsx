@@ -1,4 +1,4 @@
-import { Burger, Header, Text, Anchor, useMantineTheme } from '@mantine/core';
+import { Burger, Header, Title, Anchor, useMantineTheme } from '@mantine/core';
 import useStyles from './AppHeader.styles';
 
 interface AppHeaderProps {
@@ -21,13 +21,15 @@ export default function AppHeader({
     return (
         <Header height={{ base: 50, md: 70 }} p="md" className={classes.header}>
             <div className={classes.headerContainer}>
-                <Text>
+                <Title order={2}>
                 {titleIsAnchor ? <Anchor href={anchorLink}> {headerTitle} </Anchor> : headerTitle}
-                </Text>
+                </Title>
                 <Burger
+                  title="Open navigation menu"
+                  aria-label="Open navigation menu"
                   opened={opened}
                   onClick={onClick}
-                  size="sm"
+                  size="md"
                   color={theme.colors.gray[6]}
                   className={classes.burger}
                 />

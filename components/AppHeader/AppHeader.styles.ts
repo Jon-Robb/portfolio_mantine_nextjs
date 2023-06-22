@@ -9,10 +9,13 @@ export default createStyles((theme) => ({
   },
   burger: {
     marginRight: theme.spacing.sm,
+    [theme.fn.smallerThan('sm')]: {
+      size: 'sm',
+    },
   },
   header: {
     display: 'none',
-    [theme.fn.smallerThan('sm')]: { // equivalent to theme.mediaQuery.sm
+    [theme.fn.smallerThan('sm')]: {
       display: 'block',
     },
   },

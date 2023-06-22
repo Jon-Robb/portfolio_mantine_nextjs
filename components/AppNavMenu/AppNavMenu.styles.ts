@@ -6,5 +6,13 @@ export default createStyles((theme) => ({
             height: '100%',
             top: 0,
         },
+        height: '50%',
+    },
+    navlinksContainer: {
+        display: 'flex',
+        alignItems: 'start',
+        width: '100%',
+        height: '50%',
+        flexDirection: 'column',
     },
 }));
