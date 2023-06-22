@@ -9,7 +9,7 @@ interface AppNavbarProps {
 export default function AppNavMenu({ opened }: AppNavbarProps) {
   const { classes } = useStyles();
   return (
-    <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }} className={classes.fullNavbar}>
+    <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 250, md: 275, lg: 300 }} className={classes.fullNavbar}>
       <NavLinkMenu />
     </Navbar>
   );

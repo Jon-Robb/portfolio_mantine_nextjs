@@ -16,7 +16,6 @@ export default function AppShellDemo() {
         },
       }}
       navbarOffsetBreakpoint="sm"
-      asideOffsetBreakpoint="sm"
       navbar={
         <AppNavMenu opened={opened} />
       }
