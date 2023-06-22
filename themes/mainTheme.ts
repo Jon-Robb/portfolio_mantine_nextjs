@@ -46,14 +46,14 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
             h3: {
                 fontSize: '1.17em',
             },
-            '@media (max-width: 640px)': {
+            '@media (max-width: 576px)': {
                 body: {
                     fontSize: theme.fontSizes.xs,
                     fontWeight: 200,
                     padding: theme.spacing.xs,
                 },
             },
-            '@media (min-width: 640px)': {
+            '@media (min-width: 576px)': {
                 body: {
                     fontSize: theme.fontSizes.sm,
                     fontWeight: 300,
@@ -74,7 +74,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                     padding: theme.spacing.lg,
                 },
             },
-            '@media (min-width: 1280px)': {
+            '@media (min-width: 1200px)': {
                 body: {
                     fontSize: theme.fontSizes.xl,
                     fontWeight: 600,
