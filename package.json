@@ -36,6 +36,7 @@
     "dayjs": "^1.11.6",
     "embla-carousel-react": "^7.0.3",
     "i18next": "^23.2.3",
+    "i18next-browser-languagedetector": "^7.0.2",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",

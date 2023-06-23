@@ -3,7 +3,7 @@ import { AppShell, Text, useMantineTheme } from '@mantine/core';
 import AppHeader from '../AppHeader/AppHeader';
 import AppNavMenu from '../AppNavMenu/AppNavMenu';
 
-export default function AppShellDemo() {
+export default function AppShellContainer() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const toggleOpened = () => setOpened((o) => !o);
