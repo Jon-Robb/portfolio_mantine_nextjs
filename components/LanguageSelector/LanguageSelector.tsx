@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Select } from '@mantine/core';
+import i18n from '../../i18n/config';
 
 const LanguageSelector = () => {
   const [language, setLanguage] = useState('en');
@@ -9,6 +10,7 @@ const LanguageSelector = () => {
   };
 
   useEffect(() => {
+    i18n.changeLanguage(language);
     console.log(`Language changed to: ${language}`);
   }, [language]);
 
