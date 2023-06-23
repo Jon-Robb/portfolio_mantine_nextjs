@@ -5,10 +5,7 @@ export default createStyles((theme) => ({
         display: 'flex',
         alignItems: 'start',
         width: '100%',
-        height: '100%',
         flexDirection: 'column',
-        marginTop: '1rem',
-        paddingTop: '1rem',
         // [theme.fn.largerThan('sm')]: {
         //     display: 'none',
         // },
@@ -28,11 +25,6 @@ export default createStyles((theme) => ({
         },
         [theme.fn.largerThan('xl')]: {
             fontSize: theme.fontSizes.xl,
-        },
-    },
-    titleName: {
-        [theme.fn.smallerThan('sm')]: {
-            display: 'none',
         },
     },
 }));
