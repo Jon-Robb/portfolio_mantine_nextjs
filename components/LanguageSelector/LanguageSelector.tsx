@@ -11,7 +11,6 @@ const LanguageSelector = () => {
 
   useEffect(() => {
     i18n.changeLanguage(language);
-    console.log(`Language changed to: ${language}`);
   }, [language]);
 
   return (
