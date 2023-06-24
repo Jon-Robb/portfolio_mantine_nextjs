@@ -74,7 +74,7 @@ export const AnimateCssKeys = [
     // 'rotateOutDownRight',
     // 'rotateOutUpLeft',
     // 'rotateOutUpRight',
-    'hinge',
+    // 'hinge',
     'jackInTheBox',
     'rollIn',
     // 'rollOut',
