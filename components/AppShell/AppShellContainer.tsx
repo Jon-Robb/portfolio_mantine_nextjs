@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AppShell, Text, useMantineTheme } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 import AppHeader from '../AppHeader/AppHeader';
 import AppNavMenu from '../AppNavMenu/AppNavMenu';
 
@@ -7,6 +8,7 @@ export default function AppShellContainer() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const toggleOpened = () => setOpened((o) => !o);
+  const { t } = useTranslation();
 
   return (
     <AppShell
@@ -23,7 +25,7 @@ export default function AppShellContainer() {
         <AppHeader onClick={toggleOpened} opened={opened} />
       }
     >
-      <Text>Resize app to see responsive navbar in action</Text>
+      <Text> {t('welcome')} </Text>
     </AppShell>
   );
 }
