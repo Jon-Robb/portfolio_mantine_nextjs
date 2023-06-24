@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import { Badge } from '@mantine/core';
 import { AnimateCssKeys } from '../../animation/AnimateCssKeys';
+import { cssColors } from './CssColors';
 
 interface SkillBadgeProps {
   label: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   color?: string;
-  gradient?: boolean;
+  randomGradient?: boolean;
   animated?: boolean;
-  gradientColors?: string[];
+}
+
+interface GradientColors {
+  from: string;
+  to: string;
 }
 
 export default function SkillBadge({
@@ -18,11 +23,11 @@ export default function SkillBadge({
   leftIcon,
   rightIcon,
   color,
-  gradient,
-  animated = true,
-  gradientColors }:
+  randomGradient = true,
+  animated = true }:
   SkillBadgeProps) {
   const [animation, setAnimation] = useState('');
+  const [gradientColors, setGradientColors] = useState<GradientColors>({} as GradientColors);
   const animations: string[] = AnimateCssKeys;
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -31,11 +36,27 @@ export default function SkillBadge({
     return AnimateCssKeys[randomIndex];
   };
 
+  const getRandomColor = () => {
+    const randomIndex = Math.floor(Math.random() * cssColors.length);
+    return cssColors[randomIndex];
+  };
+
   const handleAnimation = () => {
     setAnimation('');
     const newAnimation = getRandomAnimation();
     setAnimation(`animate__${newAnimation}`);
   };
+
+  useEffect(() => {
+    if (randomGradient) {
+      const color1 = getRandomColor();
+      let color2 = getRandomColor();
+      while (color1 === color2) {
+        color2 = getRandomColor();
+      }
+      setGradientColors({ from: color1, to: color2 });
+    }
+  }, []);
 
   return (
     <Badge
@@ -46,10 +67,10 @@ export default function SkillBadge({
       leftSection={leftIcon}
       rightSection={rightIcon}
       color={color}
-      variant={gradient ? 'gradient' : 'filled'}
-      // gradient={{ from: gradientColors[0] ?? '', to: gradientColors[1] ?? '' }}
+      variant={randomGradient ? 'gradient' : 'filled'}
+      gradient={gradientColors}
     >
-      {label}
+      {label || 'Badge'}
     </Badge>
   );
 }
