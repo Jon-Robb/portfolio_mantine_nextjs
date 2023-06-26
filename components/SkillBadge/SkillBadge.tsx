@@ -29,7 +29,8 @@ export default function SkillBadge({
   SkillBadgeProps) {
   const [animation, setAnimation] = useState('');
   const [gradientColors, setGradientColors] = useState<GradientColors>({} as GradientColors);
-  const screenSize = getScreenSize();
+  //  TODO -> fix the screem size logic to use it un a useEffect, havong porblem withs nextjs serverside rendering mismatching the classNAme
+  // const screenSize = getScreenSize();
   const animations: string[] = AnimateCssKeys;
   const isMobile = useMediaQuery('(max-width: 768px)');
 
