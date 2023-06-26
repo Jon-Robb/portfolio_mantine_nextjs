@@ -1,4 +1,5 @@
 export function getScreenSize(): string {
+    if (typeof window === 'undefined') return 'md';
     const width = window.innerWidth;
     if (width < 576) {
         return 'xs';
@@ -12,9 +13,10 @@ export function getScreenSize(): string {
     if (width < 1200) {
         return 'lg';
     }
-    return 'xl';
+    return 'md';
 }
 export function getScreenSizeNumber(): number {
+    if (typeof window === 'undefined') return 2;
     const width = window.innerWidth;
     if (width < 576) {
         return 0;
@@ -28,5 +30,5 @@ export function getScreenSizeNumber(): number {
     if (width < 1200) {
         return 3;
     }
-    return 4;
+    return 2;
 }

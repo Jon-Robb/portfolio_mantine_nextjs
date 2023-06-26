@@ -44,10 +44,15 @@ export default function SkillBadge({
   };
 
   const handleAnimation = () => {
-    setAnimation('');
     const newAnimation = getRandomAnimation();
     setAnimation(`animate__${newAnimation}`);
   };
+
+  useEffect(() => {
+    if (animated) {
+      handleAnimation();
+    }
+  }, [animated]);
 
   useEffect(() => {
     if (randomGradient) {
@@ -71,9 +76,9 @@ export default function SkillBadge({
       color={color}
       variant={randomGradient ? 'gradient' : 'filled'}
       gradient={gradientColors}
-      pl={5}
-      size={screenSize}
-      radius={screenSize}
+      pl={10}
+      // size={screenSize}
+      // radius={screenSize}
       styles={{ leftSection: { display: 'flex', alignItems: 'center' } }}
     >
       {label || 'Badge'}
