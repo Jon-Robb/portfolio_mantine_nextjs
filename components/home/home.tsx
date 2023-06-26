@@ -1,4 +1,4 @@
-import { Text, Title } from '@mantine/core';
+import { Text, Title, rem } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 import { IconBrandReact } from '@tabler/icons-react';
 import SkillBadge from '../SkillBadge/SkillBadge';
@@ -12,7 +12,7 @@ export default function Home() {
             <Title order={1}> {t('welcome')} </Title>
             <Text> {t('welcome2')} </Text>
             <div>
-                <SkillBadge label="React" leftIcon={<IconBrandReact size={16} />} />
+                <SkillBadge label="React" leftIcon={<IconBrandReact size={rem(10)} />} />
             </div>
         </div>
     );
