@@ -29,8 +29,7 @@ export default function SkillBadge({
   SkillBadgeProps) {
   const [animation, setAnimation] = useState('');
   const [gradientColors, setGradientColors] = useState<GradientColors>({} as GradientColors);
-  //  TODO -> fix the screem size logic to use it un a useEffect, havong porblem withs nextjs serverside rendering mismatching the classNAme
-  // const screenSize = getScreenSize();
+  const [screenSize, setScreenSize] = useState<string>();
   const animations: string[] = AnimateCssKeys;
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -49,11 +48,12 @@ export default function SkillBadge({
     setAnimation(`animate__${newAnimation}`);
   };
 
-  useEffect(() => {
-    if (animated) {
-      handleAnimation();
-    }
-  }, [animated]);
+  // trigger animation on mount
+  // useEffect(() => {
+  //   if (animated) {
+  //     handleAnimation();
+  //   }
+  // }, [animated]);
 
   useEffect(() => {
     if (randomGradient) {
@@ -64,6 +64,8 @@ export default function SkillBadge({
       }
       setGradientColors({ from: color1, to: color2 });
     }
+
+    setScreenSize(getScreenSize());
   }, []);
 
   return (
@@ -78,8 +80,8 @@ export default function SkillBadge({
       variant={randomGradient ? 'gradient' : 'filled'}
       gradient={gradientColors}
       pl={10}
-      // size={screenSize}
-      // radius={screenSize}
+      size={screenSize}
+      radius={screenSize}
       styles={{ leftSection: { display: 'flex', alignItems: 'center' } }}
     >
       {label || 'Badge'}
