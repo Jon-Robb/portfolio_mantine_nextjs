@@ -3,7 +3,8 @@ import { useMediaQuery } from '@mantine/hooks';
 import { Badge } from '@mantine/core';
 import { AnimateCssKeys } from '../../animation/AnimateCssKeys';
 import { cssColors } from './CssColors';
-import { getScreenSize } from '../../utils/screen';
+// import { getScreenSize } from '../../utils/screen';
+import { useScreenSize } from '../../hooks/useScreenSize';
 
 interface SkillBadgeProps {
   label: string;
@@ -29,7 +30,8 @@ export default function SkillBadge({
   SkillBadgeProps) {
   const [animation, setAnimation] = useState('');
   const [gradientColors, setGradientColors] = useState<GradientColors>({} as GradientColors);
-  const [screenSize, setScreenSize] = useState<string>();
+  // const [screenSize, setScreenSize] = useState<string>();
+  const screenSize = useScreenSize();
   const animations: string[] = AnimateCssKeys;
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -65,7 +67,7 @@ export default function SkillBadge({
       setGradientColors({ from: color1, to: color2 });
     }
 
-    setScreenSize(getScreenSize());
+    // setScreenSize(getScreenSize());
   }, []);
 
   return (
