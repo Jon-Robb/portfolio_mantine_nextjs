@@ -1,103 +1,115 @@
 import { useState, useEffect } from 'react';
 import { IconBrandReact, IconBrandCpp, IconBrandCSharp, IconBrandCss3, IconBrandHtml5, IconBrandMysql, IconBrandVue, IconBrandPhp, IconBrandJavascript, IconBrandTypescript, IconBrandPython, IconBrandWindows, IconBrandAndroid, IconBrandGit, IconBrandGithub, IconMessageChatbot, IconBrandGoogle, IconBrandFigma, IconBrandNextjs, IconBrandVite, IconBrandUnity, IconDatabase } from '@tabler/icons-react';
 import { SkillBadgeData } from '../typescript/interfaces/SkillBadgeInterfaces';
+import { useScreenSize } from './useScreenSize';
+import { shuffleArray } from '../utils/array';
+
+const iconSizes : Record<string, number> = {
+    xs: 16,
+    sm: 18,
+    md: 20,
+    lg: 22,
+    xl: 24,
+};
 
 export const useSkillBadgesData = (): SkillBadgeData[] => {
     const [skillBadgesData, setSkillBadgesData] = useState<SkillBadgeData[]>([]);
+    const iconSize = iconSizes[useScreenSize()];
 
     useEffect(() => {
         const data: SkillBadgeData[] = [
             {
                 label: 'React',
-                leftIcon: <IconBrandReact size={16} />,
+                leftIcon: <IconBrandReact size={iconSize} />,
             },
             {
                 label: 'CPP ',
-                leftIcon: <IconBrandCpp size={16} />,
+                leftIcon: <IconBrandCpp size={iconSize} />,
             },
             {
                 label: 'C#',
-                leftIcon: <IconBrandCSharp size={16} />,
+                leftIcon: <IconBrandCSharp size={iconSize} />,
             },
             {
                 label: 'CSS',
-                leftIcon: <IconBrandCss3 size={16} />,
+                leftIcon: <IconBrandCss3 size={iconSize} />,
             },
             {
                 label: 'HTML',
-                leftIcon: <IconBrandHtml5 size={16} />,
+                leftIcon: <IconBrandHtml5 size={iconSize} />,
             },
             {
                 label: 'MySQL',
-                leftIcon: <IconBrandMysql size={16} />,
+                leftIcon: <IconBrandMysql size={iconSize} />,
             },
             {
                 label: 'Vue',
-                leftIcon: <IconBrandVue size={16} />,
+                leftIcon: <IconBrandVue size={iconSize} />,
             },
             {
                 label: 'PHP',
-                leftIcon: <IconBrandPhp size={16} />,
+                leftIcon: <IconBrandPhp size={iconSize} />,
             },
             {
                 label: 'Javascript',
-                leftIcon: <IconBrandJavascript size={16} />,
+                leftIcon: <IconBrandJavascript size={iconSize} />,
             },
             {
                 label: 'Typescript',
-                leftIcon: <IconBrandTypescript size={16} />,
+                leftIcon: <IconBrandTypescript size={iconSize} />,
             },
             {
                 label: 'Python',
-                leftIcon: <IconBrandPython size={16} />,
+                leftIcon: <IconBrandPython size={iconSize} />,
             },
             {
                 label: 'Active Directory',
-                leftIcon: <IconBrandWindows size={16} />,
+                leftIcon: <IconBrandWindows size={iconSize} />,
             },
             {
                 label: 'Java Android',
-                leftIcon: <IconBrandAndroid size={16} />,
+                leftIcon: <IconBrandAndroid size={iconSize} />,
             },
             {
                 label: 'Git',
-                leftIcon: <IconBrandGit size={16} />,
+                leftIcon: <IconBrandGit size={iconSize} />,
             },
             {
                 label: 'Github',
-                leftIcon: <IconBrandGithub size={16} />,
+                leftIcon: <IconBrandGithub size={iconSize} />,
             },
             {
                 label: 'AI prompts',
-                leftIcon: <IconMessageChatbot size={16} />,
+                leftIcon: <IconMessageChatbot size={iconSize} />,
             },
             {
                 label: 'Google',
-                leftIcon: <IconBrandGoogle size={16} />,
+                leftIcon: <IconBrandGoogle size={iconSize} />,
             },
             {
                 label: 'Figma',
-                leftIcon: <IconBrandFigma size={16} />,
+                leftIcon: <IconBrandFigma size={iconSize} />,
             },
             {
                 label: 'NextJS',
-                leftIcon: <IconBrandNextjs size={16} />,
+                leftIcon: <IconBrandNextjs size={iconSize} />,
             },
             {
                 label: 'Vite',
-                leftIcon: <IconBrandVite size={16} />,
+                leftIcon: <IconBrandVite size={iconSize} />,
             },
             {
                 label: 'Unity',
-                leftIcon: <IconBrandUnity size={16} />,
+                leftIcon: <IconBrandUnity size={iconSize} />,
             },
             {
                 label: 'SQL',
-                leftIcon: <IconDatabase size={16} />,
+                leftIcon: <IconDatabase size={iconSize} />,
             },
         ];
+        shuffleArray(data);
         setSkillBadgesData(data);
-    }, []);
+    }, [iconSize]);
 
     return skillBadgesData;
 };

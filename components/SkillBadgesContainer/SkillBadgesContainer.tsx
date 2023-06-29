@@ -1,16 +1,15 @@
 import { SkillBadgeData } from '../../typescript/interfaces/SkillBadgeInterfaces';
 import SkillBadge from '../SkillBadge/SkillBadge';
-import { shuffleArray } from '../../utils/array';
 
 interface SkillBadgeContainerProps {
     skillBadges: SkillBadgeData[];
 }
 
 export default function SkillBadgeContainer({ skillBadges }: SkillBadgeContainerProps) {
-    const shuffledArray: any[] = shuffleArray(skillBadges);
+    const array = skillBadges;
     return (
         <div>
-            {shuffledArray.map((skillBadge: SkillBadgeData, index) => (
+            {array.map((skillBadge: SkillBadgeData, index) => (
                 <SkillBadge
                   key={index}
                   label={skillBadge.label}
