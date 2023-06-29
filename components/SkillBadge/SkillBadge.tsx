@@ -3,8 +3,8 @@ import { useMediaQuery } from '@mantine/hooks';
 import { Badge } from '@mantine/core';
 import { AnimateCssKeys } from '../../animation/AnimateCssKeys';
 import { cssColors } from './CssColors';
-// import { getScreenSize } from '../../utils/screen';
 import { useScreenSize } from '../../hooks/useScreenSize';
+import { colorIsBright, getHexColor } from '../../utils/color';
 
 interface SkillBadgeProps {
   label: string;
@@ -28,34 +28,27 @@ export default function SkillBadge({
   randomGradient = true,
   animated = true }:
   SkillBadgeProps) {
-  const [animation, setAnimation] = useState('');
+  const [animation, setAnimation] = useState<string>('');
   const [gradientColors, setGradientColors] = useState<GradientColors>({} as GradientColors);
-  // const [screenSize, setScreenSize] = useState<string>();
-  const screenSize = useScreenSize();
+  const [textColor, setTextColor] = useState<string>('');
+  const screenSize:string = useScreenSize();
   const animations: string[] = AnimateCssKeys;
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile:boolean = useMediaQuery('(max-width: 768px)');
 
-  const getRandomAnimation = () => {
+  const getRandomAnimation = () : string => {
     const randomIndex = Math.floor(Math.random() * animations.length);
     return AnimateCssKeys[randomIndex];
   };
 
-  const getRandomColor = () => {
+  const getRandomColor = () : string => {
     const randomIndex = Math.floor(Math.random() * cssColors.length);
     return cssColors[randomIndex];
   };
 
-  const handleAnimation = () => {
+  const handleAnimation = () : void => {
     const newAnimation = getRandomAnimation();
     setAnimation(`animate__${newAnimation}`);
   };
-
-  // trigger animation on mount
-  // useEffect(() => {
-  //   if (animated) {
-  //     handleAnimation();
-  //   }
-  // }, [animated]);
 
   useEffect(() => {
     if (randomGradient) {
@@ -65,10 +58,9 @@ export default function SkillBadge({
         color2 = getRandomColor();
       }
       setGradientColors({ from: color1, to: color2 });
+      setTextColor(colorIsBright(getHexColor(color1)) || colorIsBright(getHexColor(color2)) ? 'black' : 'white');
     }
-
-    // setScreenSize(getScreenSize());
-  }, []);
+  }, [animated, randomGradient]);
 
   return (
     <Badge
@@ -84,9 +76,13 @@ export default function SkillBadge({
       pl={10}
       size={screenSize}
       radius={screenSize}
-      styles={{ leftSection: { display: 'flex', alignItems: 'center' } }}
+      styles={{
+        root: { color: textColor },
+        leftSection: { display: 'flex', alignItems: 'center',
+        },
+      }}
     >
-      {label || 'Badge'}
+      {label}
     </Badge>
   );
 }

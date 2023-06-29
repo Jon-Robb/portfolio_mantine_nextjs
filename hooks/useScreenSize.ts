@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * useScreenSize custom hook
+ * @returns {string} - returns the current screen size as a string to match mantine's breakpoints (xs, sm, md, lg, xl)
+ */
 export const useScreenSize = () : string => {
     const [screenSize, setScreenSize] = useState<string>('');
 
