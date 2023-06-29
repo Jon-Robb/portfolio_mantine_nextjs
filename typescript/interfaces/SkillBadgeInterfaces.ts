@@ -1,4 +1,4 @@
-export interface SkillBadgeProps {
+export interface SkillBadgeData {
     label: string;
     leftIcon: React.ReactNode;
     rightIcon?: React.ReactNode;

@@ -5,7 +5,7 @@ import { AnimateCssKeys } from '../../animation/AnimateCssKeys';
 import { cssColors } from './CssColors';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { colorIsBright, getHexColor } from '../../utils/color';
-import { GradientColors, SkillBadgeProps } from '../../typescript/interfaces/SkillBadgeInterfaces';
+import { GradientColors, SkillBadgeData } from '../../typescript/interfaces/SkillBadgeInterfaces';
 
 export default function SkillBadge({
   label,
@@ -14,7 +14,7 @@ export default function SkillBadge({
   color,
   randomGradient = true,
   animated = true }:
-  SkillBadgeProps) {
+  SkillBadgeData) {
   const [animation, setAnimation] = useState<string>('');
   const [gradientColors, setGradientColors] = useState<GradientColors>({} as GradientColors);
   const [textColor, setTextColor] = useState<string>('');
