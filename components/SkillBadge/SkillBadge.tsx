@@ -5,20 +5,7 @@ import { AnimateCssKeys } from '../../animation/AnimateCssKeys';
 import { cssColors } from './CssColors';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { colorIsBright, getHexColor } from '../../utils/color';
-
-interface SkillBadgeProps {
-  label: string;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-  color?: string;
-  randomGradient?: boolean;
-  animated?: boolean;
-}
-
-interface GradientColors {
-  from: string;
-  to: string;
-}
+import { GradientColors, SkillBadgeProps } from '../../typescript/interfaces/SkillBadgeInterfaces';
 
 export default function SkillBadge({
   label,
