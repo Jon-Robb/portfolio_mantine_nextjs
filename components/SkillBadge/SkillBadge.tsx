@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useMediaQuery } from '@mantine/hooks';
+// import { useMediaQuery } from '@mantine/hooks';
 import { Badge } from '@mantine/core';
 import { AnimateCssKeys } from '../../animation/AnimateCssKeys';
 import { cssColors } from './CssColors';
@@ -20,7 +20,7 @@ export default function SkillBadge({
   const [textColor, setTextColor] = useState<string>('');
   const screenSize:string = useScreenSize();
   const animations: string[] = AnimateCssKeys;
-  const isMobile:boolean = useMediaQuery('(max-width: 768px)');
+  // const isMobile:boolean = useMediaQuery('(max-width: 768px)');
 
   const getRandomAnimation = () : string => {
     const randomIndex = Math.floor(Math.random() * animations.length);
@@ -52,9 +52,10 @@ export default function SkillBadge({
   return (
     <Badge
       className={`animate__animated ${animation}`}
-      onMouseEnter={isMobile && animated ? undefined : handleAnimation}
-      onClick={isMobile && animated ? handleAnimation : undefined}
-      style={{ cursor: 'wait' }}
+      // onMouseEnter={isMobile && animated ? undefined : handleAnimation}
+      // onClick={isMobile && animated ? handleAnimation : undefined}
+      onClick={animated ? handleAnimation : undefined}
+      style={animated ? { cursor: 'pointer' } : { cursor: 'default' }}
       leftSection={leftIcon}
       rightSection={rightIcon}
       color={color}
