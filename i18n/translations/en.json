@@ -5,5 +5,9 @@
     "services": "Services",
     "contact": "Contacts",
     "welcome": "Hello, I'm Jonathan Robinson",
-    "welcome2": "A passionate web and game developer, driven by a lifelong fascination with technology and the thrill of problem-solving. I find immense joy in creating intuitive, dynamic user experiences and captivating game environments."
+    "welcome2": "A passionate web and game developer, driven by a lifelong fascination with technology and the thrill of problem-solving. I find immense joy in creating intuitive, dynamic user experiences and captivating game environments.",
+    "aboutme": "About Me",
+    "aboutme2": "I am a web and game developer based in the Greater Toronto Area. I have a passion for creating intuitive, dynamic user experiences and captivating game environments. I am a graduate of the Game Development program at George Brown College, and I am currently working as a freelance web developer.",
+    "aboutme3": "I am a lifelong learner, and I am always looking for new opportunities to expand my skillset. I am currently learning React, and I am looking forward to learning more about the MERN stack.",
+    "aboutme4": "When I'm not coding, I enjoy playing video games, reading, and spending time with my family."
 }

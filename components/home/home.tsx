@@ -12,7 +12,7 @@ export default function Home() {
         <section className="section">
             <Title order={1}> {t('welcome')} </Title>
             <Text> {t('welcome2')} </Text>
-            <div>
+            <div id="skills">
                 <SkillBadgeContainer skillBadges={skillBadges} />
             </div>
         </section>

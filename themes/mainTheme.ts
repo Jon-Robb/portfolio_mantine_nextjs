@@ -31,6 +31,9 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
             '*, *::before, *::after': {
                 boxSizing: 'border-box',
             },
+            html: {
+                scrollBehavior: 'smooth',
+            },
             body: {
                 ...theme.fn.fontStyles(),
                 backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
@@ -50,35 +53,30 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 body: {
                     fontSize: theme.fontSizes.xs,
                     fontWeight: 200,
-                    padding: theme.spacing.xs,
                 },
             },
             '@media (min-width: 576px)': {
                 body: {
                     fontSize: theme.fontSizes.sm,
                     fontWeight: 300,
-                    padding: theme.spacing.sm,
                 },
             },
             '@media (min-width: 768px)': {
                 body: {
                     fontSize: theme.fontSizes.md,
                     fontWeight: 400,
-                    padding: theme.spacing.md,
                 },
             },
             '@media (min-width: 1024px)': {
                 body: {
                     fontSize: theme.fontSizes.lg,
                     fontWeight: 500,
-                    padding: theme.spacing.lg,
                 },
             },
             '@media (min-width: 1200px)': {
                 body: {
                     fontSize: theme.fontSizes.xl,
                     fontWeight: 600,
-                    padding: theme.spacing.xl,
                 },
             },
             '.section': {
