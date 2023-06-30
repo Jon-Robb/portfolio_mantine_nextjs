@@ -107,8 +107,8 @@ export const useSkillBadgesData = (): SkillBadgeData[] => {
                 leftIcon: <IconDatabase size={iconSize} />,
             },
         ];
-        shuffleArray(data);
-        setSkillBadgesData(data);
+        const shuffledData = shuffleArray([...data]);
+        setSkillBadgesData(shuffledData);
     }, [iconSize]);
 
     return skillBadgesData;
