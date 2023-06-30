@@ -7,7 +7,7 @@ export default function About() {
     // const { classes } = useStyles();
     return (
         <section className="section" id="about">
-            <Title order={2}> {t('aboutme')} </Title>
+            <Title order={2} mt={32}> {t('aboutme')} </Title>
             <Text>
                 {t('aboutme2')}
             </Text>

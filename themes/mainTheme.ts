@@ -86,6 +86,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 textAlign: 'center',
                 height: '100%',
                 justifyContent: 'space-around',
+                padding: '0 1rem',
             },
         }),
         components: {

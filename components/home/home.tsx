@@ -9,7 +9,7 @@ export default function Home() {
     // const { classes } = useStyles();
     const skillBadges = useSkillBadgesData();
     return (
-        <section className="section">
+        <section className="section" id="home">
             <Title order={1}> {t('welcome')} </Title>
             <Text> {t('welcome2')} </Text>
             <div id="skills">
