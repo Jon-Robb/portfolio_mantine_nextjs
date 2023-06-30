@@ -13,9 +13,9 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         },
         headings: {
             sizes: {
-                h1: { fontSize: '2em' },
-                h2: { fontSize: '1.5em' },
-                h3: { fontSize: '1.17em' },
+                h1: { fontSize: '3.5em' },
+                h2: { fontSize: '1.75em' },
+                h3: { fontSize: '1.5em' },
             },
         },
         spacing: { xs: '1rem', sm: '1.2rem', md: '1.8rem', lg: '2.2rem', xl: '2.8rem' },
@@ -84,8 +84,8 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 flexDirection: 'column',
                 alignItems: 'center',
                 textAlign: 'center',
-                height: '100%',
-                justifyContent: 'space-around',
+                height: '100vh',
+                justifyContent: 'space-evenly',
                 padding: '0 1rem',
             },
         }),
