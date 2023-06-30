@@ -81,6 +81,14 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                     padding: theme.spacing.xl,
                 },
             },
+            '.section': {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                height: '100%',
+                justifyContent: 'space-around',
+            },
         }),
         components: {
             Button: {

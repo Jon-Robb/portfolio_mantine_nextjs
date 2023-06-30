@@ -3,6 +3,7 @@ import { AppShell, useMantineTheme } from '@mantine/core';
 import AppHeader from '../AppHeader/AppHeader';
 import AppNavMenu from '../AppNavMenu/AppNavMenu';
 import Home from '../Home/home';
+import About from '../About/About';
 
 export default function AppShellContainer() {
   const theme = useMantineTheme();
@@ -24,6 +25,7 @@ export default function AppShellContainer() {
       }
     >
       <Home />
+      <About />
     </AppShell>
   );
 }
