@@ -9,12 +9,12 @@ export default function Home() {
     const { classes } = useStyles();
     const skillBadges = useSkillBadgesData();
     return (
-        <div className={classes.wrapper}>
+        <section className={classes.wrapper}>
             <Title order={1}> {t('welcome')} </Title>
             <Text> {t('welcome2')} </Text>
             <div>
                 <SkillBadgeContainer skillBadges={skillBadges} />
             </div>
-        </div>
+        </section>
     );
 }

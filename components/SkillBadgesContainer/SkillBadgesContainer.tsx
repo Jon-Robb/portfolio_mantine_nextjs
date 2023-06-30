@@ -8,7 +8,17 @@ interface SkillBadgeContainerProps {
 export default function SkillBadgeContainer({ skillBadges }: SkillBadgeContainerProps) {
     const array = skillBadges;
     return (
-        <div>
+        <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignContent: 'center',
+            width: '100%',
+            height: '100%',
+            gap: '5px',
+        }}
+        >
             {array.map((skillBadge: SkillBadgeData, index) => (
                 <SkillBadge
                   key={index}
