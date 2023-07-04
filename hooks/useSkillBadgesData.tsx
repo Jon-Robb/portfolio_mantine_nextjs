@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IconBrandReact, IconBrandCpp, IconBrandCSharp, IconBrandCss3, IconBrandHtml5, IconBrandMysql, IconBrandVue, IconBrandPhp, IconBrandJavascript, IconBrandTypescript, IconBrandPython, IconBrandWindows, IconBrandAndroid, IconBrandGit, IconBrandGithub, IconMessageChatbot, IconBrandGoogle, IconBrandFigma, IconBrandNextjs, IconBrandVite, IconBrandUnity, IconDatabase } from '@tabler/icons-react';
+import { IconBrandReact, IconBrandCpp, IconBrandCSharp, IconBrandCss3, IconBrandHtml5, IconBrandMysql, IconBrandVue, IconBrandPhp, IconBrandJavascript, IconBrandTypescript, IconBrandPython, IconBrandWindows, IconBrandAndroid, IconBrandGit, IconBrandGithub, IconMessageChatbot, IconBrandGoogle, IconBrandFigma, IconBrandNextjs, IconBrandVite, IconBrandUnity, IconDatabase, IconBrandMongodb } from '@tabler/icons-react';
 import { SkillBadgeData } from '../typescript/interfaces/SkillBadgeInterfaces';
 import { useScreenSize } from './useScreenSize';
 import { shuffleArray } from '../utils/array';
@@ -105,6 +105,10 @@ export const useSkillBadgesData = (): SkillBadgeData[] => {
             {
                 label: 'SQL',
                 leftIcon: <IconDatabase size={iconSize} />,
+            },
+            {
+                label: 'MongoDB',
+                leftIcon: <IconBrandMongodb size={iconSize} />,
             },
         ];
         const shuffledData = shuffleArray([...data]);

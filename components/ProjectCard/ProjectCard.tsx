@@ -1,4 +1,7 @@
-import { Text, Button, Image, Title } from '@mantine/core';
+import { Text, Button, Title, Paper } from '@mantine/core';
+import ProjectCardImage from '../ProjectCardImage/ProjectCardImage';
+import { useScreenSize } from '../../hooks/useScreenSize';
+import useStyles from './ProjectCard.styles';
 
 interface ProjectCardProps {
     title: string;
@@ -14,29 +17,21 @@ export default function ProjectCard({
     imageUrl,
     projectUrl,
     codeUrl }: ProjectCardProps) {
+    const { classes } = useStyles();
+    const screenSize = useScreenSize();
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            gap: '1rem',
-
-        }}
-        >
+        <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
             <Title order={3}> {title} </Title>
             <Text> {description} </Text>
-            <Image src={imageUrl} alt={title} radius={5} maw={300} />
-            <Button.Group style={{ gap: '1rem' }}>
-                <Button component="a" href={projectUrl}>
+            <ProjectCardImage src={imageUrl} alt={title} />
+            <Button.Group className={classes.buttonGroup}>
+                <Button variant="gradient" component="a" href={projectUrl}>
                     View Project
                 </Button>
-                <Button component="a" href={codeUrl}>
+                <Button variant="gradient" component="a" href={codeUrl}>
                     View Code
                 </Button>
             </Button.Group>
-
-        </div>
+        </Paper>
     );
 }

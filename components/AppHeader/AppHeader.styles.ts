@@ -8,7 +8,7 @@ export default createStyles((theme) => ({
     height: '100%',
   },
   burger: {
-    marginRight: theme.spacing.sm,
+    // marginRight: theme.spacing.sm,
     [theme.fn.smallerThan('sm')]: {
       size: 'sm',
     },

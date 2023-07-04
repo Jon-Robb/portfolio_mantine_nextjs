@@ -20,7 +20,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         },
         spacing: { xs: '1rem', sm: '1.2rem', md: '1.8rem', lg: '2.2rem', xl: '2.8rem' },
         activeStyles: { transform: 'scale(0.95)' },
-        defaultGradient: { from: 'orange', to: 'red', deg: 45 },
+        // defaultGradient: { from: 'orange', to: 'red', deg: 45 },
         cursorType: 'pointer',
         loader: 'oval',
         colors: {
@@ -49,31 +49,31 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
             h3: {
                 fontSize: '1.17em',
             },
-            '@media (max-width: 576px)': {
+            '@media (max-width: 480px)': {
                 body: {
                     fontSize: theme.fontSizes.xs,
                     fontWeight: 200,
                 },
             },
-            '@media (min-width: 576px)': {
+            '@media (min-width: 768px)': {
                 body: {
                     fontSize: theme.fontSizes.sm,
                     fontWeight: 300,
                 },
             },
-            '@media (min-width: 768px)': {
+            '@media (min-width: 1024px)': {
                 body: {
                     fontSize: theme.fontSizes.md,
                     fontWeight: 400,
                 },
             },
-            '@media (min-width: 1024px)': {
+            '@media (min-width: 1184px)': {
                 body: {
                     fontSize: theme.fontSizes.lg,
                     fontWeight: 500,
                 },
             },
-            '@media (min-width: 1200px)': {
+            '@media (min-width: 1440px)': {
                 body: {
                     fontSize: theme.fontSizes.xl,
                     fontWeight: 600,
