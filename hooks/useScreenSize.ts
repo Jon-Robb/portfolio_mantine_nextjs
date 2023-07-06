@@ -32,3 +32,23 @@ export const useScreenSize = () : string => {
 
     return screenSize;
 };
+
+export const useScreenWidth = () : number => {
+    const [screenWidth, setScreenWidth] = useState<number>(0);
+
+    const calculateScreenWidth = () => {
+        const width = window.innerWidth;
+        return width;
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setScreenWidth(calculateScreenWidth());
+        };
+        handleResize(); // set the screenSize on initial load
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return screenWidth;
+};

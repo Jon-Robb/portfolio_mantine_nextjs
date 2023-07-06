@@ -7,6 +7,11 @@ interface ProjectCardImageProps {
 
 export default function ProjectCardImage({ src, alt } : ProjectCardImageProps) {
     return (
-        <Image src={src} alt={alt} radius={5} maw={300} />
+        <Image
+          src={src}
+          alt={alt}
+          radius={5}
+          maw={300}
+        />
     );
 }
