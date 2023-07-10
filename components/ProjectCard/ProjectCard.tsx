@@ -7,6 +7,7 @@ interface ProjectCardProps {
     title: string;
     description: string;
     imageUrl: string;
+    videoSrc?: string;
     projectUrl: string;
     codeUrl: string;
 }
@@ -16,12 +17,13 @@ export default function ProjectCard({
     description,
     imageUrl,
     projectUrl,
+    videoSrc,
     codeUrl }: ProjectCardProps) {
     const { classes } = useStyles();
     const screenSize = useScreenSize();
     return (
         <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
-            <ProjectCardImage src={imageUrl} alt={title} />
+            <ProjectCardImage src={imageUrl} alt={title} videoSrc={videoSrc} />
             <div className={classes.content}>
                 <Title order={3}> {title} </Title>
                 <Text className={classes.description}> {description} </Text>

@@ -1,0 +1,1 @@
+* Video by Vision plug: https://www.pexels.com/video/aerial-view-of-sandy-beaches-and-a-golf-course-on-the-coast-of-monterey-california-15698543/
