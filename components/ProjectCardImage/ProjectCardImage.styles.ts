@@ -19,7 +19,7 @@ export default createStyles(() => ({
         width: '100%',
         objectFit: 'cover',
         borderRadius: 5,
-        transition: 'opacity 1s ease',
+        transition: 'opacity 1000ms ease',
     },
     hide: {
         opacity: 0,

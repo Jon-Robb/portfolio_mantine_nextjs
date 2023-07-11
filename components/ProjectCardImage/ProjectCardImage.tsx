@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Image } from '@mantine/core';
 import useStyles from './ProjectCardImage.styles';
 
@@ -11,9 +11,16 @@ interface ProjectCardImageProps {
 export default function ProjectCardImage({ src, alt, videoSrc }: ProjectCardImageProps) {
     const [isHovered, setIsHovered] = useState(false);
     const { classes } = useStyles();
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        console.log('isHovered: ', isHovered);
+        if (!videoRef.current) return;
+        if (isHovered) {
+            videoRef.current.play();
+        } else {
+            videoRef.current.pause();
+            // videoRef.current.currentTime = 0; // Reset video to beginning
+        }
     }, [isHovered]);
 
     return (
@@ -22,21 +29,21 @@ export default function ProjectCardImage({ src, alt, videoSrc }: ProjectCardImag
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-            {!isHovered && videoSrc ? (
+            {/* {isHovered && videoSrc ? ( */}
                 <video
-                  className={`${classes.media} ${!isHovered ? classes.show : classes.hide}`}
+                  ref={videoRef}
+                  className={`${classes.media} ${isHovered ? classes.show : classes.hide}`}
                   src={videoSrc}
-                  autoPlay
                   loop
                   muted
                 />
-            ) : (
+            {/* ) : ( */}
                 <Image
-                  className={`${classes.media} ${!isHovered ? classes.hide : classes.show}`}
+                  className={`${classes.media} ${isHovered ? classes.hide : classes.show}`}
                   src={src}
                   alt={alt}
                 />
-            )}
+            {/* )} */}
         </div>
     );
 }
