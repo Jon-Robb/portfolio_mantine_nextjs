@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Image } from '@mantine/core';
+import useStyles from './ProjectCardImage.styles';
 
 interface ProjectCardImageProps {
     src: string,
@@ -9,6 +10,7 @@ interface ProjectCardImageProps {
 
 export default function ProjectCardImage({ src, alt, videoSrc }: ProjectCardImageProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const { classes } = useStyles();
 
     useEffect(() => {
         console.log('isHovered: ', isHovered);
@@ -16,34 +18,23 @@ export default function ProjectCardImage({ src, alt, videoSrc }: ProjectCardImag
 
     return (
         <div
-          style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%',
-          width: '100%',
-        }}
+          className={classes.wrapper}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-            {isHovered && videoSrc ? (
+            {!isHovered && videoSrc ? (
                 <video
+                  className={`${classes.media} ${!isHovered ? classes.show : classes.hide}`}
                   src={videoSrc}
                   autoPlay
                   loop
                   muted
-                  style={{
-                  height: '100%',
-                  width: '100%',
-                  objectFit: 'cover',
-                  borderRadius: 5 }}
                 />
             ) : (
                 <Image
+                  className={`${classes.media} ${!isHovered ? classes.hide : classes.show}`}
                   src={src}
                   alt={alt}
-                  radius={5}
-                  maw={300}
                 />
             )}
         </div>
