@@ -7,6 +7,7 @@ export default createStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
+        // height: '100%',
         gap: '1rem',
         [theme.fn.largerThan('md')]: {
             flexDirection: 'row',
@@ -19,6 +20,7 @@ export default createStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
+        width: '100%',
         [theme.fn.largerThan('md')]: {
             justifyContent: 'space-around',
         },
