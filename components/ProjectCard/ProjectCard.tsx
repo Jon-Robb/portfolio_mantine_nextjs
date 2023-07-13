@@ -23,7 +23,9 @@ export default function ProjectCard({
     const screenSize = useScreenSize();
     return (
         <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
-            <ProjectCardImage src={imageUrl} alt={title} videoSrc={videoSrc} />
+            <div className={classes.imageWrapper}>
+                <ProjectCardImage src={imageUrl} videoSrc={videoSrc} />
+            </div>
             <div className={classes.content}>
                 <Title order={3}> {title} </Title>
                 <Text className={classes.description}> {description} </Text>
