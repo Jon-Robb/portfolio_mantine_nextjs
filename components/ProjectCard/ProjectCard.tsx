@@ -22,8 +22,10 @@ export default function ProjectCard({
     const { classes } = useStyles();
     const screenSize = useScreenSize();
     return (
-        <Paper radius={screenSize} shadow={screenSize} className={classes.wrapper}>
-            <ProjectCardImage src={imageUrl} alt={title} videoSrc={videoSrc} />
+        <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
+            <div className={classes.imageWrapper}>
+                <ProjectCardImage src={imageUrl} videoSrc={videoSrc} />
+            </div>
             <div className={classes.content}>
                 <Title order={3}> {title} </Title>
                 <Text className={classes.description}> {description} </Text>

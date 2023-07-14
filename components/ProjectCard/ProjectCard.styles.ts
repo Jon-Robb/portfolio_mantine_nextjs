@@ -2,6 +2,26 @@ import { createStyles } from '@mantine/core';
 
 export default createStyles((theme) => ({
     wrapper: {
+        // display: 'flex',
+        // flexDirection: 'column',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // width: '100%',
+        // gap: '1rem',
+        // height: 500,
+        // [theme.fn.largerThan('md')]: {
+        //     flexDirection: 'row',
+        // },
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: '1fr 1fr',
+        gap: '1rem',
+        height: '100%',
+        // width: '75%',
+        // height: '33rem',
+        // gridTemplateColumns: '1fr 1fr',
+    },
+    imageWrapper: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
