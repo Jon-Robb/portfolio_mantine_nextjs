@@ -21,8 +21,15 @@ export default createStyles((theme) => ({
     imageWrapper: {
         flex: '1 1 0',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        width: '100%',
+        // height: '100%',
+        gap: '1rem',
+        [theme.fn.largerThan('md')]: {
+            flexDirection: 'row',
+        },
     },
     content: {
         display: 'flex',
