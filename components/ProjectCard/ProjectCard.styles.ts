@@ -22,7 +22,7 @@ export default createStyles((theme) => ({
         // gridTemplateColumns: '1fr 1fr',
     },
     imageWrapper: {
-        // flex: '1 1 0',
+        flex: '1 1 0',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -41,7 +41,7 @@ export default createStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%',
-        // flex: '1 1 0',
+        flex: '1 1 0',
         [theme.fn.largerThan('md')]: {
             justifyContent: 'space-around',
         },
