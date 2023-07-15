@@ -1,25 +1,19 @@
 import { createStyles } from '@mantine/core';
 
+// TODO: Fix the responsiveness of the ProjectCard component
 export default createStyles((theme) => ({
     wrapper: {
-        // display: 'flex',
-        // flexDirection: 'column',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // width: '100%',
-        // gap: '1rem',
-        // height: 500,
-        // [theme.fn.largerThan('md')]: {
-        //     flexDirection: 'row',
-        // },
         display: 'grid',
         gridTemplateColumns: '1fr',
         gridTemplateRows: '1fr 1fr',
         gap: '1rem',
         height: '100%',
-        // width: '75%',
-        // height: '33rem',
-        // gridTemplateColumns: '1fr 1fr',
+        [theme.fn.largerThan('md')]: {
+            width: '75%',
+            height: '25%',
+            gridTemplateColumns: '1fr 0.5fr',
+            gridTemplateRows: '1fr',
+        },
     },
     imageWrapper: {
         display: 'flex',
@@ -29,9 +23,6 @@ export default createStyles((theme) => ({
         width: '100%',
         // height: '100%',
         gap: '1rem',
-        [theme.fn.largerThan('md')]: {
-            flexDirection: 'row',
-        },
     },
     content: {
         display: 'flex',
