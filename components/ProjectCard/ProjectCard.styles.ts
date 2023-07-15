@@ -1,6 +1,5 @@
 import { createStyles } from '@mantine/core';
 
-// TODO: Fix the responsiveness of the ProjectCard component
 export default createStyles((theme) => ({
     wrapper: {
         display: 'grid',
@@ -8,21 +7,19 @@ export default createStyles((theme) => ({
         gridTemplateRows: '1fr 1fr',
         gap: '1rem',
         height: '100%',
-        [theme.fn.largerThan('md')]: {
-            width: '75%',
-            height: '25%',
+        [theme.fn.largerThan('lg')]: {
             gridTemplateColumns: '1fr 0.5fr',
             gridTemplateRows: '1fr',
         },
     },
     imageWrapper: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        // height: '100%',
-        gap: '1rem',
+        // display: 'flex',
+        // flexDirection: 'column',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // gap: '1rem',
+        // width: '100%',
+        // height: '50%',
     },
     content: {
         display: 'flex',
@@ -32,9 +29,9 @@ export default createStyles((theme) => ({
         justifyContent: 'center',
         height: '100%',
         width: '100%',
-        [theme.fn.largerThan('md')]: {
-            justifyContent: 'space-around',
-        },
+        // [theme.fn.largerThan('md')]: {
+        //     justifyContent: 'space-around',
+        // },
     },
     description: {
         [theme.fn.largerThan('md')]: {
@@ -45,5 +42,8 @@ export default createStyles((theme) => ({
         gap: '1rem',
         alignContent: 'center',
         justifyContent: 'center',
+    },
+    title: {
+        whiteSpace: 'nowrap',
     },
 }));
