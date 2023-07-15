@@ -21,6 +21,7 @@ export default createStyles(() => ({
         objectPosition: 'center',
         borderRadius: 5,
         transition: 'opacity 1000ms ease',
+        minWidth: 100,
     },
     hide: {
         opacity: 0,

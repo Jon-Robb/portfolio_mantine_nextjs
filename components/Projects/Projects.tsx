@@ -7,7 +7,8 @@ export default function Projects() {
             <Title order={2} mt={32} mb={32}> Projects </Title>
             <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                // gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gridTemplateColumns: '1fr 1fr',
                 gridGap: '1rem',
                 padding: '1rem',
                 margin: '1rem',

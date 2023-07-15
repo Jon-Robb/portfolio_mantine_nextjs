@@ -16,6 +16,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 h1: { fontSize: '3.5em' },
                 h2: { fontSize: '1.75em' },
                 h3: { fontSize: '1.5em' },
+                h4: { fontSize: '1.25em' },
             },
         },
         spacing: { xs: '1rem', sm: '1.2rem', md: '1.8rem', lg: '2.2rem', xl: '2.8rem' },
@@ -89,6 +90,12 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 padding: '0 1rem',
                 gap: '1rem',
                 marginTop: '2rem',
+                marginBottom: '2rem',
+                [theme.fn.largerThan('md')]: {
+                    marginLeft: '4rem',
+                    marginRight: '4rem',
+                },
+
             },
         }),
         components: {
