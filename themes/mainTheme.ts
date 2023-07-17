@@ -19,6 +19,13 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 h4: { fontSize: '1.25em' },
             },
         },
+        breakpoints: {
+            xs: '30em',
+            sm: '48em',
+            md: '64em',
+            lg: '74em',
+            xl: '90em',
+        },
         spacing: { xs: '1rem', sm: '1.2rem', md: '1.8rem', lg: '2.2rem', xl: '2.8rem' },
         activeStyles: { transform: 'scale(0.95)' },
         // defaultGradient: { from: 'orange', to: 'red', deg: 45 },

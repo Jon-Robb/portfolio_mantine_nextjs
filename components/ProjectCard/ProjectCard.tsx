@@ -21,6 +21,7 @@ export default function ProjectCard({
     codeUrl }: ProjectCardProps) {
     const { classes } = useStyles();
     const screenSize = useScreenSize();
+
     return (
         <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
             <div className={classes.imageWrapper}>
