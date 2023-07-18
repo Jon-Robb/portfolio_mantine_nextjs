@@ -2,6 +2,11 @@ import { createStyles } from '@mantine/core';
 
 export default createStyles((theme) => ({
     wrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+    },
+    grid: {
         display: 'grid',
         gridTemplateColumns: '1fr',
         gridTemplateRows: '1fr 1fr',

@@ -61,7 +61,7 @@ export default function SkillBadge({
       color={color}
       variant={randomGradient ? 'gradient' : 'filled'}
       gradient={gradientColors}
-      pl={10}
+      // pl={10}
       size={screenSize}
       radius={screenSize}
       styles={{

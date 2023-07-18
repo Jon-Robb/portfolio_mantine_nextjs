@@ -1,5 +1,6 @@
 import { Text, Button, Title, Paper } from '@mantine/core';
 import ProjectCardImage from '../ProjectCardImage/ProjectCardImage';
+import TechBadgesContainer from '../TechBadgesContainer/TechBadgesContainer';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ProjectCard.styles';
 
@@ -24,32 +25,35 @@ export default function ProjectCard({
 
     return (
         <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
-            <div className={classes.imageWrapper}>
-                <ProjectCardImage src={imageUrl} videoSrc={videoSrc} />
-            </div>
-            <div className={classes.content}>
-                <Title order={4} className={classes.title}> {title} </Title>
-                <Text className={classes.description}> {description} </Text>
-                {projectUrl ? (
-                    <Button.Group className={classes.buttonGroup}>
-                        <Button variant="gradient" component="a" href={projectUrl}>
-                            View Project
-                        </Button>
-                        <Button variant="gradient" component="a" href={codeUrl}>
+            <div className={classes.grid}>
+                <div className={classes.imageWrapper}>
+                    <ProjectCardImage src={imageUrl} videoSrc={videoSrc} />
+                </div>
+                <div className={classes.content}>
+                    <Title order={4} className={classes.title}> {title} </Title>
+                    <Text className={classes.description}> {description} </Text>
+                    {projectUrl ? (
+                        <Button.Group className={classes.buttonGroup}>
+                            <Button variant="gradient" component="a" href={projectUrl}>
+                                View Project
+                            </Button>
+                            <Button variant="gradient" component="a" href={codeUrl}>
+                                View Code
+                            </Button>
+                        </Button.Group>
+                    ) : (
+                        <Button
+                          variant="gradient"
+                          component="a"
+                          href={codeUrl}
+                          fullWidth
+                        >
                             View Code
                         </Button>
-                    </Button.Group>
-                ) : (
-                    <Button
-                      variant="gradient"
-                      component="a"
-                      href={codeUrl}
-                      fullWidth
-                    >
-                        View Code
-                    </Button>
-                )}
+                    )}
+                </div>
             </div>
+            <TechBadgesContainer techs={['React', 'TypeScript', 'Mantine', 'Colyseus', 'marde']} />
         </Paper>
     );
 }

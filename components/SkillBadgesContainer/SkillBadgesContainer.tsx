@@ -1,25 +1,16 @@
 import { SkillBadgeData } from '../../typescript/interfaces/SkillBadgeInterfaces';
 import SkillBadge from '../SkillBadge/SkillBadge';
+import useStyles from './SkillBadgesContainer.styles';
 
 interface SkillBadgeContainerProps {
     skillBadges: SkillBadgeData[];
 }
 
 export default function SkillBadgeContainer({ skillBadges }: SkillBadgeContainerProps) {
-    const array = skillBadges;
+    const { classes } = useStyles();
     return (
-        <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-            alignContent: 'center',
-            width: '100%',
-            height: '100%',
-            gap: '5px',
-        }}
-        >
-            {array.map((skillBadge: SkillBadgeData, index) => (
+        <div className={classes.wrapper}>
+            {skillBadges.map((skillBadge: SkillBadgeData, index) => (
                 <SkillBadge
                   key={index}
                   label={skillBadge.label}
