@@ -15,6 +15,7 @@ export default function Projects() {
                   videoSrc="../../videos/test.mp4"
                   //   projectUrl="https://www.google.com"
                   codeUrl="https://www.google.com"
+                  techs={['React', 'Typescript', 'Mantine']}
                 />
                 <ProjectCard
                   title="The Last Stand"
@@ -23,6 +24,8 @@ export default function Projects() {
                   videoSrc="../../videos/test.mp4"
                   //   projectUrl="https://www.google.com"
                   codeUrl="https://www.google.com"
+                  techs={['React', 'Typescript', 'Mantine', 'React', 'Typescript', 'Mantine']}
+
                 />
                 <ProjectCard
                   title="The Last Stand"
@@ -31,6 +34,8 @@ export default function Projects() {
                   videoSrc="../../videos/test.mp4"
                   //   projectUrl="https://www.google.com"
                   codeUrl="https://www.google.com"
+                  techs={['React', 'Typescript', 'Mantine']}
+
                 />
                 <ProjectCard
                   title="The Last Stand"
@@ -39,6 +44,8 @@ export default function Projects() {
                   videoSrc="../../videos/test.mp4"
                   //   projectUrl="https://www.google.com"
                   codeUrl="https://www.google.com"
+                  techs={['React', 'Typescript', 'Mantine']}
+
                 />
                 <ProjectCard
                   title="The Last Stand"
@@ -47,6 +54,8 @@ export default function Projects() {
                   videoSrc="../../videos/test.mp4"
                   //   projectUrl="https://www.google.com"
                   codeUrl="https://www.google.com"
+                  techs={['React', 'Typescript', 'Mantine']}
+
                 />
                 <ProjectCard
                   title="The Last Stand"
@@ -55,6 +64,8 @@ export default function Projects() {
                   videoSrc="../../videos/test.mp4"
                   //   projectUrl="https://www.google.com"
                   codeUrl="https://www.google.com"
+                  techs={['React', 'Typescript', 'Mantine']}
+
                 />
 
             </div>

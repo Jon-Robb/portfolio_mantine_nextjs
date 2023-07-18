@@ -2,7 +2,7 @@ import { createStyles } from '@mantine/core';
 
 export default createStyles((theme) => ({
     wrapper: {
-        display: 'flex',
+        display: 'grid',
         flexDirection: 'column',
         gap: '1rem',
     },
@@ -18,13 +18,10 @@ export default createStyles((theme) => ({
         },
     },
     imageWrapper: {
-        // display: 'flex',
-        // flexDirection: 'column',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // gap: '1rem',
-        // width: '100%',
-        // height: '50%',
+        height: '10rem',
+        [theme.fn.largerThan('lg')]: {
+            height: '15rem',
+        },
     },
     content: {
         display: 'flex',

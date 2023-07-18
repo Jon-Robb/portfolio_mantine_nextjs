@@ -7,5 +7,6 @@ export default createStyles(() => ({
         justifyContent: 'center',
         alignItems: 'center',
         gap: '0.5rem',
+        marginTop: '1rem',
     },
 }));

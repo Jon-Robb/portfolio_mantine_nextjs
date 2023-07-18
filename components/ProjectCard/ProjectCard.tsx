@@ -8,9 +8,10 @@ interface ProjectCardProps {
     title: string;
     description: string;
     imageUrl: string;
+    codeUrl: string;
+    techs: string[];
     videoSrc?: string;
     projectUrl?: string;
-    codeUrl: string;
 }
 
 export default function ProjectCard({
@@ -19,7 +20,8 @@ export default function ProjectCard({
     imageUrl,
     projectUrl,
     videoSrc,
-    codeUrl }: ProjectCardProps) {
+    codeUrl,
+    techs }: ProjectCardProps) {
     const { classes } = useStyles();
     const screenSize = useScreenSize();
 
@@ -53,7 +55,7 @@ export default function ProjectCard({
                     )}
                 </div>
             </div>
-            <TechBadgesContainer techs={['React', 'TypeScript', 'Mantine', 'Colyseus', 'marde']} />
+            <TechBadgesContainer techs={techs} />
         </Paper>
     );
 }
