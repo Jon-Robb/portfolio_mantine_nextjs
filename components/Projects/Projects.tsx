@@ -1,13 +1,35 @@
-import { Title } from '@mantine/core';
+import { useState } from 'react';
+import { Button, Title } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 import ProjectCardGrid from '../ProjectCardGrid/ProjectCardGrid';
+import { ProjectsData } from '../../data/ProjectsData';
 
 export default function Projects() {
-    const { t } = useTranslation();
-    return (
-        <section className="section" id="projects">
-            <Title order={2} mt={32} mb={32}> {t('projects')} </Title>
-            <ProjectCardGrid />
-        </section>
-    );
+  const { t } = useTranslation();
+  const [visibleCount, setVisibleCount] = useState(1);
+
+  const handleLoadMore = () => {
+    setVisibleCount(visibleCount + 1);
+  };
+
+  const handleLoadLess = () => {
+    setVisibleCount(visibleCount - 1);
+  };
+
+  return (
+    <section className="section" id="projects">
+      <Title order={2} mt={32} mb={32}> {t('projects')} </Title>
+      <ProjectCardGrid visibleCount={visibleCount} />
+      {visibleCount < ProjectsData.length && (
+        <Button onClick={handleLoadMore} variant="gradient" fullWidth>
+          {t('showmore')}
+        </Button>
+      )}
+      {visibleCount > 1 && (
+        <Button onClick={handleLoadLess} variant="gradient" fullWidth>
+          {t('showless')}
+        </Button>
+      )}
+    </section>
+  );
 }
