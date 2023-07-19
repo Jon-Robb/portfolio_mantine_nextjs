@@ -41,9 +41,13 @@ export default createStyles((theme) => ({
         },
     },
     buttonGroup: {
+        width: '100%',
         gap: '1rem',
         alignContent: 'center',
         justifyContent: 'center',
+    },
+    button: {
+        flex: 1,
     },
     title: {
         whiteSpace: 'nowrap',

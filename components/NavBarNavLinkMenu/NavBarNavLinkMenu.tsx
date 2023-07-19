@@ -10,9 +10,9 @@ export default function NavBarNavLinkMenu() {
         <div className={classes.navlinksContainer}>
         <NavLink className={classes.navlink} label={t('home')} component="a" href="#home" variant="subtle" active icon={<IconHome2 size={16} stroke={1.5} />} />
         <NavLink className={classes.navlink} label={t('about')} component="a" href="#about" variant="subtle" active icon={<IconAccessible size="1rem" stroke={1.5} />} />
-        <NavLink className={classes.navlink} label={t('projects')} component="a" href="/" variant="subtle" active icon={<IconDeviceAnalytics size="1rem" stroke={1.5} />} />
-        <NavLink className={classes.navlink} label={t('services')} component="a" href="/" variant="subtle" active icon={<IconReportMoney size="1rem" stroke={1.5} />} />
-        <NavLink className={classes.navlink} label={t('contact')} component="a" href="/" variant="subtle" active icon={<IconMail size="1rem" stroke={1.5} />} />
+        <NavLink className={classes.navlink} label={t('projects')} component="a" href="#projects" variant="subtle" active icon={<IconDeviceAnalytics size="1rem" stroke={1.5} />} />
+        <NavLink className={classes.navlink} label={t('services')} component="a" href="#services" variant="subtle" active icon={<IconReportMoney size="1rem" stroke={1.5} />} />
+        <NavLink className={classes.navlink} label={t('contact')} component="a" href="#contacts" variant="subtle" active icon={<IconMail size="1rem" stroke={1.5} />} />
         </div>
     );
 }

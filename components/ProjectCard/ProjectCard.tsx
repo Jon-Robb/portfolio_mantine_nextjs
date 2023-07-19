@@ -1,4 +1,5 @@
 import { Text, Button, Title, Paper } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 import ProjectCardImage from '../ProjectCardImage/ProjectCardImage';
 import TechBadgesContainer from '../TechBadgesContainer/TechBadgesContainer';
 import { useScreenSize } from '../../hooks/useScreenSize';
@@ -24,6 +25,7 @@ export default function ProjectCard({
     techs }: ProjectCardProps) {
     const { classes } = useStyles();
     const screenSize = useScreenSize();
+    const { t } = useTranslation();
 
     return (
         <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
@@ -36,21 +38,16 @@ export default function ProjectCard({
                     <Text className={classes.description}> {description} </Text>
                     {projectUrl ? (
                         <Button.Group className={classes.buttonGroup}>
-                            <Button variant="gradient" component="a" href={projectUrl}>
-                                View Project
+                            <Button className={classes.button} variant="gradient" component="a" href={projectUrl} rel="noopener noreferer">
+                                {t('viewdemo')}
                             </Button>
-                            <Button variant="gradient" component="a" href={codeUrl}>
-                                View Code
+                            <Button className={classes.button} variant="gradient" component="a" href={codeUrl} rel="noopener noreferer">
+                                {t('viewcode')}
                             </Button>
                         </Button.Group>
                     ) : (
-                        <Button
-                          variant="gradient"
-                          component="a"
-                          href={codeUrl}
-                          fullWidth
-                        >
-                            View Code
+                        <Button variant="gradient" component="a" href={codeUrl} fullWidth rel="noopener noreferer">
+                            {t('viewcode')}
                         </Button>
                     )}
                 </div>
