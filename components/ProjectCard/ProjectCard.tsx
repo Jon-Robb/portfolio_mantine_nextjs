@@ -1,19 +1,10 @@
 import { Text, Button, Title, Paper } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 import ProjectCardImage from '../ProjectCardImage/ProjectCardImage';
 import TechBadgesContainer from '../TechBadgesContainer/TechBadgesContainer';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ProjectCard.styles';
-
-interface ProjectCardProps {
-    title: string;
-    description: string;
-    imageUrl: string;
-    codeUrl: string;
-    techs: string[];
-    videoSrc?: string;
-    projectUrl?: string;
-}
 
 export default function ProjectCard({
     title,
