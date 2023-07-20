@@ -6,25 +6,24 @@ import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './ProjectCardGrid.styles';
 
 export default function ProjectCardGrid({ visibleCount }: { visibleCount: number }) {
-  const [projects, setProjects] = useState(() => ProjectsData.slice(0, visibleCount));
+  const [projects, setProjects] = useState(ProjectsData);
   const { classes } = useStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
     setProjects(ProjectsData.slice(0, visibleCount));
-    console.log('ProjectCardGrid.tsx: useEffect: setProjects: ProjectsData.slice(0, visibleCount): ', ProjectsData.slice(0, visibleCount));
   }, [visibleCount]);
 
   return (
     <TransitionGroup className={classes.wrapper}>
-      {projects.map((project, index) => (
+      {projects.map((project) => (
         <CSSTransition
-          key={Math.random()}
+          key={project.id}
           timeout={500}
           classNames="item"
         >
           <ProjectCard
-            key={index}
+            key={project.id}
             title={t(project.title)}
             description={t(project.description)}
             imageUrl={project.imageUrl}
