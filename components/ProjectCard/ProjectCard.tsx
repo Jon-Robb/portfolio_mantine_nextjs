@@ -13,13 +13,20 @@ export default function ProjectCard({
     projectUrl,
     videoSrc,
     codeUrl,
+    nodeRef,
     techs }: ProjectCardProps) {
     const { classes } = useStyles();
     const screenSize = useScreenSize();
     const { t } = useTranslation();
 
     return (
-        <Paper p={screenSize} radius={screenSize} shadow={screenSize} className={classes.wrapper}>
+        <Paper
+          p={screenSize}
+          radius={screenSize}
+          shadow={screenSize}
+          className={classes.wrapper}
+          ref={nodeRef}
+        >
             <div className={classes.grid}>
                 <div className={classes.imageWrapper}>
                     <ProjectCardImage src={imageUrl} videoSrc={videoSrc} />

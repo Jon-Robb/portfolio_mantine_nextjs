@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './ProjectCardGrid.styles';
+import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 
 export default function ProjectCardGrid({ visibleCount }: { visibleCount: number }) {
-  const [projects, setProjects] = useState(ProjectsData);
+  const [projects, setProjects] = useState<ProjectCardProps[]>([]);
   const { classes } = useStyles();
   const { t } = useTranslation();
 
@@ -19,11 +20,11 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
       {projects.map((project) => (
         <CSSTransition
           key={project.id}
+          nodeRef={project.nodeRef}
           timeout={500}
           classNames="item"
         >
           <ProjectCard
-            key={project.id}
             title={t(project.title)}
             description={t(project.description)}
             imageUrl={project.imageUrl}
@@ -31,6 +32,7 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
             projectUrl={project.projectUrl}
             codeUrl={project.codeUrl}
             techs={project.techs}
+            nodeRef={project.nodeRef}
           />
         </CSSTransition>
       ))}
