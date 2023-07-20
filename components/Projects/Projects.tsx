@@ -6,7 +6,7 @@ import { ProjectsData } from '../../data/ProjectsData';
 
 export default function Projects() {
   const { t } = useTranslation();
-  const [visibleCount, setVisibleCount] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(0);
 
   const handleLoadMore = () => {
     setVisibleCount(visibleCount + 1);

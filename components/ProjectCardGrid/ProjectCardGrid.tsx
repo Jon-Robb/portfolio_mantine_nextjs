@@ -7,22 +7,27 @@ import useStyles from './ProjectCardGrid.styles';
 import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 
 export default function ProjectCardGrid({ visibleCount }: { visibleCount: number }) {
-  const [projects, setProjects] = useState<ProjectCardProps[]>([]);
+  const [projects, setProjects] = useState<ProjectCardProps[]>(
+    ProjectsData.slice(0, visibleCount)
+  );
   const { classes } = useStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
     setProjects(ProjectsData.slice(0, visibleCount));
+    console.log(projects, visibleCount);
   }, [visibleCount]);
 
   return (
-    <TransitionGroup className={classes.wrapper}>
-      {projects.map((project) => (
+    <TransitionGroup className={classes.wrapper} enter>
+      {projects.map((project, index) => (
         <CSSTransition
-          key={project.id}
+          key={index}
           nodeRef={project.nodeRef}
-          timeout={500}
-          classNames="item"
+          timeout={1000}
+          classNames="projectcard"
+          in
+          onEnter={() => console.log('enter')}
         >
           <ProjectCard
             title={t(project.title)}

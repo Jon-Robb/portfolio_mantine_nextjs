@@ -103,17 +103,17 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                     marginRight: '4rem',
                 },
             },
-            '.item-enter': {
+            '.projectcard-enter': {
                 opacity: 0,
             },
-            '.item-enter-active': {
+            '.projectcard-enter-active': {
                 opacity: 1,
                 transition: 'opacity 500ms ease-in',
             },
-            '.item-exit': {
+            '.projectcard-exit': {
                 opacity: 1,
             },
-            '.item-exit-active': {
+            '.projectcard-exit-active': {
                 opacity: 0,
                 transition: 'opacity 500ms ease-in',
             },
