@@ -7,37 +7,38 @@ import useStyles from './ProjectCardGrid.styles';
 import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 
 export default function ProjectCardGrid({ visibleCount }: { visibleCount: number }) {
-  const [projects, setProjects] = useState<ProjectCardProps[]>(
-    ProjectsData.slice(0, visibleCount)
-  );
+  const [projects, setProjects] = useState<ProjectCardProps[]>([]);
   const { classes } = useStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
     setProjects(ProjectsData.slice(0, visibleCount));
-    console.log(projects, visibleCount);
   }, [visibleCount]);
 
   return (
-    <TransitionGroup className={classes.wrapper} enter>
-      {projects.map((project, index) => (
+    <TransitionGroup className={classes.wrapper} enter appear>
+      {projects.map((project) => (
         <CSSTransition
-          key={index}
+          key={project.id}
           nodeRef={project.nodeRef}
-          timeout={1000}
-          classNames="projectcard"
+          timeout={500}
           in
-          onEnter={() => console.log('enter')}
+          appear
+          classNames={{
+            enter: classes.enter,
+            enterActive: classes.enterActive,
+            exit: classes.exit,
+            exitActive: classes.exitActive,
+          }}
+          onEntering={() => console.log('onEntering')}
+          onEntered={() => console.log('onEntered')}
+          onExiting={() => console.log('onExiting')}
+          onExited={() => console.log('onExited')}
         >
           <ProjectCard
+            {...project}
             title={t(project.title)}
             description={t(project.description)}
-            imageUrl={project.imageUrl}
-            videoSrc={project.videoSrc}
-            projectUrl={project.projectUrl}
-            codeUrl={project.codeUrl}
-            techs={project.techs}
-            nodeRef={project.nodeRef}
           />
         </CSSTransition>
       ))}

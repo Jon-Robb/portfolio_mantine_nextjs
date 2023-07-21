@@ -16,7 +16,7 @@ export const ProjectsData: ProjectCardProps[] = [
     },
 
     {
-        title: 'tls.title',
+        title: '2',
         description: 'tls.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
@@ -28,7 +28,7 @@ export const ProjectsData: ProjectCardProps[] = [
 
     },
     {
-        title: 'tls.title',
+        title: '3',
         description: 'tls.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
@@ -40,7 +40,7 @@ export const ProjectsData: ProjectCardProps[] = [
 
     },
     {
-        title: 'tls.title',
+        title: '4',
         description: 'tls.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
