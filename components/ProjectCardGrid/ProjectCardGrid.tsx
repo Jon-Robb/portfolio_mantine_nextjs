@@ -24,7 +24,6 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
       ProjectsData.slice(0, visibleCount).map((project, index) =>
       ({ ...project, nodeRef: createRef(), id: index }))
     );
-    console.log('ProjectCardGrid.tsx: useEffect: visibleCount: ', visibleCount);
   }, [visibleCount]);
 
   return (

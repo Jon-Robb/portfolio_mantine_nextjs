@@ -11,4 +11,13 @@ export default createStyles((theme) => ({
             gridTemplateColumns: '1fr 1fr',
         },
     },
+    buttonGroup: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '1rem',
+    },
+    button: {
+        flex: 1,
+    },
 }));
