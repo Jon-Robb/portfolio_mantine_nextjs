@@ -1,7 +1,6 @@
 import { useEffect, useState, createRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useTranslation } from 'react-i18next';
-import { v4 as uuid } from 'uuid';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './ProjectCardGrid.styles';
@@ -9,18 +8,23 @@ import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 
 export interface ExtendedProjectCardProps extends ProjectCardProps {
   nodeRef: React.RefObject<HTMLDivElement>;
-  id: string;
+  id: string | number;
 }
 
 export default function ProjectCardGrid({ visibleCount }: { visibleCount: number }) {
   const [projects, setProjects] = useState<ExtendedProjectCardProps[]>(
-    ProjectsData.map((project) => ({ ...project, nodeRef: createRef(), id: uuid() }))
+    ProjectsData.slice(0, visibleCount).map((project, index) =>
+    ({ ...project, nodeRef: createRef(), id: index }))
   );
   const { classes } = useStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
-    setProjects(ProjectsData.slice(0, visibleCount) as ExtendedProjectCardProps[]);
+    setProjects(
+      ProjectsData.slice(0, visibleCount).map((project, index) =>
+      ({ ...project, nodeRef: createRef(), id: index }))
+    );
+    console.log('ProjectCardGrid.tsx: useEffect: visibleCount: ', visibleCount);
   }, [visibleCount]);
 
   return (

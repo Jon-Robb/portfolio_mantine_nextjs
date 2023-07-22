@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Title } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import { useScreenWidth } from '../../hooks/useScreenSize';
 import ProjectCardGrid from '../ProjectCardGrid/ProjectCardGrid';
 import { ProjectsData } from '../../data/ProjectsData';
 
 export default function Projects() {
   const { t } = useTranslation();
-  const [visibleCount, setVisibleCount] = useState(0);
+  const screenWidth = useScreenWidth();
+  const [visibleCount, setVisibleCount] = useState<number>(0);
+
+  useEffect(() => {
+    setVisibleCount(screenWidth > 1440 ? 2 : 1);
+  }, [screenWidth]);
 
   const handleLoadMore = () => {
     setVisibleCount(visibleCount + 1);
