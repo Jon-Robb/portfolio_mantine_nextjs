@@ -34,7 +34,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         colors: {
             green: ['#F0FFF4', '#C6F6D5', '#9AE6B4', '#68D391', '#48BB78', '#38A169', '#2F855A', '#276749', '#22543D', '#1C4532'],
         },
-        // primaryColor: 'green',
+        primaryColor: 'green',
         globalStyles: (theme) => ({
             '*, *::before, *::after': {
                 boxSizing: 'border-box',
