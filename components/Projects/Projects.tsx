@@ -9,17 +9,19 @@ export default function Projects() {
   const { t } = useTranslation();
   const screenWidth = useScreenWidth();
   const [visibleCount, setVisibleCount] = useState<number>(0);
+  const [visibleIncrement, setVisibleIncrement] = useState<number>(1);
 
   useEffect(() => {
     setVisibleCount(screenWidth > 1440 ? 2 : 1);
+    setVisibleIncrement(screenWidth > 1440 ? 2 : 1);
   }, [screenWidth]);
 
   const handleLoadMore = () => {
-    setVisibleCount(visibleCount + 1);
+    setVisibleCount(visibleCount + visibleIncrement);
   };
 
   const handleLoadLess = () => {
-    setVisibleCount(visibleCount - 1);
+    setVisibleCount(visibleCount - visibleIncrement);
   };
 
   return (
