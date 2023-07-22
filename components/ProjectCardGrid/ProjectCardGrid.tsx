@@ -1,18 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useTranslation } from 'react-i18next';
+import { v4 as uuid } from 'uuid';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './ProjectCardGrid.styles';
 import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 
+interface ExtendedProjectCardProps extends ProjectCardProps {
+  nodeRef: React.RefObject<HTMLDivElement>;
+  id: string;
+}
+
 export default function ProjectCardGrid({ visibleCount }: { visibleCount: number }) {
-  const [projects, setProjects] = useState<ProjectCardProps[]>([]);
+  const [projects, setProjects] = useState<ExtendedProjectCardProps[]>(
+    ProjectsData.map((project) => ({ ...project, nodeRef: createRef(), id: uuid() }))
+  );
   const { classes } = useStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
-    setProjects(ProjectsData.slice(0, visibleCount));
+    setProjects(ProjectsData.slice(0, visibleCount) as ExtendedProjectCardProps[]);
   }, [visibleCount]);
 
   return (
@@ -31,10 +39,6 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
             exit: classes.exit,
             exitActive: classes.exitActive,
           }}
-          onEntering={() => console.log('onEntering')}
-          onEntered={() => console.log('onEntered')}
-          onExiting={() => console.log('onExiting')}
-          onExited={() => console.log('onExited')}
         >
           <div ref={project.nodeRef}>
 
@@ -42,7 +46,6 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
               {...project}
               title={t(project.title)}
               description={t(project.description)}
-              nodeRef={project.nodeRef}
             />
           </div>
         </CSSTransition>

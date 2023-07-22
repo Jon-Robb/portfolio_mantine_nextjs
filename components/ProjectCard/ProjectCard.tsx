@@ -13,7 +13,6 @@ export default function ProjectCard({
     projectUrl,
     videoSrc,
     codeUrl,
-    nodeRef,
     techs }: ProjectCardProps) {
     const { classes } = useStyles();
     const screenSize = useScreenSize();
@@ -25,7 +24,6 @@ export default function ProjectCard({
           radius={screenSize}
           shadow={screenSize}
           className={classes.wrapper}
-          ref={nodeRef}
         >
             <div className={classes.grid}>
                 <div className={classes.imageWrapper}>
