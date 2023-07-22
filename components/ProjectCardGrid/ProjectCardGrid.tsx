@@ -16,6 +16,7 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
   }, [visibleCount]);
 
   return (
+
     <TransitionGroup className={classes.wrapper} enter appear>
       {projects.map((project) => (
         <CSSTransition
@@ -35,11 +36,15 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
           onExiting={() => console.log('onExiting')}
           onExited={() => console.log('onExited')}
         >
-          <ProjectCard
-            {...project}
-            title={t(project.title)}
-            description={t(project.description)}
-          />
+          <div ref={project.nodeRef}>
+
+            <ProjectCard
+              {...project}
+              title={t(project.title)}
+              description={t(project.description)}
+              nodeRef={project.nodeRef}
+            />
+          </div>
         </CSSTransition>
       ))}
     </TransitionGroup>
