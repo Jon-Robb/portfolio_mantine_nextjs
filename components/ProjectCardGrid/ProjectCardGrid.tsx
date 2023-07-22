@@ -7,7 +7,7 @@ import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './ProjectCardGrid.styles';
 import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 
-interface ExtendedProjectCardProps extends ProjectCardProps {
+export interface ExtendedProjectCardProps extends ProjectCardProps {
   nodeRef: React.RefObject<HTMLDivElement>;
   id: string;
 }
@@ -28,7 +28,7 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
     <TransitionGroup className={classes.wrapper} enter appear>
       {projects.map((project) => (
         <CSSTransition
-          key={project.id}
+          key={project.title}
           nodeRef={project.nodeRef}
           timeout={500}
           in
@@ -40,10 +40,10 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
             exitActive: classes.exitActive,
           }}
         >
-          <div ref={project.nodeRef}>
-
+          <div ref={project.nodeRef} key={project.id}>
             <ProjectCard
               {...project}
+              key={project.id}
               title={t(project.title)}
               description={t(project.description)}
             />
