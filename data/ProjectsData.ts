@@ -9,6 +9,9 @@ export const ProjectsData: ProjectCardProps[] = [
         // projectUrl: 'https://www.google.com',
         codeUrl: 'https://www.google.com',
         techs: ['React', 'Typescript', 'Mantine'],
+        collaborators: [
+            { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
+        ],
     },
 
     {
@@ -19,6 +22,11 @@ export const ProjectsData: ProjectCardProps[] = [
         projectUrl: 'https://www.google.com',
         codeUrl: 'https://www.google.com',
         techs: ['React', 'Typescript', 'Mantine'],
+        collaborators: [
+            { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
+            { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
+
+        ],
     },
     {
         title: '3',

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ProjectCardProps } from '../../typescript/interfaces/IProjectCard';
 import ProjectCardImage from '../ProjectCardImage/ProjectCardImage';
 import TechBadgesContainer from '../TechBadgesContainer/TechBadgesContainer';
+import CollaboratorsContainer from '../CollaboratorsContainer/CollaboratorsContainer';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ProjectCard.styles';
 
@@ -13,7 +14,8 @@ export default function ProjectCard({
     projectUrl,
     videoSrc,
     codeUrl,
-    techs }: ProjectCardProps) {
+    techs,
+    collaborators }: ProjectCardProps) {
     const { classes } = useStyles();
     const screenSize = useScreenSize();
     const { t } = useTranslation();
@@ -49,6 +51,7 @@ export default function ProjectCard({
                 </div>
             </div>
             <TechBadgesContainer techs={techs} />
+            {collaborators && <CollaboratorsContainer collaborators={collaborators} />}
         </Paper>
     );
 }
