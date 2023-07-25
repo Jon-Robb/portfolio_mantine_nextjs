@@ -6,6 +6,7 @@ import Home from '../Home/home';
 import About from '../About/About';
 import Projects from '../Projects/Projects';
 import Services from '../Services/Services';
+import Contact from '../Contact/Contact';
 import useStyles from './AppShellContainer.styles';
 
 export default function AppShellContainer() {
@@ -18,6 +19,7 @@ export default function AppShellContainer() {
       <About />
       <Projects />
       <Services />
+      <Contact />
     </AppShell>
   );
 }
