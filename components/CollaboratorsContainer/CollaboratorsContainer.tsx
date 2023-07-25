@@ -8,9 +8,9 @@ export default function CollaboratorsContainer({ collaborators }: CollaboratorsC
     return (
         <div className={classes.wrapper}>
             <Text className={classes.text}>Collaborator{collaborators.length > 1 ? 's' : ''}:</Text>
-            {collaborators.map((collaborator:Collaborator) => (
+            {collaborators.map((collaborator:Collaborator, index:number) => (
                 <Anchor
-                  key={collaborator.name}
+                  key={index}
                   href={collaborator.githubLink}
                 >
                     {collaborator.name}

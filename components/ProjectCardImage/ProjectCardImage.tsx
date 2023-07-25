@@ -9,19 +9,20 @@ interface ProjectCardImageProps {
 
 export default function ProjectCardImage({ src, videoSrc }: ProjectCardImageProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const [videoIsReady, setVideoIsReady] = useState(false);
     const { classes } = useStyles();
     const videoRef = useRef<HTMLVideoElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!videoRef.current) return;
+        if (!videoRef.current || !videoIsReady) return;
         if (isHovered) {
             videoRef.current.play();
         } else {
             videoRef.current.pause();
             // videoRef.current.currentTime = 0; // Reset video to beginning
         }
-    }, [isHovered]);
+    }, [isHovered, videoIsReady]);
 
     return (
         <div
@@ -37,6 +38,7 @@ export default function ProjectCardImage({ src, videoSrc }: ProjectCardImageProp
                   src={videoSrc}
                   loop
                   muted
+                  onCanPlay={() => setVideoIsReady(true)}
                 />
             {/* ) : ( */}
             <div
