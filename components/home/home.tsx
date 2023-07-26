@@ -4,7 +4,7 @@ import SkillBadgeContainer from '../SkillBadgesContainer/SkillBadgesContainer';
 // import useStyles from './home.styles';
 import { useSkillBadgesData } from '../../hooks/useSkillBadgesData';
 
-export default function Home() {
+export default function HomeSection() {
     const { t } = useTranslation();
     // const { classes } = useStyles();
     const skillBadges = useSkillBadgesData();
