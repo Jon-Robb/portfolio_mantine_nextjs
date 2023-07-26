@@ -1,14 +1,17 @@
-import { TextInput, Textarea, Button, Paper } from '@mantine/core';
+import { useState } from 'react';
+import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import useContactForm from '../../hooks/useContactForm';
 import useStyles from './ContactForm.styles';
 
 export default function ContactForm() {
     const { classes } = useStyles();
     const form = useContactForm();
+    const [loading, setLoading] = useState(false);
+    const [notification, setNotification] = useState({ type: '', message: '' });
 
     const handleSubmit = async (values: any) => {
-        // TODO: make a loading state
-        console.log('submitting form');
+        setLoading(true);
+        setNotification({ type: 'Loading', message: 'Sending email' });
         const response = await fetch('/api/send-email', {
             method: 'POST',
             headers: {
@@ -16,18 +19,18 @@ export default function ContactForm() {
             },
             body: JSON.stringify(values),
         });
-        // TODO: make success and failed state
+        setLoading(false);
         if (response.ok) {
-            console.log('email sent');
             form.reset();
+            setNotification({ type: 'Success', message: 'Email sent successfully.' });
         } else {
-            console.log('email failed');
+            setNotification({ type: 'Error', message: 'Email failed to send, please try again later.' });
         }
     };
 
     return (
         <Paper className={classes.wrapper}>
-            <form onSubmit={form.onSubmit(handleSubmit)}>
+            <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
                 <TextInput
                   label="Name"
                   placeholder="Enter your name"
@@ -44,10 +47,25 @@ export default function ContactForm() {
                   label="Message"
                   placeholder="Enter your message"
                   withAsterisk
+                  autosize
+                  minRows={5}
+                  maxRows={10}
                   {...form.getInputProps('message')}
                 />
-                <Button type="submit" variant="outline">Submit</Button>
+                <Button className={classes.button} type="submit" variant="outline">
+                    {loading ? 'Sending...' : 'Send'}
+                </Button>
             </form>
+            {notification.type !== '' && (
+                <Notification
+                  title={notification.type}
+                  loading={loading}
+                  onClose={() => setNotification({ type: '', message: '' })}
+                  withCloseButton={!loading}
+                >
+                    {notification.message}
+                </Notification>
+            )}
         </Paper>
     );
 }

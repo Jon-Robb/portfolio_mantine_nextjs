@@ -8,9 +8,7 @@ export default function Contact() {
     return (
         <section className="section" id="contact">
             <Title className={classes.title} order={2} mt={32} mb={32}> Contact </Title>
-            <div>
-                <ContactForm />
-            </div>
+            <ContactForm />
         </section>
     );
 }
