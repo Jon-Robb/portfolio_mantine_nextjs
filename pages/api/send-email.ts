@@ -1,10 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail from '@sendgrid/mail';
+import cors, { runMiddleWare } from '../../utils/cors';
 import { emailValidation } from '../../utils/validation';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+    await runMiddleWare({ req, res, cors });
+
     const { name, email, message } = req.body;
 
     if (!name || !email || !message || !emailValidation(email)) return;
