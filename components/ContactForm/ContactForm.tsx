@@ -19,6 +19,7 @@ export default function ContactForm() {
         // TODO: make success and failed state
         if (response.ok) {
             console.log('email sent');
+            form.reset();
         } else {
             console.log('email failed');
         }
