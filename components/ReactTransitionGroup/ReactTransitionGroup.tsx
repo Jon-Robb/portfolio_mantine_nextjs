@@ -77,7 +77,6 @@
 //                                   {...projectCard}
 //                                 />
 
-
 //                             </div>
 //                         {/* </ListGroup.Item> */}
 //                     </CSSTransition>
