@@ -6,13 +6,27 @@ export default function ContactForm() {
     const { classes } = useStyles();
     const form = useContactForm();
 
-    const handleSubmit = (values:any) => {
-        console.log(values);
+    const handleSubmit = async (values: any) => {
+        // TODO: make a loading state
+        console.log('submitting form');
+        const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+        });
+        // TODO: make success and failed state
+        if (response.ok) {
+            console.log('email sent');
+        } else {
+            console.log('email failed');
+        }
     };
 
     return (
         <Paper className={classes.wrapper}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={form.onSubmit(handleSubmit)}>
                 <TextInput
                   label="Name"
                   placeholder="Enter your name"
