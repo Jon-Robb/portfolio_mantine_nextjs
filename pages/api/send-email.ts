@@ -7,9 +7,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const { name, email, message } = req.body;
 
     const msg = {
-        to: 'robinsonjonathan240817@gmail.com',
-        // TODO: Make a verified email in sendgrid and update this email
-        from: 'update with your own sendgrid mail',
+        to: `${process.env.SENDGRID_TO}`,
+        from: `${process.env.SENDGRID_FROM}`,
         subject: `New Message From your Portfolio from ${name}`,
         text:
             `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
