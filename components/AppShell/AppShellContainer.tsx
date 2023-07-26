@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AppShell } from '@mantine/core';
 import AppHeader from '../AppHeader/AppHeader';
 import AppNavMenu from '../AppNavMenu/AppNavMenu';
-import HomeSection from '../Home/home';
+import HomeSection from '../Home/HomeSection';
 import About from '../About/About';
 import Projects from '../Projects/Projects';
 import Services from '../Services/Services';
