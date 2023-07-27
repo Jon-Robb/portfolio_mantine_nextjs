@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import { emailValidation } from '../../utils/validation';
 import useContactForm from '../../hooks/useContactForm';
+import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ContactForm.styles';
 
 export default function ContactForm() {
     const { classes } = useStyles();
     const form = useContactForm();
+    const screenSize = useScreenSize();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
     const [email, setEmail] = useState('');
@@ -42,19 +44,25 @@ export default function ContactForm() {
         setOnBlur(true);
     };
 
+    useEffect(() => {
+        console.log(screenSize);
+    }, [screenSize]);
+
     return (
-        <Paper className={classes.wrapper}>
+        <Paper withBorder className={classes.wrapper}>
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
                 <TextInput
                   label="Name"
                   placeholder="Enter your name"
                   withAsterisk={form.values.name === ''}
+                  size={screenSize}
                   {...form.getInputProps('name')}
                 />
                 <TextInput
                   label="Email"
                   placeholder="Enter your email"
                   withAsterisk={!isEmailValid}
+                  size={screenSize}
                   {...form.getInputProps('email')}
                   value={email}
                   onChange={handleEmailChange}
@@ -69,9 +77,10 @@ export default function ContactForm() {
                   autosize
                   minRows={5}
                   maxRows={10}
+                  size={screenSize}
                   {...form.getInputProps('message')}
                 />
-                <Button className={classes.button} type="submit" variant="outline">
+                <Button size={screenSize} className={classes.button} type="submit" variant="outline">
                     {loading ? 'Sending...' : 'Send'}
                 </Button>
             </form>
