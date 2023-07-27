@@ -25,6 +25,6 @@ export default createStyles((theme) => ({
         width: '100%',
     },
     button: {
-        margin: '0 25%',
+        margin: '0 25% 1rem 25%',
     },
 }));
