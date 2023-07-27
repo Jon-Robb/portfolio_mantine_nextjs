@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
+import axios from 'axios';
+import { emailValidation } from '../../utils/validation';
 import useContactForm from '../../hooks/useContactForm';
 import useStyles from './ContactForm.styles';
 
@@ -7,25 +9,37 @@ export default function ContactForm() {
     const { classes } = useStyles();
     const form = useContactForm();
     const [loading, setLoading] = useState(false);
-    const [notification, setNotification] = useState({ type: '', message: '' });
+    const [notification, setNotification] = useState({ title: '', message: '' });
+    const [email, setEmail] = useState('');
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [onBlur, setOnBlur] = useState(false);
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
-        setNotification({ type: 'Loading', message: 'Sending email' });
-        const response = await fetch('/api/send-email', {
-            method: 'POST',
+        setNotification({ title: 'Loading', message: 'Sending email' });
+
+        const response = await axios.post('/api/send-email', values, {
             headers: {
-                'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
             },
-            body: JSON.stringify(values),
-        });
-        setLoading(false);
-        if (response.ok) {
+          });
+              setLoading(false);
+        if (response.status === 200) {
             form.reset();
-            setNotification({ type: 'Success', message: 'Email sent successfully.' });
+            setNotification({ title: 'Success', message: 'Email sent successfully.' });
         } else {
-            setNotification({ type: 'Error', message: 'Email failed to send, please try again later.' });
+            setNotification({ title: 'Error', message: 'Email failed to send, please try again later.' });
         }
+    };
+
+    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.currentTarget;
+        setEmail(value);
+    };
+
+    const handleEmailBlur = () => {
+        setIsEmailValid(emailValidation(email));
+        setOnBlur(true);
     };
 
     return (
@@ -34,19 +48,24 @@ export default function ContactForm() {
                 <TextInput
                   label="Name"
                   placeholder="Enter your name"
-                  withAsterisk
+                  withAsterisk={form.values.name === ''}
                   {...form.getInputProps('name')}
                 />
                 <TextInput
                   label="Email"
                   placeholder="Enter your email"
-                  withAsterisk
+                  withAsterisk={!isEmailValid}
                   {...form.getInputProps('email')}
+                  value={email}
+                  onChange={handleEmailChange}
+                  onBlur={handleEmailBlur}
+                  onFocus={() => setOnBlur(false)}
+                  error={!isEmailValid && email !== '' && onBlur && 'Please enter a valid email'}
                 />
                 <Textarea
                   label="Message"
                   placeholder="Enter your message"
-                  withAsterisk
+                  withAsterisk={form.values.message === ''}
                   autosize
                   minRows={5}
                   maxRows={10}
@@ -56,11 +75,11 @@ export default function ContactForm() {
                     {loading ? 'Sending...' : 'Send'}
                 </Button>
             </form>
-            {notification.type !== '' && (
+            {notification.title !== '' && (
                 <Notification
-                  title={notification.type}
+                  title={notification.title}
                   loading={loading}
-                  onClose={() => setNotification({ type: '', message: '' })}
+                  onClose={() => setNotification({ title: '', message: '' })}
                   withCloseButton={!loading}
                 >
                     {notification.message}
