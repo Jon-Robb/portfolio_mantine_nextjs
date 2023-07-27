@@ -20,16 +20,19 @@ export default function ContactForm() {
         setLoading(true);
         setNotification({ title: 'Loading', message: 'Sending email' });
 
-        const response = await axios.post('/api/send-email', values, {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-              setLoading(false);
-        if (response.status === 200) {
-            form.reset();
-            setNotification({ title: 'Success', message: 'Email sent successfully.' });
-        } else {
+        try {
+            const response = await axios.post('/api/send-email', values, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            setLoading(false);
+            if (response.status === 200) {
+                form.reset();
+                setNotification({ title: 'Success', message: 'Email sent successfully.' });
+            }
+        } catch (error) {
+            // do something else than a console.log here
             setNotification({ title: 'Error', message: 'Email failed to send, please try again later.' });
         }
     };
