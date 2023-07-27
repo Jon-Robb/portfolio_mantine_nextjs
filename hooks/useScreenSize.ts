@@ -9,13 +9,13 @@ export const useScreenSize = () : string => {
 
     const calculateScreenSize = () => {
         const width = window.innerWidth;
-        if (width < 480) {
+        if (width < 30 * 16) {
             return 'xs';
-        } if (width < 768) {
+        } if (width < 48 * 16) {
             return 'sm';
-        } if (width < 1024) {
+        } if (width < 64 * 16) {
             return 'md';
-        } if (width < 1184) {
+        } if (width < 74 * 16) {
             return 'lg';
         }
             return 'xl';

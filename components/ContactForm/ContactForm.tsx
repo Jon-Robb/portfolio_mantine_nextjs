@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import { emailValidation } from '../../utils/validation';
@@ -43,10 +43,6 @@ export default function ContactForm() {
         setIsEmailValid(emailValidation(email));
         setOnBlur(true);
     };
-
-    useEffect(() => {
-        console.log(screenSize);
-    }, [screenSize]);
 
     return (
         <Paper withBorder className={classes.wrapper}>
