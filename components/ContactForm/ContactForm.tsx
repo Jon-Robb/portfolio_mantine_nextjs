@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
-import { emailValidation } from '../../utils/validation';
 import useContactForm from '../../hooks/useContactForm';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ContactForm.styles';
@@ -12,9 +11,6 @@ export default function ContactForm() {
     const screenSize = useScreenSize();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
-    const [email, setEmail] = useState('');
-    const [isEmailValid, setIsEmailValid] = useState(false);
-    const [onBlur, setOnBlur] = useState(false);
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -23,28 +19,22 @@ export default function ContactForm() {
         try {
             const response = await axios.post('/api/send-email', values, {
                 headers: {
-                    'Content-Type': 'application/json',
+                  'Content-Type': 'application/json',
                 },
             });
+
             setLoading(false);
+
             if (response.status === 200) {
                 form.reset();
                 setNotification({ title: 'Success', message: 'Email sent successfully.' });
+            } else {
+                setNotification({ title: 'Error', message: 'Email failed to send, please try again later.' });
             }
         } catch (error) {
-            // do something else than a console.log here
-            setNotification({ title: 'Error', message: 'Email failed to send, please try again later.' });
+            setLoading(false);
+            setNotification({ title: 'Error', message: 'Something went wrong, please try again later.' });
         }
-    };
-
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.currentTarget;
-        setEmail(value);
-    };
-
-    const handleEmailBlur = () => {
-        setIsEmailValid(emailValidation(email));
-        setOnBlur(true);
     };
 
     return (
@@ -52,6 +42,7 @@ export default function ContactForm() {
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
                 <TextInput
                   label="Name"
+                  aria-label="Enter your name"
                   placeholder="Enter your name"
                   withAsterisk={form.values.name === ''}
                   size={screenSize}
@@ -59,18 +50,15 @@ export default function ContactForm() {
                 />
                 <TextInput
                   label="Email"
+                  aria-label="Enter your email"
                   placeholder="Enter your email"
-                  withAsterisk={!isEmailValid}
+                  withAsterisk={!form.values.email || !form.isValid('email')}
                   size={screenSize}
                   {...form.getInputProps('email')}
-                  value={email}
-                  onChange={handleEmailChange}
-                  onBlur={handleEmailBlur}
-                  onFocus={() => setOnBlur(false)}
-                  error={!isEmailValid && email !== '' && onBlur && 'Please enter a valid email'}
                 />
                 <Textarea
                   label="Message"
+                  aria-label="Enter your message"
                   placeholder="Enter your message"
                   withAsterisk={form.values.message === ''}
                   autosize
