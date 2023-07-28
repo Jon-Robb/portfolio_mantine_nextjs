@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import useContactForm from '../../hooks/useContactForm';
@@ -11,9 +11,6 @@ export default function ContactForm() {
     const screenSize = useScreenSize();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
-    const [isBlurred, setIsBlurred] = useState<Record<string, boolean>>({
-        name: false,
-    });
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -39,10 +36,6 @@ export default function ContactForm() {
             setNotification({ title: 'Error', message: 'Something went wrong, please try again later.' });
         }
     };
-
-    useEffect(() => {
-        console.log(isBlurred);
-    }, [isBlurred]);
 
     return (
         <Paper withBorder className={classes.wrapper}>
