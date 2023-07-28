@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import useContactForm from '../../hooks/useContactForm';
@@ -11,6 +11,9 @@ export default function ContactForm() {
     const screenSize = useScreenSize();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
+    const [isBlurred, setIsBlurred] = useState<Record<string, boolean>>({
+        name: false,
+    });
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -37,6 +40,10 @@ export default function ContactForm() {
         }
     };
 
+    useEffect(() => {
+        console.log(isBlurred);
+    }, [isBlurred]);
+
     return (
         <Paper withBorder className={classes.wrapper}>
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
@@ -47,6 +54,7 @@ export default function ContactForm() {
                   withAsterisk={!form.isValid('name')}
                   size={screenSize}
                   {...form.getInputProps('name')}
+                  onBlur={form.values.name !== '' ? () => form.validateField('name') : () => {}}
                 />
                 <TextInput
                   label="Email"
@@ -55,6 +63,7 @@ export default function ContactForm() {
                   withAsterisk={!form.values.email || !form.isValid('email')}
                   size={screenSize}
                   {...form.getInputProps('email')}
+                  onBlur={form.values.email !== '' ? () => form.validateField('email') : () => {}}
                 />
                 <Textarea
                   label="Message"
@@ -66,8 +75,9 @@ export default function ContactForm() {
                   maxRows={10}
                   size={screenSize}
                   {...form.getInputProps('message')}
+                  onBlur={form.values.message !== '' ? () => form.validateField('message') : () => {}}
                 />
-                <Button size={screenSize} className={classes.button} type="submit" variant="outline">
+                <Button size={screenSize} className={classes.button} type="submit" variant="outline" disabled={!form.isValid()}>
                     {loading ? 'Sending...' : 'Send'}
                 </Button>
             </form>
