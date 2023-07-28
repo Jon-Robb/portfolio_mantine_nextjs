@@ -44,7 +44,7 @@ export default function ContactForm() {
                   label="Name"
                   aria-label="Enter your name"
                   placeholder="Enter your name"
-                  withAsterisk={form.values.name === ''}
+                  withAsterisk={!form.isValid('name')}
                   size={screenSize}
                   {...form.getInputProps('name')}
                 />
@@ -60,7 +60,7 @@ export default function ContactForm() {
                   label="Message"
                   aria-label="Enter your message"
                   placeholder="Enter your message"
-                  withAsterisk={form.values.message === ''}
+                  withAsterisk={!form.isValid('message')}
                   autosize
                   minRows={5}
                   maxRows={10}
