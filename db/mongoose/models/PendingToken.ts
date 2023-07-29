@@ -24,6 +24,13 @@ const PendingTokenSchema = new mongoose.Schema<IPendingToken>({
     },
 });
 
-const PendingToken = mongoose.model<IPendingToken>('PendingToken', PendingTokenSchema);
+// eslint-disable-next-line import/no-mutable-exports
+let PendingToken: mongoose.Model<IPendingToken>;
+
+if (mongoose.models.PendingToken) {
+  PendingToken = mongoose.model('PendingToken');
+} else {
+  PendingToken = mongoose.model<IPendingToken>('PendingToken', PendingTokenSchema);
+}
 
 export default PendingToken;

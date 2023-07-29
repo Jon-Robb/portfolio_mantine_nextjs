@@ -1,10 +1,10 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
 interface IEmail {
     email: string;
 }
 
-const EmailSchema = new Schema<IEmail>({
+const EmailSchema = new mongoose.Schema<IEmail>({
     email: {
         type: String,
         required: true,
@@ -12,6 +12,13 @@ const EmailSchema = new Schema<IEmail>({
     },
 });
 
-const VerifiedEmail = model<IEmail>('VerifiedEmail', EmailSchema);
+// eslint-disable-next-line import/no-mutable-exports
+let VerifiedEmail: mongoose.Model<IEmail>;
+
+if (mongoose.models.VerifiedEmail) {
+    VerifiedEmail = mongoose.model('VerifiedEmail');
+} else {
+    VerifiedEmail = mongoose.model<IEmail>('VerifiedEmail', EmailSchema);
+}
 
 export default VerifiedEmail;

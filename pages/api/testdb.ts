@@ -1,8 +1,8 @@
-import { connectDB, disconnectDB } from './db/mongoose/connectionHandler';
-import PendingToken from './db/mongoose/models/PendingToken';
-import VerifiedEmail from './db/mongoose/models/VerifiedEmail';
+import { connectDB, disconnectDB } from '../../db/mongoose/connectionHandler';
+import PendingToken from '../../db/mongoose/models/PendingToken';
+import VerifiedEmail from '../../db/mongoose/models/VerifiedEmail';
 
-const testData = async () => {
+export default async function testDB(req: any, res:any) {
     try {
         await connectDB();
         const newToken = new PendingToken({
@@ -25,11 +25,12 @@ const testData = async () => {
         }
         const foundVerifiedEmail = await VerifiedEmail.findOne({ email: 'testEmail' });
         console.log('found verified email', foundVerifiedEmail);
+
+        res.status(200).json({ message: 'DB tests completed' });
     } catch (err) {
         console.log(err);
+        res.status(500).json({ error: 'An error occurred' });
     } finally {
         await disconnectDB();
     }
-};
-
-testData();
+}
