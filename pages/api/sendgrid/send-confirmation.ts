@@ -1,33 +1,22 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail from '@sendgrid/mail';
 import { v4 as uuidv4 } from 'uuid';
-import cors, { runMiddleWare } from '../../utils/cors';
-import { emailValidation } from '../../utils/validation';
-
-interface UserDatabase {
-    [key: string]: {
-        name: string;
-        email: string;
-        message:string;
-        confirmed: boolean;
-    };
-}
-
-export const memoryDatabase:UserDatabase = {};
+import cors, { runMiddleWare } from '../../../utils/cors';
+import { emailValidation } from '../../../utils/validation';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     await runMiddleWare({ req, res, fn: cors });
 
-    const { name, email, message } = req.body;
-
-    if (!name || !email || !message || !emailValidation(email)) return;
+    const { name, email } = req.body;
+    if (!emailValidation(email)) {
+        res.status(400).json({ error: 'Invalid email' });
+        return;
+    }
 
     const token = uuidv4();
-    console.log('generated token', token);
-    memoryDatabase[token] = { name, email, message, confirmed: false };
-    console.log('memoryDatabase[token]', memoryDatabase[token]);
+
     const confirmationMsg = {
         to: email,
         from: `${process.env.SENDGRID_FROM}`,
