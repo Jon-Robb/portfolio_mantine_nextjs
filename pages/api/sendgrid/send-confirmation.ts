@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         from: `${process.env.SENDGRID_FROM}`,
         subject: `Hello ${name}, please confirm your email by clicking the link below. Thank you for contacting me.`,
         text:
-        `Hello ${name},\n\nThank you for contacting me. Please confirm your email by clicking the link below.\n\n${process.env.NEXT_PUBLIC_URL}/api/confirm-email?token=${token}\n\nThank you,\n\n${process.env.SENDGRID_FROM_NAME}`,
+        `Hello ${name},\n\nThank you for contacting me. Please confirm your email by clicking the link below.\n\n${process.env.NEXT_PUBLIC_URL}/api/receive-confirmation?token=${token}\n\nThank you,\n\n${process.env.SENDGRID_FROM_NAME}`,
     };
 
     // const msg = {

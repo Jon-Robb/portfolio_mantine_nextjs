@@ -1,4 +1,4 @@
-import PendingToken from '../models/PendingToken';
+import PendingToken from '../models/PendingTokenModel';
 
 export const addToken = async (token: string, email: string) => {
     const newToken = new PendingToken({
