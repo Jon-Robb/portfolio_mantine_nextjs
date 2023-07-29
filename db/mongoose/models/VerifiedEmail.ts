@@ -12,6 +12,6 @@ const EmailSchema = new Schema<IEmail>({
     },
 });
 
-const EmailModel = model<IEmail>('Email', EmailSchema);
+const VerifiedEmail = model<IEmail>('VerifiedEmail', EmailSchema);
 
-export default EmailModel;
+export default VerifiedEmail;

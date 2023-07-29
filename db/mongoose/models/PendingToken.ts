@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 
 interface IPendingToken {
     token: string;
@@ -6,7 +6,7 @@ interface IPendingToken {
     createdAt: Date;
 }
 
-const PendingTokenSchema = new Schema<IPendingToken>({
+const PendingTokenSchema = new mongoose.Schema<IPendingToken>({
     token: {
         type: String,
         required: true,
@@ -15,6 +15,7 @@ const PendingTokenSchema = new Schema<IPendingToken>({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     createdAt: {
         type: Date,
@@ -23,6 +24,6 @@ const PendingTokenSchema = new Schema<IPendingToken>({
     },
 });
 
-const PendingTokenModel = model<IPendingToken>('PendingToken', PendingTokenSchema);
+const PendingToken = mongoose.model<IPendingToken>('PendingToken', PendingTokenSchema);
 
-export default PendingTokenModel;
+export default PendingToken;

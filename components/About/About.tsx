@@ -1,11 +1,11 @@
 import { Title, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
-import testData from '../../testdb';
 // import useStyles from './About.styles';
-testData();
+
 export default function About() {
     const { t } = useTranslation();
     // const { classes } = useStyles();
+
     return (
         <section className="section" id="about">
             <Title order={2} mt={32}> {t('aboutme')} </Title>
