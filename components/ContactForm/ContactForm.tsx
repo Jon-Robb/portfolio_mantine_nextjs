@@ -65,6 +65,10 @@ export default function ContactForm() {
                 } catch (error) {
                     console.log(error);
                 }
+            } else if (!isVerifiedEmail && isPendingToken) {
+                setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
+            } else if (isVerifiedEmail && !isPendingToken) {
+                setNotification({ title: 'Email verified', message: 'Your Email address has been verified, you can now send emails.' });
             }
         }
     };
@@ -72,6 +76,21 @@ export default function ContactForm() {
     const handleSendConfirmation = async () => {
         setSendConfirmation(false);
         setLoading(true);
+        try {
+            const response = await axios.post('/api/sendgrid/send-confirmation', { email: form.values.email }, {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+            });
+            if (response.data.message === EMessages.EMAIL_SENT) {
+                setNotification({ title: 'Link sent...', message: 'Please click the link in your emails...' });
+                setIsPendingToken(true);
+            } else if (response.data.message === EMessages.EMAIL_NOT_SENT) {
+                setNotification({ title: 'Error', message: 'The confirmation email could not get through' });
+            }
+        } catch (error) {
+            console.log(error);
+        }
         setNotification({ title: 'Link sent...', message: 'Please click the link in your emails...' });
     };
 
