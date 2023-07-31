@@ -15,6 +15,7 @@ export default function ContactForm() {
     const [emailStatus, setEmailStatus] = useState({
         isVerifiedEmail: false, isPendingToken: false,
     });
+    const [sendConfirmation, setSendConfirmation] = useState(false);
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -54,6 +55,7 @@ export default function ContactForm() {
                     });
                     if (response.data.message === EMessages.EMAIL_NOT_FOUND) {
                         setNotification({ title: 'Please verify you email', message: 'A link will be sent to your address when you press the button' });
+                        setSendConfirmation(true);
                     } else if (response.data.message === EMessages.EMAIL_VERIFIED) {
                         setEmailStatus({ isVerifiedEmail: true, isPendingToken: false });
                         setNotification({ title: 'Success', message: 'Email verified successfully.' });
@@ -93,6 +95,17 @@ export default function ContactForm() {
                   {...form.getInputProps('email')}
                   onBlur={handleEmailBlur}
                 />
+                {sendConfirmation && (
+                    <Button
+                      size={screenSize}
+                      className={classes.button}
+                      type="button"
+                      variant="outline"
+                      onClick={() => setSendConfirmation(false)}
+                    >
+                        Send link!
+                    </Button>
+                        )}
                 <Textarea
                   label="Message"
                   aria-label="Enter your message"
