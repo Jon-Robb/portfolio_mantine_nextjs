@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import useContactForm from '../../hooks/useContactForm';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ContactForm.styles';
+import { EMessages } from '../../typescript/enums/EMessages';
 
 export default function ContactForm() {
     const { classes } = useStyles();
@@ -11,7 +12,9 @@ export default function ContactForm() {
     const screenSize = useScreenSize();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
-    const [isVerifiedEmail, setIsVerifiedEmail] = useState(null);
+    const [emailStatus, setEmailStatus] = useState({
+        isVerifiedEmail: false, isPendingToken: false,
+    });
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -41,20 +44,33 @@ export default function ContactForm() {
     const handleEmailBlur = async () => {
         if (form.values.email !== '') {
             form.validateField('email');
-            if (isVerifiedEmail === null) {
+            if (!form.isValid('email')) return;
+            if (!emailStatus.isVerifiedEmail && !emailStatus.isPendingToken) {
                 try {
                     const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
                         headers: {
                           'Content-Type': 'application/json',
                         },
                     });
-                    console.log(response);
+                    if (response.data.message === EMessages.EMAIL_NOT_FOUND) {
+                        setNotification({ title: 'Please verify you email', message: 'A link will be sent to your address when you press the button' });
+                    } else if (response.data.message === EMessages.EMAIL_VERIFIED) {
+                        setEmailStatus({ isVerifiedEmail: true, isPendingToken: false });
+                        setNotification({ title: 'Success', message: 'Email verified successfully.' });
+                    } else if (response.data.message === EMessages.EMAIL_PENDING) {
+                        setEmailStatus({ isVerifiedEmail: false, isPendingToken: true });
+                        setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
+                    }
                 } catch (error) {
                     console.log(error);
                 }
             }
         }
     };
+
+    useEffect(() => {
+        console.log(emailStatus);
+    }, [emailStatus]);
 
     return (
         <Paper withBorder className={classes.wrapper}>
