@@ -1,14 +1,25 @@
 import PendingToken from '../models/PendingTokenModel';
 
-export const addToken = async (token: string, email: string) => {
+export const addToken = async (token: string, email: string):Promise<boolean> => {
     const newToken = new PendingToken({
         token,
         email,
     });
-    await newToken.save();
+    const savedToken = await newToken.save();
+    return !!savedToken;
 };
 
-export const getEmailByToken = async (token: string) => {
+export const getEmailByToken = async (token: string) : Promise<boolean> => {
     const foundToken = await PendingToken.findOne({ token });
-    return foundToken?.email;
+    return !!foundToken;
+};
+
+export const deleteToken = async (token: string): Promise<boolean> => {
+    const deletedToken = await PendingToken.deleteOne({ token });
+    return !!deletedToken;
+};
+
+export const isPendingToken = async (email: string): Promise<boolean> => {
+    const foundEmail = await PendingToken.findOne({ email });
+    return !!foundEmail;
 };

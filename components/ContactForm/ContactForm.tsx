@@ -11,6 +11,7 @@ export default function ContactForm() {
     const screenSize = useScreenSize();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
+    const [isVerifiedEmail, setIsVerifiedEmail] = useState(null);
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -37,6 +38,24 @@ export default function ContactForm() {
         }
     };
 
+    const handleEmailBlur = async () => {
+        if (form.values.email !== '') {
+            form.validateField('email');
+            if (isVerifiedEmail === null) {
+                try {
+                    const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                    });
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    };
+
     return (
         <Paper withBorder className={classes.wrapper}>
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
@@ -56,7 +75,7 @@ export default function ContactForm() {
                   withAsterisk={!form.values.email || !form.isValid('email')}
                   size={screenSize}
                   {...form.getInputProps('email')}
-                  onBlur={form.values.email !== '' ? () => form.validateField('email') : () => {}}
+                  onBlur={handleEmailBlur}
                 />
                 <Textarea
                   label="Message"

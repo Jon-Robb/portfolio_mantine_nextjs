@@ -9,6 +9,8 @@ const EmailSchema = new mongoose.Schema<IEmail>({
         type: String,
         required: true,
         unique: true,
+        // 6 months expiration
+        expires: 15552000,
     },
 });
 

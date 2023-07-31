@@ -13,3 +13,15 @@ export const disconnectDB = async () => {
         await mongoose.disconnect();
     }
 };
+
+export async function withDBConnection(fn) {
+    try {
+        await connectDB();
+        return await fn();
+    } catch (error) {
+        console.error(`Error in withDBConnection: ${error}`);
+        return null;
+    } finally {
+        await disconnectDB();
+    }
+}
