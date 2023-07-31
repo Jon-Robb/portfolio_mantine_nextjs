@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import useContactForm from '../../hooks/useContactForm';
@@ -12,9 +12,8 @@ export default function ContactForm() {
     const screenSize = useScreenSize();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
-    const [emailStatus, setEmailStatus] = useState({
-        isVerifiedEmail: false, isPendingToken: false,
-    });
+    const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);
+    const [isPendingToken, setIsPendingToken] = useState(false);
     const [sendConfirmation, setSendConfirmation] = useState(false);
 
     const handleSubmit = async (values: any) => {
@@ -46,7 +45,7 @@ export default function ContactForm() {
         if (form.values.email !== '') {
             form.validateField('email');
             if (!form.isValid('email')) return;
-            if (!emailStatus.isVerifiedEmail && !emailStatus.isPendingToken) {
+            if (!isVerifiedEmail && !isPendingToken) {
                 try {
                     const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
                         headers: {
@@ -57,10 +56,10 @@ export default function ContactForm() {
                         setNotification({ title: 'Please verify you email', message: 'A link will be sent to your address when you press the button' });
                         setSendConfirmation(true);
                     } else if (response.data.message === EMessages.EMAIL_VERIFIED) {
-                        setEmailStatus({ isVerifiedEmail: true, isPendingToken: false });
+                        setIsVerifiedEmail(true);
                         setNotification({ title: 'Success', message: 'Email verified successfully.' });
                     } else if (response.data.message === EMessages.EMAIL_PENDING) {
-                        setEmailStatus({ isVerifiedEmail: false, isPendingToken: true });
+                        setIsPendingToken(true);
                         setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
                     }
                 } catch (error) {
@@ -70,9 +69,11 @@ export default function ContactForm() {
         }
     };
 
-    useEffect(() => {
-        console.log(emailStatus);
-    }, [emailStatus]);
+    const handleSendConfirmation = async () => {
+        setSendConfirmation(false);
+        setLoading(true);
+        setNotification({ title: 'Link sent...', message: 'Please click the link in your emails...' });
+    };
 
     return (
         <Paper withBorder className={classes.wrapper}>
@@ -101,7 +102,7 @@ export default function ContactForm() {
                       className={classes.button}
                       type="button"
                       variant="outline"
-                      onClick={() => setSendConfirmation(false)}
+                      onClick={handleSendConfirmation}
                     >
                         Send link!
                     </Button>
