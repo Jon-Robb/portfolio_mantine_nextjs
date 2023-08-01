@@ -19,10 +19,11 @@ const PendingTokenSchema = new mongoose.Schema<IPendingToken>({
     },
     createdAt: {
         type: Date,
-        expires: 300,
         default: Date.now,
     },
 });
+
+PendingTokenSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });
 
 // eslint-disable-next-line import/no-mutable-exports
 let PendingToken: mongoose.Model<IPendingToken>;
