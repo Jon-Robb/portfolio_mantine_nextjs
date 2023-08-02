@@ -4,4 +4,5 @@ export enum EMessages {
     EMAIL_NOT_FOUND = 'Email not found',
     EMAIL_SENT = 'Email sent',
     EMAIL_NOT_SENT = 'Email not sent',
+    EMAIL_ADDED = 'Email added',
 }

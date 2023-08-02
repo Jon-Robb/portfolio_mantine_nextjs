@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import useContactForm from '../../hooks/useContactForm';
@@ -15,6 +15,51 @@ export default function ContactForm() {
     const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);
     const [isPendingToken, setIsPendingToken] = useState(false);
     const [sendConfirmation, setSendConfirmation] = useState(false);
+    // const [eventSource, setEventSource] = useState<EventSource>();
+
+    useEffect(() => {
+        const eventSource = new EventSource('/api/update', {
+          withCredentials: true,
+        });
+        eventSource.onopen = (e) => {
+          console.log('open', e);
+        };
+        eventSource.onmessage = (e) => {
+          console.log(e.data);
+        };
+        eventSource.onerror = (e) => {
+          console.log(e);
+        };
+
+        return () => {
+          eventSource.close();
+        };
+      }, []);
+
+    // useEffect(() => {
+    //     if (typeof window === 'undefined') return undefined;
+
+    //     const source = new EventSource('/api/update', {
+    //         withCredentials: true,
+    //     });
+    //     setEventSource(source);
+    //     return () => {
+    //         source.close();
+    //     };
+    // }, []);
+
+    // useEffect(() => {
+    //     if (!eventSource) return;
+    //     eventSource.onopen = () => {
+    //         console.log('open');
+    //     };
+    //     eventSource.onmessage = (event) => {
+    //         console.log('message', event.data);
+    //     };
+    //     eventSource.onerror = (event) => {
+    //         console.log('error', event);
+    //     };
+    // }, [eventSource]);
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -23,12 +68,10 @@ export default function ContactForm() {
         try {
             const response = await axios.post('/api/send-email', values, {
                 headers: {
-                  'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
             });
-
             setLoading(false);
-
             if (response.status === 200) {
                 form.reset();
                 setNotification({ title: 'Success', message: 'Email sent successfully.' });
@@ -49,7 +92,7 @@ export default function ContactForm() {
                 try {
                     const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
                         headers: {
-                          'Content-Type': 'application/json',
+                            'Content-Type': 'application/json',
                         },
                     });
                     if (response.data.message === EMessages.EMAIL_NOT_FOUND) {
@@ -69,36 +112,13 @@ export default function ContactForm() {
         }
     };
 
-    const pollEmail = async () => {
-        if (!form.isValid('email')) return;
-        if (isVerifiedEmail) return;
-        const pollInterval = setInterval(async () => {
-            console.log(`Polling email ${form.values.email}`);
-            try {
-                const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                });
-                if (response.data.message === EMessages.EMAIL_VERIFIED) {
-                    setIsVerifiedEmail(true);
-                    setNotification({ title: 'Success', message: 'Email verified successfully.' });
-                    setLoading(false);
-                    clearInterval(pollInterval);
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        }, 5000);
-    };
-
     const handleSendConfirmation = async () => {
         setSendConfirmation(false);
         setLoading(true);
         try {
             const response = await axios.post('/api/sendgrid/send-confirmation', { email: form.values.email }, {
                 headers: {
-                  'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
             });
             if (response.data.message === EMessages.EMAIL_SENT) {
@@ -107,7 +127,6 @@ export default function ContactForm() {
             } else if (response.data.message === EMessages.EMAIL_NOT_SENT) {
                 setNotification({ title: 'Error', message: 'The confirmation email could not get through' });
             }
-            pollEmail();
         } catch (error) {
             console.log(error);
             setLoading(false);
@@ -125,7 +144,7 @@ export default function ContactForm() {
                   withAsterisk={!form.isValid('name')}
                   size={screenSize}
                   {...form.getInputProps('name')}
-                  onBlur={form.values.name !== '' ? () => form.validateField('name') : () => {}}
+                  onBlur={form.values.name !== '' ? () => form.validateField('name') : () => { }}
                 />
                 <TextInput
                   label="Email"
@@ -146,7 +165,7 @@ export default function ContactForm() {
                     >
                         Send link!
                     </Button>
-                        )}
+                )}
                 <Textarea
                   label="Message"
                   aria-label="Enter your message"
@@ -157,7 +176,7 @@ export default function ContactForm() {
                   maxRows={10}
                   size={screenSize}
                   {...form.getInputProps('message')}
-                  onBlur={form.values.message !== '' ? () => form.validateField('message') : () => {}}
+                  onBlur={form.values.message !== '' ? () => form.validateField('message') : () => { }}
                 />
                 <Button size={screenSize} className={classes.button} type="submit" variant="outline" disabled={!form.isValid() || !isVerifiedEmail || loading}>
                     {loading ? 'Sending...' : 'Send'}
