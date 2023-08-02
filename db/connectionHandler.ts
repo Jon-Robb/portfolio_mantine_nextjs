@@ -14,7 +14,7 @@ export const disconnectDB = async () => {
     }
 };
 
-export async function withDBConnection(fn:()=>Promise<any>) {
+export async function withDBConnection(fn:()=> Promise <any>) {
     try {
         await connectDB();
         return await fn();

@@ -65,19 +65,38 @@ export default function ContactForm() {
                 } catch (error) {
                     console.log(error);
                 }
-            } else if (!isVerifiedEmail && isPendingToken) {
-                setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
-            } else if (isVerifiedEmail && !isPendingToken) {
-                setNotification({ title: 'Email verified', message: 'Your Email address has been verified, you can now send emails.' });
             }
         }
+    };
+
+    const pollEmail = async () => {
+        if (!form.isValid('email')) return;
+        if (isVerifiedEmail) return;
+        const pollInterval = setInterval(async () => {
+            console.log(`Polling email ${form.values.email}`);
+            try {
+                const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                });
+                if (response.data.message === EMessages.EMAIL_VERIFIED) {
+                    setIsVerifiedEmail(true);
+                    setNotification({ title: 'Success', message: 'Email verified successfully.' });
+                    setLoading(false);
+                    clearInterval(pollInterval);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }, 5000);
     };
 
     const handleSendConfirmation = async () => {
         setSendConfirmation(false);
         setLoading(true);
         try {
-            const response = await axios.post('/api/send-confirmation', { email: form.values.email }, {
+            const response = await axios.post('/api/sendgrid/send-confirmation', { email: form.values.email }, {
                 headers: {
                   'Content-Type': 'application/json',
                 },
@@ -88,8 +107,10 @@ export default function ContactForm() {
             } else if (response.data.message === EMessages.EMAIL_NOT_SENT) {
                 setNotification({ title: 'Error', message: 'The confirmation email could not get through' });
             }
+            pollEmail();
         } catch (error) {
             console.log(error);
+            setLoading(false);
         }
         setNotification({ title: 'Link sent...', message: 'Please click the link in your emails...' });
     };
@@ -138,7 +159,7 @@ export default function ContactForm() {
                   {...form.getInputProps('message')}
                   onBlur={form.values.message !== '' ? () => form.validateField('message') : () => {}}
                 />
-                <Button size={screenSize} className={classes.button} type="submit" variant="outline" disabled={!form.isValid()}>
+                <Button size={screenSize} className={classes.button} type="submit" variant="outline" disabled={!form.isValid() || !isVerifiedEmail || loading}>
                     {loading ? 'Sending...' : 'Send'}
                 </Button>
             </form>

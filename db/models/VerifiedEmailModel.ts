@@ -14,6 +14,12 @@ const EmailSchema = new mongoose.Schema<IEmail>({
     },
 });
 
+// eslint-disable-next-line prefer-arrow-callback, func-names
+EmailSchema.post('save', function (doc) {
+    console.log('%s has been saved', doc.email);
+  });
+
+// This is a Singleton like, this that has to be done because of NextJs seemly double compiling
 // eslint-disable-next-line import/no-mutable-exports
 let VerifiedEmail: mongoose.Model<IEmail>;
 
