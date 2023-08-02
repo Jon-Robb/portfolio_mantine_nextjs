@@ -11,7 +11,7 @@ export const addToken = (token: string, email: string): Promise<boolean> =>
         return !!savedToken;
     });
 
-export const getEmailByToken = (token: string): Promise<boolean> =>
+export const getEmailByToken = (token: string): Promise<string> =>
     withDBConnection(async () => {
         const foundToken = await PendingToken.findOne({ token });
         return foundToken ? foundToken.email : null;
@@ -31,6 +31,6 @@ export const isPendingToken = (email: string): Promise<boolean> =>
 
 export const getEmailAndDeleteToken = (token: string): Promise<string> =>
     withDBConnection(async () => {
-        const foundToken = await PendingToken.findByIdAndDelete({ token });
+        const foundToken = await PendingToken.findOneAndDelete({ token });
         return foundToken ? foundToken.email : null;
     });

@@ -77,7 +77,7 @@ export default function ContactForm() {
         setSendConfirmation(false);
         setLoading(true);
         try {
-            const response = await axios.post('/api/sendgrid/send-confirmation', { email: form.values.email }, {
+            const response = await axios.post('/api/send-confirmation', { email: form.values.email }, {
                 headers: {
                   'Content-Type': 'application/json',
                 },
