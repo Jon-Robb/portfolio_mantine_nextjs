@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import useContactForm from '../../hooks/useContactForm';
@@ -15,51 +15,7 @@ export default function ContactForm() {
     const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);
     const [isPendingToken, setIsPendingToken] = useState(false);
     const [sendConfirmation, setSendConfirmation] = useState(false);
-    // const [eventSource, setEventSource] = useState<EventSource>();
-
-    useEffect(() => {
-        const eventSource = new EventSource('/api/update', {
-          withCredentials: true,
-        });
-        eventSource.onopen = (e) => {
-          console.log('open', e);
-        };
-        eventSource.onmessage = (e) => {
-          console.log(e.data);
-        };
-        eventSource.onerror = (e) => {
-          console.log(e);
-        };
-
-        return () => {
-          eventSource.close();
-        };
-      }, []);
-
-    // useEffect(() => {
-    //     if (typeof window === 'undefined') return undefined;
-
-    //     const source = new EventSource('/api/update', {
-    //         withCredentials: true,
-    //     });
-    //     setEventSource(source);
-    //     return () => {
-    //         source.close();
-    //     };
-    // }, []);
-
-    // useEffect(() => {
-    //     if (!eventSource) return;
-    //     eventSource.onopen = () => {
-    //         console.log('open');
-    //     };
-    //     eventSource.onmessage = (event) => {
-    //         console.log('message', event.data);
-    //     };
-    //     eventSource.onerror = (event) => {
-    //         console.log('error', event);
-    //     };
-    // }, [eventSource]);
+    const [confirmationSent, setConfirmationSent] = useState(false);
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
@@ -112,8 +68,34 @@ export default function ContactForm() {
         }
     };
 
+    const checkVerification = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.data.message === EMessages.EMAIL_VERIFIED) {
+                setConfirmationSent(false);
+                setIsVerifiedEmail(true);
+                setNotification({ title: 'Success', message: 'Email verified successfully.' });
+            } else if (response.data.message === EMessages.EMAIL_PENDING) {
+                setIsPendingToken(true);
+                setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
+            } else if (response.data.message === EMessages.EMAIL_NOT_FOUND) {
+                setNotification({ title: 'Please verify you email', message: 'A link will be sent to your address when you press the button' });
+                setSendConfirmation(true);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        setLoading(false);
+    };
+
     const handleSendConfirmation = async () => {
         setSendConfirmation(false);
+        setConfirmationSent(true);
         setLoading(true);
         try {
             const response = await axios.post('/api/sendgrid/send-confirmation', { email: form.values.email }, {
@@ -164,6 +146,17 @@ export default function ContactForm() {
                       onClick={handleSendConfirmation}
                     >
                         Send link!
+                    </Button>
+                )}
+                {confirmationSent && (
+                    <Button
+                      size={screenSize}
+                      className={classes.button}
+                      type="button"
+                      variant="outline"
+                      onClick={checkVerification}
+                    >
+                      Done!
                     </Button>
                 )}
                 <Textarea
