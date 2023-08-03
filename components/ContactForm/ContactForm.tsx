@@ -17,6 +17,31 @@ export default function ContactForm() {
     const [sendConfirmation, setSendConfirmation] = useState(false);
     const [confirmationSent, setConfirmationSent] = useState(false);
 
+    const checkVerification = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.data.message === EMessages.EMAIL_VERIFIED) {
+                setConfirmationSent(false);
+                setIsVerifiedEmail(true);
+                setNotification({ title: 'Success', message: 'Email verified successfully.' });
+            } else if (response.data.message === EMessages.EMAIL_PENDING) {
+                setIsPendingToken(true);
+                setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
+            } else if (response.data.message === EMessages.EMAIL_NOT_FOUND) {
+                setNotification({ title: 'Please verify you email', message: 'A link will be sent to your address when you press the button' });
+                setSendConfirmation(true);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        setLoading(false);
+    };
+
     const handleSubmit = async (values: any) => {
         setLoading(true);
         setNotification({ title: 'Loading', message: 'Sending email' });
@@ -45,52 +70,9 @@ export default function ContactForm() {
             form.validateField('email');
             if (!form.isValid('email')) return;
             if (!isVerifiedEmail && !isPendingToken) {
-                try {
-                    const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                    if (response.data.message === EMessages.EMAIL_NOT_FOUND) {
-                        setNotification({ title: 'Please verify you email', message: 'A link will be sent to your address when you press the button' });
-                        setSendConfirmation(true);
-                    } else if (response.data.message === EMessages.EMAIL_VERIFIED) {
-                        setIsVerifiedEmail(true);
-                        setNotification({ title: 'Success', message: 'Email verified successfully.' });
-                    } else if (response.data.message === EMessages.EMAIL_PENDING) {
-                        setIsPendingToken(true);
-                        setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
-                    }
-                } catch (error) {
-                    console.log(error);
-                }
+                checkVerification();
             }
         }
-    };
-
-    const checkVerification = async () => {
-        setLoading(true);
-        try {
-            const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.data.message === EMessages.EMAIL_VERIFIED) {
-                setConfirmationSent(false);
-                setIsVerifiedEmail(true);
-                setNotification({ title: 'Success', message: 'Email verified successfully.' });
-            } else if (response.data.message === EMessages.EMAIL_PENDING) {
-                setIsPendingToken(true);
-                setNotification({ title: 'Pending link', message: 'Your Email address has a pending verifying token, please check your emails.' });
-            } else if (response.data.message === EMessages.EMAIL_NOT_FOUND) {
-                setNotification({ title: 'Please verify you email', message: 'A link will be sent to your address when you press the button' });
-                setSendConfirmation(true);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-        setLoading(false);
     };
 
     const handleSendConfirmation = async () => {
