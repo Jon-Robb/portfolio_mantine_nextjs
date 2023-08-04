@@ -20,8 +20,8 @@ export const emailEventEmit = new EmailEventEmitter();
 
 // eslint-disable-next-line prefer-arrow-callback, func-names
 EmailSchema.post('save', function (doc) {
+    emailEventEmit.emit(EMessages.EMAIL_ADDED, doc.email);
     console.log('%s has been saved', doc.email);
-    emailEventEmit.emit(EMessages.EMAIL_EVENT_SENT, doc.email);
   });
 
 // This is a Singleton like, this that has to be done because of NextJs seemly double compiling

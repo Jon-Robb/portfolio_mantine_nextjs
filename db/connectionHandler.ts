@@ -21,7 +21,5 @@ export async function withDBConnection(fn:()=> Promise <any>) {
     } catch (error) {
         console.error(`Error in withDBConnection: ${error}`);
         return null;
-    } finally {
-        await disconnectDB();
     }
 }

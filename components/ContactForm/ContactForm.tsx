@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextInput, Textarea, Button, Paper, Notification } from '@mantine/core';
 import axios from 'axios';
 import useContactForm from '../../hooks/useContactForm';
@@ -15,10 +15,8 @@ export default function ContactForm() {
     const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);
     const [isPendingToken, setIsPendingToken] = useState(false);
     const [sendConfirmation, setSendConfirmation] = useState(false);
-    const [confirmationSent, setConfirmationSent] = useState(false);
 
     const checkVerification = async () => {
-        setLoading(true);
         try {
             const response = await axios.post('/api/db/check-email', { email: form.values.email }, {
                 headers: {
@@ -26,7 +24,7 @@ export default function ContactForm() {
                 },
             });
             if (response.data.message === EMessages.EMAIL_VERIFIED) {
-                setConfirmationSent(false);
+                setIsPendingToken(false);
                 setIsVerifiedEmail(true);
                 setNotification({ title: 'Success', message: 'Email verified successfully.' });
             } else if (response.data.message === EMessages.EMAIL_PENDING) {
@@ -39,13 +37,11 @@ export default function ContactForm() {
         } catch (error) {
             console.log(error);
         }
-        setLoading(false);
     };
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
         setNotification({ title: 'Loading', message: 'Sending email' });
-
         try {
             const response = await axios.post('/api/send-email', values, {
                 headers: {
@@ -77,8 +73,6 @@ export default function ContactForm() {
 
     const handleSendConfirmation = async () => {
         setSendConfirmation(false);
-        setConfirmationSent(true);
-        setLoading(true);
         try {
             const response = await axios.post('/api/sendgrid/send-confirmation', { email: form.values.email }, {
                 headers: {
@@ -93,11 +87,24 @@ export default function ContactForm() {
             }
         } catch (error) {
             console.log(error);
-            setLoading(false);
         }
-        setNotification({ title: 'Link sent...', message: 'Please click the link in your emails...' });
     };
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (isPendingToken) {
+                checkVerification();
+            }
+        }, 5000);
+        setLoading(isPendingToken);
+        return () => clearInterval(interval);
+    }, [isPendingToken]);
+
+    useEffect(() => {
+        setIsVerifiedEmail(false);
+        setIsPendingToken(false);
+        setSendConfirmation(false);
+    }, [form.values.email]);
     return (
         <Paper withBorder className={classes.wrapper}>
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
@@ -128,17 +135,6 @@ export default function ContactForm() {
                       onClick={handleSendConfirmation}
                     >
                         Send link!
-                    </Button>
-                )}
-                {confirmationSent && (
-                    <Button
-                      size={screenSize}
-                      className={classes.button}
-                      type="button"
-                      variant="outline"
-                      onClick={checkVerification}
-                    >
-                      Done!
                     </Button>
                 )}
                 <Textarea

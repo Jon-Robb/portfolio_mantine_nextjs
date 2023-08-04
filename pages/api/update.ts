@@ -12,11 +12,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   emailEventEmit.on(EMessages.EMAIL_ADDED, (data) => {
     console.log('email event emitter in update', data);
-    res.write(
-      `data: ${JSON.stringify({
-        message: 'hello',
-        value: data,
-      })}\n\n`
-    );
+    res.write(`data: ${JSON.stringify(data)}\n\n`);
   });
 };
