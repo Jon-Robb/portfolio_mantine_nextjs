@@ -19,7 +19,6 @@ export async function withDBConnection(fn:()=> Promise <any>) {
         await connectDB();
         return await fn();
     } catch (error) {
-        console.error(`Error in withDBConnection: ${error}`);
         return null;
     }
 }
