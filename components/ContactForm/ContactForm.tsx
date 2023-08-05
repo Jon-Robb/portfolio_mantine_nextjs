@@ -55,6 +55,16 @@ export default function ContactForm() {
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
                 <NameInput form={form} screenSize={screenSize} />
                 <EmailInput form={form} screenSize={screenSize} onBlur={handleEmailBlur} />
+                    {notification.title !== '' && (
+                        <Notification
+                          title={notification.title}
+                          loading={loading}
+                          onClose={() => setNotification({ title: '', message: '' })}
+                          withCloseButton={!loading}
+                        >
+                            {notification.message}
+                        </Notification>
+                    )}
                 {sendConfirmation && (
                     <Button
                       size={screenSize}
@@ -71,16 +81,6 @@ export default function ContactForm() {
                     {loading ? 'Sending...' : 'Send'}
                 </Button>
             </form>
-            {notification.title !== '' && (
-                <Notification
-                  title={notification.title}
-                  loading={loading}
-                  onClose={() => setNotification({ title: '', message: '' })}
-                  withCloseButton={!loading}
-                >
-                    {notification.message}
-                </Notification>
-            )}
         </Paper>
     );
 }
