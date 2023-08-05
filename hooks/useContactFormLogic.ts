@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { EMessages } from '../typescript/enums/EMessages';
 import { checkEmail, sendEmail, sendConfirmationMail } from '../components/ContactForm/ContactFormServices';
 
-export default function useEmailStatusAndNotification(form:any) {
+export default function useContactFormLogic(form:any) {
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
     const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);

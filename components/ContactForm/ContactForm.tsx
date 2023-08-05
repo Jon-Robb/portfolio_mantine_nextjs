@@ -3,10 +3,10 @@ import { Button, Paper, Notification } from '@mantine/core';
 import useContactForm from '../../hooks/useContactForm';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ContactForm.styles';
-import useEmailStatusAndNotification from '../../hooks/useEmailStatusAndNotification';
+import useContactFormLogic from '../../hooks/useContactFormLogic';
 import NameInput from './ContactFormGroup/NameInput/NameInput';
 import EmailInput from './ContactFormGroup/EmailInput/EmailInput';
-import TextAreaContactForm from './ContactFormGroup/TextArea/TextAreaContactForm';
+import TextAreaContactForm from './ContactFormGroup/TextAreaContactForm/TextAreaContactForm';
 
 export default function ContactForm() {
     const { classes } = useStyles();
@@ -27,7 +27,7 @@ export default function ContactForm() {
         handleSubmit,
         handleEmailBlur,
         handleSendConfirmation,
-    } = useEmailStatusAndNotification(form);
+    } = useContactFormLogic(form);
 
     useEffect(() => {
         // polling for 5 minutes
