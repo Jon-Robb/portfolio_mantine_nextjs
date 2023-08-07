@@ -23,20 +23,60 @@
     },
     "contact": {
         "title": "Contacto",
-        "nameInput":{
+        "nameInput": {
             "label": "Nombre",
             "arialabel": "Nombre",
             "placeholder": "Nombre"
         },
-        "emailInput":{
+        "emailInput": {
             "label": "Correo electrónico",
             "ariaLabel": "Correo electrónico",
             "placeholder": "Correo electrónico"
         },
-        "messageInput":{
+        "messageInput": {
             "label": "Mensaje",
             "ariaLabel": "Mensaje",
             "placeholder": "Mensaje"
+        }
+    },
+    "notifications": {
+        "verifyEmail": {
+            "success": {
+                "title": "Éxito",
+                "message": "Email verificado con éxito"
+            },
+            "pendinglink": {
+                "title": "Enlace pendiente",
+                "message": "Su dirección de correo electrónico tiene un token de verificación pendiente, por favor revise sus correos electrónicos."
+            },
+            "notverified": {
+                "title": "Por favor verifique su correo electrónico",
+                "message": "Se enviará un enlace a su dirección cuando presione el botón"
+            }
+        },
+        "submit": {
+            "loading": {
+                "title": "Cargando",
+                "message": "Enviando email"
+            },
+            "success": {
+                "title": "Éxito",
+                "message": "Email enviado con éxito."
+            },
+            "error": {
+                "title": "Error",
+                "message": "El envío del email ha fallado, por favor intente nuevamente más tarde."
+            }
+        },
+        "sendConfirmation": {
+            "linkSent": {
+                "title": "Enlace enviado...",
+                "message": "Por favor haga clic en el enlace en sus correos electrónicos..."
+            },
+            "error": {
+                "title": "Error",
+                "message": "El correo electrónico de confirmación no pudo ser enviado"
+            }
         }
     },
     "common": {

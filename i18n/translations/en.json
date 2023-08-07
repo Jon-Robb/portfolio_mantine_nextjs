@@ -53,6 +53,30 @@
                 "title": "Please verify your email",
                 "message": "A link will be sent to your address when you press the button"
             }
+        },
+        "submit": {
+            "loading": {
+                "title": "Loading",
+                "message": "Sending email"
+            },
+            "success": {
+                "title": "Success",
+                "message": "Email sent successfully."
+            },
+            "error": {
+                "title": "Error",
+                "message": "Email failed to send, please try again later."
+            }
+        },
+        "sendConfirmation": {
+            "linkSent": {
+                "title": "Link sent...",
+                "message": "Please click the link in your emails..."
+            },
+            "error": {
+                "title": "Error",
+                "message": "The confirmation email could not get through"
+            }
         }
     },
     "common": {

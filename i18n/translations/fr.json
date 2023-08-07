@@ -39,6 +39,46 @@
             "placeholder": "Entrez votre message"
         }
     },
+    "notifications": {
+        "verifyEmail": {
+            "success": {
+                "title": "Succès",
+                "message": "Email vérifié avec succès"
+            },
+            "pendinglink": {
+                "title": "Lien en attente",
+                "message": "Votre adresse e-mail a un token de vérification en attente, veuillez vérifier vos e-mails."
+            },
+            "notverified": {
+                "title": "Veuillez vérifier votre email",
+                "message": "Un lien vous sera envoyé lorsque vous appuierez sur le bouton"
+            }
+        },
+        "submit": {
+            "loading": {
+                "title": "Chargement",
+                "message": "Envoi de l'email"
+            },
+            "success": {
+                "title": "Succès",
+                "message": "Email envoyé avec succès."
+            },
+            "error": {
+                "title": "Erreur",
+                "message": "L'envoi de l'email a échoué, veuillez réessayer plus tard."
+            }
+        },
+        "sendConfirmation": {
+            "linkSent": {
+                "title": "Lien envoyé...",
+                "message": "Veuillez cliquer sur le lien dans vos e-mails..."
+            },
+            "error": {
+                "title": "Erreur",
+                "message": "L'email de confirmation n'a pas pu être envoyé"
+            }
+        }
+    },
     "common": {
         "viewcode": "Voir le code",
         "viewdemo": "Voir la démo",
