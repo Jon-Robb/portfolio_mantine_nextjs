@@ -1,16 +1,20 @@
 import { Textarea } from '@mantine/core';
 
 interface ITextAreaContactFormProps {
+    label: string;
+    ariaLabel: string;
+    placeholder: string;
     form: any;
     screenSize: string;
 }
 
-export default function TextAreaContactForm({ form, screenSize }: ITextAreaContactFormProps) {
+export default function MessageInput({ form, screenSize, label, ariaLabel, placeholder }:
+    ITextAreaContactFormProps) {
     return (
         <Textarea
-          label="Message"
-          aria-label="Enter your message"
-          placeholder="Enter your message"
+          label={label}
+          aria-label={ariaLabel}
+          placeholder={placeholder}
           withAsterisk={!form.isValid('message')}
           autosize
           minRows={5}

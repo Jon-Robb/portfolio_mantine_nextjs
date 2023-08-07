@@ -23,12 +23,45 @@
     },
     "contact": {
         "title": "Contact",
-        "desc": "Contact page for Jonathan Robinson's portfolio website"
+        "nameInput": {
+            "label": "Name",
+            "ariaLabel": "Name",
+            "placeholder": "Enter your name"
+        },
+        "emailInput": {
+            "label": "Email",
+            "arialabel": "Email",
+            "placeholder": "Enter your email"
+        },
+        "messageInput": {
+            "label": "Message",
+            "ariaLabel": "Message",
+            "placeholder": "Enter your message"
+        }
+    },
+    "notifications": {
+        "verifyEmail": {
+            "success": {
+                "title": "Success",
+                "message": "Email verified successfully"
+            },
+            "pendinglink": {
+                "title": "Pending link",
+                "message": "Your Email address has a pending verifying token, please check your emails."
+            },
+            "notverified": {
+                "title": "Please verify your email",
+                "message": "A link will be sent to your address when you press the button"
+            }
+        }
     },
     "common": {
         "viewcode": "View Code",
         "viewdemo": "View Demo",
         "showmore": "Show More",
-        "showless": "Show Less"
+        "showless": "Show Less",
+        "sendlink": "Send Link",
+        "sending": "Sending...",
+        "send": "Send"
     }
 }

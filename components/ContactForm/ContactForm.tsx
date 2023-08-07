@@ -1,17 +1,19 @@
 import { useEffect } from 'react';
 import { Button, Paper, Notification } from '@mantine/core';
+import { useTranslation } from 'react-i18next';
 import useContactForm from '../../hooks/useContactForm';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import useStyles from './ContactForm.styles';
 import useContactFormLogic from '../../hooks/useContactFormLogic';
 import NameInput from './ContactFormGroup/NameInput/NameInput';
 import EmailInput from './ContactFormGroup/EmailInput/EmailInput';
-import TextAreaContactForm from './ContactFormGroup/TextAreaContactForm/TextAreaContactForm';
+import MessageInput from './ContactFormGroup/TextAreaContactForm/MessageInput';
 
 export default function ContactForm() {
     const { classes } = useStyles();
     const form = useContactForm();
     const screenSize = useScreenSize();
+    const { t } = useTranslation();
     const {
         loading,
         setLoading,
@@ -53,8 +55,8 @@ export default function ContactForm() {
     return (
         <Paper withBorder className={classes.wrapper}>
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
-                <NameInput form={form} screenSize={screenSize} />
-                <EmailInput form={form} screenSize={screenSize} onBlur={handleEmailBlur} />
+                <NameInput label={t('contact.nameInput.label')} ariaLabel={t('contact.nameInput.arialabel')} placeholder={t('contact.nameInput.placeholder')} form={form} screenSize={screenSize} />
+                <EmailInput label={t('contact.emailInput.label')} ariaLabel={t('contact.emailInput.arialabel')} placeholder={t('contact.emailInput.placeholder')} form={form} screenSize={screenSize} onBlur={handleEmailBlur} />
                     {notification.title !== '' && (
                         <Notification
                           title={notification.title}
@@ -73,12 +75,12 @@ export default function ContactForm() {
                       variant="outline"
                       onClick={handleSendConfirmation}
                     >
-                        Send link!
+                        {t('common.sendlink')}
                     </Button>
                 )}
-                <TextAreaContactForm form={form} screenSize={screenSize} />
+                <MessageInput label={t('contact.messageInput.label')} ariaLabel={t('contact.messageInput.arialabel')} placeholder={t('contact.messageInput.placeholder')} form={form} screenSize={screenSize} />
                 <Button size={screenSize} className={classes.button} type="submit" variant="outline" disabled={!form.isValid() || !isVerifiedEmail || loading}>
-                    {loading ? 'Sending...' : 'Send'}
+                    {loading ? t('common.sending') : t('common.send')}
                 </Button>
             </form>
         </Paper>

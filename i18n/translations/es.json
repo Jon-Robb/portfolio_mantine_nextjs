@@ -22,13 +22,30 @@
         "desc": "Página de servicios para el portafolio de Jonathan Robinson"
     },
     "contact": {
-        "title": "Contactos",
-        "desc": "Página de contacto para el portafolio de Jonathan Robinson"
+        "title": "Contacto",
+        "nameInput":{
+            "label": "Nombre",
+            "arialabel": "Nombre",
+            "placeholder": "Nombre"
+        },
+        "emailInput":{
+            "label": "Correo electrónico",
+            "ariaLabel": "Correo electrónico",
+            "placeholder": "Correo electrónico"
+        },
+        "messageInput":{
+            "label": "Mensaje",
+            "ariaLabel": "Mensaje",
+            "placeholder": "Mensaje"
+        }
     },
     "common": {
         "viewcode": "Ver código",
         "viewdemo": "Ver demostración",
         "showmore": "Mostrar más",
-        "showless": "Mostrar menos"
+        "showless": "Mostrar menos",
+        "sendlink": "Enviar enlace",
+        "sending": "Enviando...",
+        "send": "Enviar"
     }
 }
