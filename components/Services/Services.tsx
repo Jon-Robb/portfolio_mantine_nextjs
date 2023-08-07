@@ -7,7 +7,7 @@ export default function Services() {
     const { t } = useTranslation();
     return (
         <section className="section" id="services">
-            <Title order={2} mt={32} mb={32}> {t('services')} </Title>
+            <Title order={2} mt={32} mb={32}> {t('services.title')} </Title>
             <div className={classes.servicesWrapper}>
                 Services Container
             </div>

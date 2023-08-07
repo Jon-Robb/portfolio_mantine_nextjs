@@ -37,15 +37,15 @@ export default function ProjectCard({
                     {projectUrl ? (
                         <Button.Group className={classes.buttonGroup}>
                             <Button className={classes.button} variant="gradient" component="a" href={projectUrl} rel="noopener noreferer">
-                                {t('viewdemo')}
+                                {t('common.viewdemo')}
                             </Button>
                             <Button className={classes.button} variant="gradient" component="a" href={codeUrl} rel="noopener noreferer">
-                                {t('viewcode')}
+                                {t('common.viewcode')}
                             </Button>
                         </Button.Group>
                     ) : (
                         <Button variant="gradient" component="a" href={codeUrl} fullWidth rel="noopener noreferer">
-                            {t('viewcode')}
+                            {t('common.viewcode')}
                         </Button>
                     )}
                 </div>

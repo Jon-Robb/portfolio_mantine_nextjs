@@ -1,22 +1,34 @@
 {
-    "home": "Inicio",
-    "about": "Acerca de",
-    "projects": "Proyectos",
-    "services": "Servicios",
-    "contact": "Contactos",
-    "welcome": "Hola, soy Jonathan Robinson",
-    "welcome2": "Un apasionado desarrollador de web y videojuegos, impulsado por una fascinación de toda la vida por la tecnología y la emoción de resolver problemas. Encuentro una inmensa alegría en crear experiencias de usuario intuitivas y dinámicas, y ambientes de juegos cautivadores.",
-    "aboutme": "Sobre mí",
-    "aboutme2": "Soy un desarrollador de software con sede en Toronto, Canadá. Me gradué de la Universidad de Toronto con una licenciatura en Ciencias de la Computación y un certificado en Desarrollo de Videojuegos. Actualmente trabajo como desarrollador de software en la industria de la salud, donde me especializo en el desarrollo de aplicaciones web y móviles. En mi tiempo libre, me encanta crear juegos y aplicaciones web, y aprender nuevas tecnologías.",
-    "aboutme3": "Soy un desarrollador de software con sede en Toronto, Canadá. Me gradué de la Universidad de Toronto con una licenciatura en Ciencias de la Computación y un certificado en Desarrollo de Videojuegos. Actualmente trabajo como desarrollador de software en la industria de la salud, donde me especializo en el desarrollo de aplicaciones web y móviles. ",
-    "aboutme4": "En mi tiempo libre, me encanta crear juegos y aplicaciones web, y aprender nuevas tecnologías.",
-    "viewcode": "Ver código",
-    "viewdemo": "Ver demostración",
-    "showmore": "Mostrar más",
-    "showless": "Mostrar menos",
-
-    "tls": {
-        "title": "The Last Stand",
-        "desc": "Prueba de concepto para un juego estilo Smash multijugador"
+    "home": {
+        "title": "Inicio",
+        "welcome": "Hola, soy Jonathan Robinson",
+        "desc": "Un apasionado desarrollador de web y videojuegos, impulsado por una fascinación de toda la vida por la tecnología y la emoción de resolver problemas. Encuentro una inmensa alegría en crear experiencias de usuario intuitivas y dinámicas, y ambientes de juegos cautivadores."
+    },
+    "about": {
+        "title": "Acerca de",
+        "para1": "Soy un desarrollador de software con sede en Toronto, Canadá. Me gradué de la Universidad de Toronto con una licenciatura en Ciencias de la Computación y un certificado en Desarrollo de Videojuegos. Actualmente trabajo como desarrollador de software en la industria de la salud, donde me especializo en el desarrollo de aplicaciones web y móviles.",
+        "para2": "Soy un desarrollador de software con sede en Toronto, Canadá. Me gradué de la Universidad de Toronto con una licenciatura en Ciencias de la Computación y un certificado en Desarrollo de Videojuegos. Actualmente trabajo como desarrollador de software en la industria de la salud, donde me especializo en el desarrollo de aplicaciones web y móviles.",
+        "para3": "En mi tiempo libre, me encanta crear juegos y aplicaciones web, y aprender nuevas tecnologías."
+    },
+    "projects": {
+        "title": "Proyectos",
+        "tls": {
+            "title": "The Last Stand",
+            "desc": "Prueba de concepto para un juego estilo Smash multijugador"
+        }
+    },
+    "services": {
+        "title": "Servicios",
+        "desc": "Página de servicios para el portafolio de Jonathan Robinson"
+    },
+    "contact": {
+        "title": "Contactos",
+        "desc": "Página de contacto para el portafolio de Jonathan Robinson"
+    },
+    "common": {
+        "viewcode": "Ver código",
+        "viewdemo": "Ver demostración",
+        "showmore": "Mostrar más",
+        "showless": "Mostrar menos"
     }
 }

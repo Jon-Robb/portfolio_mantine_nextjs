@@ -1,9 +1,10 @@
 import { ProjectCardProps } from '../typescript/interfaces/IProjectCard';
 
+// Put the key of the translation (i18n translation .json files) in the title and description
 export const ProjectsData: ProjectCardProps[] = [
     {
-        title: 'tls.title',
-        description: 'tls.desc',
+        title: 'projects.tls.title',
+        description: 'projects.tls.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
         // projectUrl: 'https://www.google.com',
@@ -16,7 +17,7 @@ export const ProjectsData: ProjectCardProps[] = [
 
     {
         title: '2',
-        description: 'tls.desc',
+        description: 'projects.tls.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
         projectUrl: 'https://www.google.com',
@@ -30,7 +31,7 @@ export const ProjectsData: ProjectCardProps[] = [
     },
     {
         title: '3',
-        description: 'tls.desc',
+        description: 'projects.tls.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
         projectUrl: 'https://www.google.com',
@@ -39,7 +40,7 @@ export const ProjectsData: ProjectCardProps[] = [
     },
     {
         title: '4',
-        description: 'tls.desc',
+        description: 'projects.tls.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
         projectUrl: 'https://www.google.com',

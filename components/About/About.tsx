@@ -8,15 +8,15 @@ export default function About() {
 
     return (
         <section className="section" id="about">
-            <Title order={2} mt={32}> {t('aboutme')} </Title>
+            <Title order={2} mt={32}> {t('about.title')} </Title>
             <Text>
-                {t('aboutme2')}
+                {t('about.para1')}
             </Text>
             <Text>
-                {t('aboutme3')}
+                {t('about.para2')}
             </Text>
             <Text>
-                {t('aboutme4')}
+                {t('about.para3')}
             </Text>
         </section>
     );

@@ -1,22 +1,34 @@
 {
-    "home": "Accueil",
-    "about": "À propos",
-    "projects": "Projets",
-    "services": "Services",
-    "contact": "Contacts",
-    "welcome": "Bonjour, je m'appelle Jonathan Robinson",
-    "welcome2": "Développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants.",
-    "aboutme": "À propos de moi",
-    "aboutme2": "Je suis un développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants.",
-    "aboutme3": "Je suis un développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants.",
-    "aboutme4": "Je suis un développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants.",
-    "viewcode": "Voir le code",
-    "viewdemo": "Voir la démo",
-    "showmore": "Voir plus",
-    "showless": "Voir moins",
-
-    "tls":{
-        "title": "The Last Stand",
-        "desc": "Preuve de concept pour un jeu multijoueur de type Smash"
+    "home": {
+        "title": "Accueil",
+        "welcome": "Bonjour, je m'appelle Jonathan Robinson",
+        "desc": "Développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants."
+    },
+    "about": {
+        "title": "À propos",
+        "para1": "Je suis un développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants.",
+        "para2": "Je suis un développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants.",
+        "para3": "Je suis un développeur web et de jeux passionné, motivé par une fascination de toute une vie pour la technologie et le frisson de la résolution de problèmes. Je trouve une immense joie à créer des expériences utilisateur intuitives et dynamiques ainsi que des environnements de jeu captivants."
+    },
+    "projects": {
+        "title": "Projets",
+        "tls": {
+            "title": "The Last Stand",
+            "desc": "Preuve de concept pour un jeu multijoueur de type Smash"
+        }
+    },
+    "services": {
+        "title": "Services",
+        "desc": "Page des services pour le portfolio de Jonathan Robinson"
+    },
+    "contact": {
+        "title": "Contacts",
+        "desc": "Page de contact pour le portfolio de Jonathan Robinson"
+    },
+    "common": {
+        "viewcode": "Voir le code",
+        "viewdemo": "Voir la démo",
+        "showmore": "Voir plus",
+        "showless": "Voir moins"
     }
 }

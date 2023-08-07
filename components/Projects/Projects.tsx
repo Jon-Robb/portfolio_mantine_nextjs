@@ -28,14 +28,14 @@ export default function Projects() {
 
   return (
     <section className="section" id="projects">
-      <Title order={2} mt={32} mb={32}> {t('projects')} </Title>
+      <Title order={2} mt={32} mb={32}> {t('projects.title')} </Title>
       <ProjectCardGrid visibleCount={visibleCount} />
       <Button.Group className={classes.buttonGroup}>
         <Button onClick={handleLoadLess} variant="gradient" disabled={visibleCount <= visibleIncrement} className={classes.button}>
-          {t('showless')}
+          {t('common.showless')}
         </Button>
         <Button onClick={handleLoadMore} variant="gradient" disabled={visibleCount >= ProjectsData.length} className={classes.button}>
-          {t('showmore')}
+          {t('common.showmore')}
         </Button>
       </Button.Group>
     </section>
