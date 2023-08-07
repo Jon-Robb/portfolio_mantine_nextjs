@@ -28,7 +28,8 @@ export const sendEmail = async (value : { name:string, email:string, message:str
     }
 };
 
-export const sendConfirmationMail = async (email: string) => {
+export const sendConfirmationMail = async (value : { email:string, language:string }) => {
+    const { email, language } = value;
     try {
         const { data } = await axios.post(EConstants.SEND_CONFIRMATION_ROUTE, { email }, {
             headers: {

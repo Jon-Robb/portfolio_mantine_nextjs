@@ -4,7 +4,7 @@ import { EMessages } from '../typescript/enums/EMessages';
 import { checkEmail, sendEmail, sendConfirmationMail } from '../components/ContactForm/ContactFormServices';
 
 export default function useContactFormLogic(form: any) {
-    const { t } = useTranslation(); // <-- Import the translation hook
+    const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
     const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);

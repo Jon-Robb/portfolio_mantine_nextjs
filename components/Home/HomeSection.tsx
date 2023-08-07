@@ -10,8 +10,8 @@ export default function HomeSection() {
     const skillBadges = useSkillBadgesData();
     return (
         <section className="section" id="home">
-            <Title order={1}> {t('home.title')} </Title>
-            <Text> {t('home.welcome')} </Text>
+            <Title order={1}> {t('home.welcome')} </Title>
+            <Text> {t('home.desc')} </Text>
             <div id="skills">
                 <SkillBadgeContainer skillBadges={skillBadges} />
             </div>
