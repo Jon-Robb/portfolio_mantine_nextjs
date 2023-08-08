@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { EMessages } from '../typescript/enums/EMessages';
 import { checkEmail, sendEmail, sendConfirmationMail } from '../components/ContactForm/ContactFormServices';
+import IConfirmationEmailData from '../typescript/interfaces/IConfirmationEmailData';
+import i18n from '../i18n/config';
 
 export default function useContactFormLogic(form: any) {
     const { t } = useTranslation();
@@ -69,7 +71,12 @@ export default function useContactFormLogic(form: any) {
 
     const handleSendConfirmation = async () => {
         setSendConfirmation(false);
-        const response = await sendConfirmationMail(form.values.email);
+        const requestData : IConfirmationEmailData = {
+            name: form.values.name,
+            email: form.values.email,
+            language: i18n.language,
+        };
+        const response = await sendConfirmationMail(requestData);
         if (response === EMessages.EMAIL_SENT) {
             setNotification({
                 title: t('notifications.sendConfirmation.linkSent.title'),

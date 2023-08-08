@@ -79,12 +79,16 @@
             }
         }
     },
+    "confirmationEmail": {
+        "subject": "Merci de m'avoir contacté, veuillez cliquer sur le lien ci-dessous pour confirmer votre adresse e-mail.",
+        "text": ""
+    },
     "common": {
         "viewcode": "Voir le code",
         "viewdemo": "Voir la démo",
         "showmore": "Voir plus",
         "showless": "Voir moins",
-        "sendlink": "Envoyer le lien",
+        "sendlink": "J'accepte",
         "sending": "Envoi...",
         "send": "Envoyer"
     }

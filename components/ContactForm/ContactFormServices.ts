@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { EMessages } from '../../typescript/enums/EMessages';
 import { EConstants } from '../../typescript/enums/EConstants';
+import IConfirmationEmailData from '../../typescript/interfaces/IConfirmationEmailData';
 
 export const checkEmail = async (email: string) => {
     try {
@@ -28,10 +29,9 @@ export const sendEmail = async (value : { name:string, email:string, message:str
     }
 };
 
-export const sendConfirmationMail = async (value : { email:string, language:string }) => {
-    const { email, language } = value;
+export const sendConfirmationMail = async (values:IConfirmationEmailData) => {
     try {
-        const { data } = await axios.post(EConstants.SEND_CONFIRMATION_ROUTE, { email }, {
+        const { data } = await axios.post(EConstants.SEND_CONFIRMATION_ROUTE, values, {
             headers: {
                 'Content-Type': 'application/json',
             },
