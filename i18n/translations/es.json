@@ -79,6 +79,10 @@
             }
         }
     },
+    "confirmationEmail": {
+        "subject": "Gracias para contactarme, por favor confirme su correo electrónico",
+        "text": "Hola, {{userName}} \n\nGracias para contactarme. Por favor confirme su correo electrónico haciendo clic en el enlace de abajo:\n\n{{link}}\n\nPor favor, ten en cuenta que su dirección de correo electrónico se guardará durante 6 meses, renovándose la fecha de vencimiento con cada nuevo correo electrónico en un día determinado\n\nSi no ha enviado este correo electrónico, por favor ignore este mensaje.\n\nGracias,\nJonathan Robinson"
+    },
     "common": {
         "viewcode": "Ver código",
         "viewdemo": "Ver demostración",
@@ -86,6 +90,7 @@
         "showless": "Mostrar menos",
         "sendlink": "Enviar enlace",
         "sending": "Enviando...",
-        "send": "Enviar"
+        "send": "Enviar",
+        "traveler": "Viajero"
     }
 }

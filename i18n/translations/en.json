@@ -79,6 +79,10 @@
             }
         }
     },
+    "confirmationEmail": {
+        "subject": "Thanks for contacting me, please confirm your email address",
+        "text": "Greetings {{userName}}, \n\nThanks for contacting me, please confirm your email address by clicking the link below:\n\n{{link}}\n\nYour email address will be kept for 6 months after your confirmation, the expiration resets at every new daily mail.\n\nIf you did not request this email, please ignore it.\n\nThanks,\nJonathan Robinson"
+    },
     "common": {
         "viewcode": "View Code",
         "viewdemo": "View Demo",
@@ -86,6 +90,7 @@
         "showless": "Show Less",
         "sendlink": "Send Link",
         "sending": "Sending...",
-        "send": "Send"
+        "send": "Send",
+        "traveler": "Traveler"
     }
 }

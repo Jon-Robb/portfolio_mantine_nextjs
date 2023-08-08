@@ -80,8 +80,8 @@
         }
     },
     "confirmationEmail": {
-        "subject": "Merci de m'avoir contacté, veuillez cliquer sur le lien ci-dessous pour confirmer votre adresse e-mail.",
-        "text": ""
+        "subject": "Merci de m'avoir contacté, veuillez confirmer votre adresse courriel",
+        "text": "Bonjour, {{userName}} \n\nMerci de m'avoir contacté, veuillez confirmer votre adresse courriel en cliquant sur le lien ci-dessous:\n\n{{link}}\n\nVeuillez noter que votre adresse courriel sera retenue 6 mois, la date d'expiration se renouvelant à chaque nouveau courriel d'une journée donnée\n\nSi vous n'avez pas demandé à être contacté, veuillez ignorer cet e-mail.\n\nCordialement,\nJonathan Robinson"
     },
     "common": {
         "viewcode": "Voir le code",
@@ -90,6 +90,7 @@
         "showless": "Voir moins",
         "sendlink": "J'accepte",
         "sending": "Envoi...",
-        "send": "Envoyer"
+        "send": "Envoyer",
+        "traveler": "Voyageur"
     }
 }
