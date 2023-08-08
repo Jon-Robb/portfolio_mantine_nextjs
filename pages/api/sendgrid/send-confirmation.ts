@@ -37,7 +37,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             text:
                 i18nBackend.t('confirmationEmail.text', { userName, link }),
         };
-        console.log('confirmationMsg', confirmationMsg);
 
         try {
             await sgMail.send(confirmationMsg);
