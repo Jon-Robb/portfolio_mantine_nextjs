@@ -9,6 +9,7 @@ export default function useContactFormLogic(form: any) {
     const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ title: '', message: '' });
+    const [successNotification, setSuccessNotification] = useState({ title: '', message: '' });
     const [isVerifiedEmail, setIsVerifiedEmail] = useState(false);
     const [isPendingToken, setIsPendingToken] = useState(false);
     const [sendConfirmation, setSendConfirmation] = useState(false);
@@ -39,7 +40,7 @@ export default function useContactFormLogic(form: any) {
 
     const handleSubmit = async (values: any) => {
         setLoading(true);
-        setNotification({
+        setSuccessNotification({
             title: t('notifications.submit.loading.title'),
             message: t('notifications.submit.loading.message'),
         });
@@ -47,15 +48,16 @@ export default function useContactFormLogic(form: any) {
             ...values, language: i18n.language,
         };
         const response = await sendEmail(newValues);
+        console.log(response);
         setLoading(false);
-        if (response.status === 200) {
+        if (response === EMessages.EMAIL_SENT) {
             form.reset();
-            setNotification({
+            setSuccessNotification({
                 title: t('notifications.submit.success.title'),
                 message: t('notifications.submit.success.message'),
             });
         } else {
-            setNotification({
+            setSuccessNotification({
                 title: t('notifications.submit.error.title'),
                 message: t('notifications.submit.error.message'),
             });
@@ -99,6 +101,8 @@ export default function useContactFormLogic(form: any) {
         setLoading,
         notification,
         setNotification,
+        successNotification,
+        setSuccessNotification,
         isVerifiedEmail,
         setIsVerifiedEmail,
         isPendingToken,

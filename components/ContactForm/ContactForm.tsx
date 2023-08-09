@@ -29,6 +29,8 @@ export default function ContactForm() {
         handleSubmit,
         handleEmailBlur,
         handleSendConfirmation,
+        successNotification,
+        setSuccessNotification,
     } = useContactFormLogic(form);
 
     useEffect(() => {
@@ -52,6 +54,10 @@ export default function ContactForm() {
         setLoading(false);
         setNotification({ title: '', message: '' });
     }, [form.values.email]);
+
+    useEffect(() => {
+        console.log('successNotification', successNotification);
+    }, [successNotification]);
 
     return (
         <Paper withBorder className={classes.wrapper}>
@@ -80,6 +86,16 @@ export default function ContactForm() {
                     </Button>
                 )}
                 <MessageInput label={t('contact.messageInput.label')} ariaLabel={t('contact.messageInput.arialabel')} placeholder={t('contact.messageInput.placeholder')} form={form} screenSize={screenSize} />
+                {successNotification.title !== '' && (
+                        <Notification
+                          title={successNotification.title}
+                          loading={loading}
+                          onClose={() => setSuccessNotification({ title: '', message: '' })}
+                          withCloseButton={!loading}
+                        >
+                            {successNotification.message}
+                        </Notification>
+                    )}
                 <Button size={screenSize} className={classes.button} type="submit" variant="outline" disabled={!form.isValid() || !isVerifiedEmail || loading}>
                     {loading ? t('common.sending') : t('common.send')}
                 </Button>

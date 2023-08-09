@@ -3,6 +3,7 @@ import sgMail from '@sendgrid/mail';
 import i18nBackend from '../../../i18n/i18nBackend';
 import { updateExpirationDate } from '../../../db/services/VerifiedEmailServices';
 import cors, { runMiddleWare } from '../../../utils/cors';
+import { EMessages } from '../../../typescript/enums/EMessages';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
@@ -34,12 +35,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         text: i18nBackend.t('thankyouEmail.text', { name }),
     };
 
-    console.log('msg', thankYouMsg);
-
-    // try {
-    //     await sgMail.send(msg);
-    //     res.status(200).json({ message: 'Email sent successfully' });
-    // } catch (error) {
-    //     res.status(400).json({ error: 'Email not sent' });
-    // }
+    try {
+        await sgMail.send(msg);
+        await sgMail.send(thankYouMsg);
+        res.status(200).json({ message: EMessages.EMAIL_SENT });
+    } catch (error) {
+        res.status(400).json({ error: EMessages.EMAIL_NOT_SENT });
+    }
 };
