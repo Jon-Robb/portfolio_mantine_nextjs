@@ -49,6 +49,7 @@ export default function ContactForm() {
         setIsVerifiedEmail(false);
         setIsPendingToken(false);
         setSendConfirmation(false);
+        setLoading(false);
         setNotification({ title: '', message: '' });
     }, [form.values.email]);
 
@@ -56,7 +57,7 @@ export default function ContactForm() {
         <Paper withBorder className={classes.wrapper}>
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>
                 <NameInput label={t('contact.nameInput.label')} ariaLabel={t('contact.nameInput.arialabel')} placeholder={t('contact.nameInput.placeholder')} form={form} screenSize={screenSize} />
-                <EmailInput label={t('contact.emailInput.label')} ariaLabel={t('contact.emailInput.arialabel')} placeholder={t('contact.emailInput.placeholder')} form={form} screenSize={screenSize} onBlur={handleEmailBlur} />
+                <EmailInput label={t('contact.emailInput.label')} ariaLabel={t('contact.emailInput.arialabel')} placeholder={t('contact.emailInput.placeholder')} form={form} screenSize={screenSize} onBlur={handleEmailBlur} loading={loading} />
                     {notification.title !== '' && (
                         <Notification
                           title={notification.title}
