@@ -8,8 +8,8 @@ export default createStyles(() => ({
         width: '100vw',
         height: '100vh',
         zIndex: 1000,
-        backgroundColor: '#000',
-        transition: 'opacity 2000ms ease-in',
-        opacity: 1,
+        background: 'black',
+        pointerEvents: 'none',
+        transition: 'opacity 2000ms ease',
     },
 }));
