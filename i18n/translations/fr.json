@@ -83,6 +83,10 @@
         "subject": "Merci de m'avoir contacté, veuillez confirmer votre adresse courriel",
         "text": "Bonjour, {{userName}} \n\nMerci de m'avoir contacté, veuillez confirmer votre adresse courriel en cliquant sur le lien ci-dessous:\n\n{{link}}\n\nVeuillez noter que votre adresse courriel sera retenue 6 mois, la date d'expiration se renouvelant à chaque nouveau courriel d'une journée donnée\n\nSi vous n'avez pas demandé à être contacté, veuillez ignorer cet e-mail.\n\nCordialement,\nJonathan Robinson"
     },
+    "thankyouEmail": {
+        "subject": "{{name}}, j'ai bien reçu votre message",
+        "text": "Bonjour {{name}},\n\nMerci de m'avoir contacté, j'ai bien reçu votre message et je vous répondrai dès que possible.\n\nCordialement,\nJonathan Robinson"
+    },
     "common": {
         "viewcode": "Voir le code",
         "viewdemo": "Voir la démo",

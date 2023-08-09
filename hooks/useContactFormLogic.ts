@@ -43,7 +43,10 @@ export default function useContactFormLogic(form: any) {
             title: t('notifications.submit.loading.title'),
             message: t('notifications.submit.loading.message'),
         });
-        const response = await sendEmail(values);
+        const newValues : IConfirmationEmailData = {
+            ...values, language: i18n.language,
+        };
+        const response = await sendEmail(newValues);
         setLoading(false);
         if (response.status === 200) {
             form.reset();

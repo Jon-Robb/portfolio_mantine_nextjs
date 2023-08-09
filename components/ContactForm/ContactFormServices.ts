@@ -16,7 +16,7 @@ export const checkEmail = async (email: string) => {
     }
 };
 
-export const sendEmail = async (value : { name:string, email:string, message:string }) => {
+export const sendEmail = async (value:IConfirmationEmailData) => {
     try {
         const { data } = await axios.post(EConstants.SEND_EMAIL_ROUTE, value, {
             headers: {

@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail from '@sendgrid/mail';
+import i18nBackend from '../../../i18n/i18nBackend';
+import { updateExpirationDate } from '../../../db/services/VerifiedEmailServices';
 import cors, { runMiddleWare } from '../../../utils/cors';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
@@ -7,7 +9,15 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     await runMiddleWare({ req, res, fn: cors });
 
-    const { name, email, message } = req.body;
+    const { name, email, message, language } = req.body;
+
+    i18nBackend.changeLanguage(language);
+
+    const isEmailUpdated = await updateExpirationDate(email);
+    if (!isEmailUpdated) {
+        res.status(400).json({ error: 'Email not updated' });
+        return;
+    }
 
     const msg = {
         to: `${process.env.SENDGRID_TO}`,
@@ -16,10 +26,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         text:
             `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     };
-    try {
-        await sgMail.send(msg);
-        res.status(200).json({ message: 'Email sent successfully' });
-    } catch (error) {
-        res.status(400).json({ error: 'Email not sent' });
-    }
+
+    const thankYouMsg = {
+        to: `${email}`,
+        from: `${process.env.SENDGRID_FROM}`,
+        subject: i18nBackend.t('thankyouEmail.subject', { name }),
+        text: i18nBackend.t('thankyouEmail.text', { name }),
+    };
+
+    console.log('msg', thankYouMsg);
+
+    // try {
+    //     await sgMail.send(msg);
+    //     res.status(200).json({ message: 'Email sent successfully' });
+    // } catch (error) {
+    //     res.status(400).json({ error: 'Email not sent' });
+    // }
 };
