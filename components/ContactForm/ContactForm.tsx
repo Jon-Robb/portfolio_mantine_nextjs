@@ -55,10 +55,6 @@ export default function ContactForm() {
         setNotification({ title: '', message: '' });
     }, [form.values.email]);
 
-    useEffect(() => {
-        console.log('successNotification', successNotification);
-    }, [successNotification]);
-
     return (
         <Paper withBorder className={classes.wrapper}>
             <form className={classes.form} onSubmit={form.onSubmit(handleSubmit)}>

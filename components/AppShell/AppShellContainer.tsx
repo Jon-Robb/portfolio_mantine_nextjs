@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AppShell } from '@mantine/core';
+import EntryAnimation from '../Animation/EntryAnimation/EntryAnimation';
 import AppHeader from '../AppHeader/AppHeader';
 import AppNavMenu from '../AppNavMenu/AppNavMenu';
 import HomeSection from '../Home/HomeSection';
@@ -15,6 +16,7 @@ export default function AppShellContainer() {
   const { classes } = useStyles();
   return (
     <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu opened={opened} />} header={<AppHeader onClick={toggleOpened} opened={opened} />}>
+      <EntryAnimation />
       <HomeSection />
       <About />
       <Projects />
