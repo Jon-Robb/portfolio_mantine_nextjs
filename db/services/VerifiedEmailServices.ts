@@ -22,7 +22,10 @@ export const updateExpirationDate = async (email: string): Promise<boolean> => {
         if (!foundEmail) return false;
         const now = new Date();
         const creationDate = new Date(foundEmail.createdAt);
-        if (isSameDay(now, creationDate)) return true;
+        if (isSameDay(now, creationDate)) {
+            console.log('Same day');
+            return true;
+        }
         const updatedEmail = await VerifiedEmail.findOneAndUpdate(
             { email }, { createdAt: now }, { new: true },
         );

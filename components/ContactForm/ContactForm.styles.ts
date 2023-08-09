@@ -27,4 +27,18 @@ export default createStyles((theme) => ({
     button: {
         margin: '0 25% 1rem 25%',
     },
+    enter: {
+        opacity: 0,
+    },
+    enterActive: {
+        opacity: 1,
+        transition: 'opacity 500ms ease-in',
+    },
+    exit: {
+        opacity: 1,
+    },
+    exitActive: {
+        opacity: 0,
+        transition: 'opacity 500ms ease-in',
+    },
 }));
