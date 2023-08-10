@@ -3,10 +3,11 @@ import { Transition } from '@mantine/core';
 
 export default function EntryAnimation() {
     const [inProp, setInProp] = useState(false);
+    const [isUnmounted, setIsUnmounted] = useState(false);
 
     const fadeIn = {
         in: { opacity: 0 },
-        out: { opacity: 1 },
+        out: {},
         transitionProperty: 'opacity',
     };
 
@@ -14,8 +15,8 @@ export default function EntryAnimation() {
         setInProp(true);
     }, []);
 
-    return (
-        <Transition transition={fadeIn} duration={2000} mounted={inProp} timingFunction="ease">
+    return !isUnmounted ? (
+        <Transition transition={fadeIn} duration={2000} mounted={inProp} timingFunction="ease" onEntered={() => setIsUnmounted(true)}>
             {(styles) => <div style={{
                 ...styles,
                 position: 'fixed',
@@ -29,5 +30,5 @@ export default function EntryAnimation() {
             }}
             />}
         </Transition>
-    );
+    ) : null;
 }
