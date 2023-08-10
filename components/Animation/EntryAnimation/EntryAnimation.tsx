@@ -1,15 +1,33 @@
 import { useEffect, useState } from 'react';
-import useStyles from './EntryAnimation.styles';
+import { Transition } from '@mantine/core';
 
 export default function EntryAnimation() {
-    const [opacity, setOpacity] = useState(1);
-    const { classes } = useStyles();
+    const [inProp, setInProp] = useState(false);
+
+    const fadeIn = {
+        in: { opacity: 0 },
+        out: { opacity: 1 },
+        transitionProperty: 'opacity',
+    };
 
     useEffect(() => {
-        setOpacity(0);
-    }, [opacity]);
+        setInProp(true);
+    }, []);
 
     return (
-        <div className={classes.fadeInWrapper} style={{ opacity }} />
+        <Transition transition={fadeIn} duration={2000} mounted={inProp} timingFunction="ease">
+            {(styles) => <div style={{
+                ...styles,
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: 1000,
+                background: 'black',
+                pointerEvents: 'none',
+            }}
+            />}
+        </Transition>
     );
 }
