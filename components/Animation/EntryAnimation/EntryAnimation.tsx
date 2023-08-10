@@ -1,34 +1,67 @@
 import { useEffect, useState } from 'react';
-import { Transition } from '@mantine/core';
+import { FadeOut } from '../FadeOut/FadeOut';
 
 export default function EntryAnimation() {
-    const [inProp, setInProp] = useState(false);
-    const [isUnmounted, setIsUnmounted] = useState(false);
+    const [shouldStartFadeOut, setShouldStartFadeOut] = useState(false);
+    const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
+    const [animationCompleted, setAnimationCompleted] = useState(false);
 
-    const fadeIn = {
-        in: { opacity: 0 },
-        out: {},
-        transitionProperty: 'opacity',
-    };
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setShouldStartFadeOut(true);
+    //     }, 5000);
+    // }, []);
 
     useEffect(() => {
-        setInProp(true);
-    }, []);
+        setAnimationCompleted(fadeOutCompleted);
+    }, [fadeOutCompleted]);
 
-    return !isUnmounted ? (
-        <Transition transition={fadeIn} duration={2000} mounted={inProp} timingFunction="ease" onEntered={() => setIsUnmounted(true)}>
-            {(styles) => <div style={{
-                ...styles,
+    return !animationCompleted ? (
+        <>
+            <div style={{
                 position: 'fixed',
                 top: 0,
                 left: 0,
                 width: '100vw',
                 height: '100vh',
-                zIndex: 1000,
-                background: 'black',
-                pointerEvents: 'none',
+                zIndex: 2000,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}
-            />}
-        </Transition>
+            >
+                <div style={{
+                    fontSize: '3rem',
+                    color: 'white',
+                    textShadow: '0 0 10px black',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+                >
+                    <span>
+                    <h1 style={{
+                        margin: 0,
+                    }}
+                    >
+                        Robb
+                    </h1>
+
+                    <h1 style={{
+                        margin: 0,
+                    }}
+                    >
+                        Tech
+                    </h1>
+                    </span>
+                </div>
+            </div>
+            {!fadeOutCompleted && (
+                <FadeOut
+                  shouldFadeOut={shouldStartFadeOut}
+                  onCompleted={() => setFadeOutCompleted(true)}
+                />
+            )}
+        </>
     ) : null;
 }
