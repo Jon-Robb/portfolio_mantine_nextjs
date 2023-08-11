@@ -8,13 +8,15 @@ interface FadeOutProps {
   onCompleted?: () => void;
   duration?: number;
   color?: string;
+  zIndex?: number;
 }
 
 export const FadeOut: React.FC<FadeOutProps> = ({
     shouldFadeOut,
     onCompleted,
     color = 'black',
-    duration = 2000 }) => {
+    duration = 2000,
+    zIndex = 1000 }) => {
   const [inProp, setInProp] = useState(!shouldFadeOut);
 
   const fadeOut = {
@@ -45,8 +47,8 @@ export const FadeOut: React.FC<FadeOutProps> = ({
           left: 0,
           width: '100vw',
           height: '100vh',
-          zIndex: 1000,
           background: color,
+          zIndex,
         }}
         />
       )}

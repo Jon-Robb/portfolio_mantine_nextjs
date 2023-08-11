@@ -37,23 +37,11 @@ export default function EntryAnimation() {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
+                    textAlign: 'center',
                 }}
                 >
-                    <span>
-                    <h1 style={{
-                        margin: 0,
-                    }}
-                    >
-                        Robb
-                    </h1>
-
-                    <h1 style={{
-                        margin: 0,
-                    }}
-                    >
-                        Tech
-                    </h1>
-                    </span>
+                    <h1> RobLine </h1>
+                    <h1> Technologies </h1>
                 </div>
             </div>
             {!fadeOutCompleted && (
