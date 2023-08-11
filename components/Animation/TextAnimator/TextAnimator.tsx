@@ -7,6 +7,8 @@ interface TextAnimatorProps {
   duration?: number;
   onEnter?: () => void;
   onEntered?: () => void;
+  onExit?: () => void;
+  onExited?: () => void;
   fontSize?: string;
   color?: string;
   textShadow?: string;
@@ -19,7 +21,11 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
     animation,
     duration = 2000,
     text,
-    onEntered: onCompleted,
+    // TODO: Remove these console.logs
+    onEnter = () => console.log(`TextAnimator {${text}} onEnter`),
+    onEntered = () => console.log(`TextAnimator {${text}} onEntered`),
+    onExit = () => console.log(`TextAnimator {${text}} onExit`),
+    onExited = () => console.log(`TextAnimator {${text}} onExited`),
     shouldAnimate,
     fontSize = '5rem',
     color = 'white',
@@ -32,8 +38,10 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
       duration={duration}
       timingFunction="ease"
       mounted={shouldAnimate}
-      onEntered={onCompleted}
-      onEnter={() => console.log('TextAnimator onEnter')}
+      onEntered={onEntered}
+      onEnter={onEnter}
+      onExit={onExit}
+      onExited={onExited}
     >
       {(styles) => (
         <div style={{

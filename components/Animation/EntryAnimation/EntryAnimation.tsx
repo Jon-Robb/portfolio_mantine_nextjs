@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Transition } from '@mantine/core';
 import { FadeOut } from '../FadeOut/FadeOut';
 import { TextAnimator } from '../TextAnimator/TextAnimator';
 
@@ -11,7 +10,6 @@ export default function EntryAnimation() {
 
     useEffect(() => {
         setStartAnimation(true);
-        console.log('startAnimation set to true', startAnimation);
     }, []);
 
     useEffect(() => {
@@ -20,7 +18,8 @@ export default function EntryAnimation() {
 
     return !animationCompleted ? (
         <>
-            <div style={{
+            <div
+              style={{
                 position: 'fixed',
                 top: 0,
                 left: 0,
@@ -46,28 +45,7 @@ export default function EntryAnimation() {
                       animation="slide-right"
                       shouldAnimate={startAnimation}
                       text="RobLine"
-                      onEntered={() => console.log('Robline animation completed')}
                     />
-                    {/* <Transition
-                      transition="slide-right"
-                      duration={2000}
-                      timingFunction="ease"
-                      onEntered={() => console.log('Robline animation completed')}
-                      mounted={startAnimation}
-                    >
-                        {(styles) => (
-                            <h1 style={{
-                                ...styles,
-                                color: 'white',
-                                textShadow: '0 0 10px white',
-                                margin: 0,
-                                padding: 0,
-                            }}
-                            >
-                                RobLine
-                            </h1>
-                        )}
-                    </Transition> */}
                 </div>
             </div>
             {!fadeOutCompleted && (
