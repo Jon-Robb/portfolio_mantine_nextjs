@@ -5,23 +5,25 @@ interface TextAnimatorProps {
   shouldAnimate: boolean;
   text: string;
   duration?: number;
-  onCompleted?: () => void;
+  onEnter?: () => void;
+  onEntered?: () => void;
   fontSize?: string;
   color?: string;
   textShadow?: string;
   zIndex?: number;
   fontWeight?: number;
+
 }
 
 export const TextAnimator: React.FC<TextAnimatorProps> = ({
     animation,
     duration = 2000,
     text,
-    onCompleted,
+    onEntered: onCompleted,
     shouldAnimate,
-    fontSize = '3rem',
+    fontSize = '5rem',
     color = 'white',
-    textShadow = '0 0 10px black',
+    textShadow = '0 0 10px white',
     zIndex = 2000,
     fontWeight = 400,
 }) => (
@@ -29,8 +31,9 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
       transition={animation}
       duration={duration}
       timingFunction="ease"
-      onExited={onCompleted}
       mounted={shouldAnimate}
+      onEntered={onCompleted}
+      onEnter={() => console.log('TextAnimator onEnter')}
     >
       {(styles) => (
         <div style={{
@@ -40,6 +43,8 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
             textShadow,
             zIndex,
             fontWeight,
+            margin: 0,
+            padding: 0,
         }}
         >
           {text}

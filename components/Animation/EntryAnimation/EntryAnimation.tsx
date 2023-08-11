@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
+import { Transition } from '@mantine/core';
 import { FadeOut } from '../FadeOut/FadeOut';
+import { TextAnimator } from '../TextAnimator/TextAnimator';
 
 export default function EntryAnimation() {
     const [shouldStartFadeOut, setShouldStartFadeOut] = useState(false);
     const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
     const [animationCompleted, setAnimationCompleted] = useState(false);
+    const [startAnimation, setStartAnimation] = useState(false);
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setShouldStartFadeOut(true);
-    //     }, 5000);
-    // }, []);
+    useEffect(() => {
+        setStartAnimation(true);
+        console.log('startAnimation set to true', startAnimation);
+    }, []);
 
     useEffect(() => {
         setAnimationCompleted(fadeOutCompleted);
@@ -40,8 +42,32 @@ export default function EntryAnimation() {
                     textAlign: 'center',
                 }}
                 >
-                    <h1> RobLine </h1>
-                    <h1> Technologies </h1>
+                    <TextAnimator
+                      animation="slide-right"
+                      shouldAnimate={startAnimation}
+                      text="RobLine"
+                      onEntered={() => console.log('Robline animation completed')}
+                    />
+                    {/* <Transition
+                      transition="slide-right"
+                      duration={2000}
+                      timingFunction="ease"
+                      onEntered={() => console.log('Robline animation completed')}
+                      mounted={startAnimation}
+                    >
+                        {(styles) => (
+                            <h1 style={{
+                                ...styles,
+                                color: 'white',
+                                textShadow: '0 0 10px white',
+                                margin: 0,
+                                padding: 0,
+                            }}
+                            >
+                                RobLine
+                            </h1>
+                        )}
+                    </Transition> */}
                 </div>
             </div>
             {!fadeOutCompleted && (

@@ -1,7 +1,6 @@
-// components/FadeOut.tsx
-
 import { useEffect, useState } from 'react';
 import { Transition } from '@mantine/core';
+import { fadeOut } from '../animations';
 
 interface FadeOutProps {
   shouldFadeOut: boolean;
@@ -18,12 +17,6 @@ export const FadeOut: React.FC<FadeOutProps> = ({
     duration = 2000,
     zIndex = 1000 }) => {
   const [inProp, setInProp] = useState(!shouldFadeOut);
-
-  const fadeOut = {
-    in: { opacity: 1 },
-    out: { opacity: 0 },
-    transitionProperty: 'opacity',
-  };
 
   useEffect(() => {
     if (shouldFadeOut) {
