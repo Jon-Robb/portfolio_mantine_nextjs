@@ -25,7 +25,14 @@ export default function JonlineAnimation() {
 
     return (
         // TODO: MAYBE WRAP IN A DIV SO ALL THE LETTERS ANIMATE THEIR OWN WAY
-        <>
+        <div
+          style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+            }}
+        >
             {jonlineAnimation.map((la: letterAnimation, index:number) => (
                 <TextAnimator
                   key={index}
@@ -34,6 +41,6 @@ export default function JonlineAnimation() {
                   text={la.letter}
                 />
             ))}
-        </>
+        </div>
     );
 }
