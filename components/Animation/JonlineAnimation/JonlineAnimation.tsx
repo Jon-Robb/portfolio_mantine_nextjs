@@ -24,7 +24,6 @@ export default function JonlineAnimation() {
     }, []);
 
     return (
-        // TODO: MAYBE WRAP IN A DIV SO ALL THE LETTERS ANIMATE THEIR OWN WAY
         <div
           style={{
                 display: 'flex',

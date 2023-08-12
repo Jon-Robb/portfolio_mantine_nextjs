@@ -41,7 +41,6 @@ export default function EntryAnimation() {
                     textAlign: 'center',
                 }}
                 >
-                    {/* TODO: Fix the div problem in JonlineAnimation */}
                     <div>
                         <JonlineAnimation />
                     </div>
