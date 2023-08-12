@@ -6,7 +6,7 @@ type letterAnimation = {
     animation: string;
 };
 
-export const jonlineAnimation: letterAnimation[] = [
+const jonlineAnimation: letterAnimation[] = [
     { letter: 'J', animation: 'slide-right' },
     { letter: 'o', animation: 'pop-bottom-left' },
     { letter: 'n', animation: 'rotate-left' },
@@ -16,7 +16,7 @@ export const jonlineAnimation: letterAnimation[] = [
     { letter: 'e', animation: 'slide-left' },
 ];
 
-export default function JonlineAnimation() {
+export default function JonlineAnimation({ fnOnceDone }: { fnOnceDone?: () => void }) {
     const [startAnimation, setStartAnimation] = useState(false);
 
     useEffect(() => {
@@ -38,6 +38,7 @@ export default function JonlineAnimation() {
                   animation={la.animation}
                   shouldAnimate={startAnimation}
                   text={la.letter}
+                  onEntered={index === jonlineAnimation.length - 1 ? fnOnceDone : undefined}
                 />
             ))}
         </div>

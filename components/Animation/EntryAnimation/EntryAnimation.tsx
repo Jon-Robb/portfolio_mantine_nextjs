@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react';
 import { FadeOut } from '../FadeOut/FadeOut';
 import { TextAnimator } from '../TextAnimator/TextAnimator';
-import JonlineAnimation, { jonlineAnimation } from '../JonlineAnimation/JonlineAnimation';
+import JonlineAnimation from '../JonlineAnimation/JonlineAnimation';
 
 export default function EntryAnimation() {
     const [shouldStartFadeOut, setShouldStartFadeOut] = useState(false);
     const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
     const [animationCompleted, setAnimationCompleted] = useState(false);
     const [startAnimation, setStartAnimation] = useState(false);
+    const [jolineAnimationCompleted, setJolineAnimationCompleted] = useState(false);
 
     useEffect(() => {
         setStartAnimation(true);
     }, []);
+
+    useEffect(() => {
+        console.log('jolineAnimationCompleted', jolineAnimationCompleted);
+    }, [jolineAnimationCompleted]);
+
+    const handleJolineDone = () => {
+        setJolineAnimationCompleted(true);
+    };
 
     useEffect(() => {
         setAnimationCompleted(fadeOutCompleted);
@@ -26,6 +35,7 @@ export default function EntryAnimation() {
                     left: 0,
                     width: '100vw',
                     height: '100vh',
+                    // TODO: make z index layers more consistent in a separate file
                     zIndex: 2000,
                     display: 'flex',
                     justifyContent: 'center',
@@ -41,9 +51,8 @@ export default function EntryAnimation() {
                     textAlign: 'center',
                 }}
                 >
-                    <div>
-                        <JonlineAnimation />
-                    </div>
+                    {startAnimation &&
+                        <JonlineAnimation fnOnceDone={handleJolineDone} />}
                 </div>
             </div>
             {!fadeOutCompleted && (
