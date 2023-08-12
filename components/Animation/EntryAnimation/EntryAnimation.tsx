@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FadeOut } from '../FadeOut/FadeOut';
 import { TextAnimator } from '../TextAnimator/TextAnimator';
+import JonlineAnimation, { jonlineAnimation } from '../JonlineAnimation/JonlineAnimation';
 
 export default function EntryAnimation() {
     const [shouldStartFadeOut, setShouldStartFadeOut] = useState(false);
@@ -20,32 +21,30 @@ export default function EntryAnimation() {
         <>
             <div
               style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-                zIndex: 2000,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    zIndex: 2000,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
             >
                 <div style={{
                     fontSize: '3rem',
                     color: 'white',
                     textShadow: '0 0 10px black',
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
                     textAlign: 'center',
                 }}
                 >
-                    <TextAnimator
-                      animation="slide-right"
-                      shouldAnimate={startAnimation}
-                      text="RobLine"
-                    />
+                    {/* TODO: Fix the div problem in JonlineAnimation */}
+                    <div>
+                        <JonlineAnimation />
+                    </div>
                 </div>
             </div>
             {!fadeOutCompleted && (

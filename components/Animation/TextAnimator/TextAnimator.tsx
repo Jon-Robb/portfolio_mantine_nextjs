@@ -21,11 +21,10 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
     animation,
     duration = 2000,
     text,
-    // TODO: Remove these console.logs
-    onEnter = () => console.log(`TextAnimator {${text}} onEnter`),
-    onEntered = () => console.log(`TextAnimator {${text}} onEntered`),
-    onExit = () => console.log(`TextAnimator {${text}} onExit`),
-    onExited = () => console.log(`TextAnimator {${text}} onExited`),
+    onEnter,
+    onEntered,
+    onExit,
+    onExited,
     shouldAnimate,
     fontSize = '5rem',
     color = 'white',
@@ -44,7 +43,7 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
       onExited={onExited}
     >
       {(styles) => (
-        <div style={{
+        <span style={{
             ...styles,
             color,
             fontSize,
@@ -56,7 +55,7 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
         }}
         >
           {text}
-        </div>
+        </span>
       )}
     </Transition>
   );
