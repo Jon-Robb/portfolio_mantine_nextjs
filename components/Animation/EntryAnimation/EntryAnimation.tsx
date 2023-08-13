@@ -49,10 +49,14 @@ export default function EntryAnimation() {
                     display: 'flex',
                     alignItems: 'center',
                     textAlign: 'center',
+                    flexDirection: 'column',
                 }}
                 >
-                    {startAnimation &&
-                        <JonlineAnimation fnOnceDone={handleJolineDone} />}
+                    <JonlineAnimation inProp={startAnimation} fnOnceDone={handleJolineDone} />
+                    <div>
+                        <TextAnimator animation="pop" shouldAnimate={jolineAnimationCompleted} text="Dynamics" />
+                    </div>
+
                 </div>
             </div>
             {!fadeOutCompleted && (

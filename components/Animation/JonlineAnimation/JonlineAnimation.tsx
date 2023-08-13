@@ -16,7 +16,8 @@ const jonlineAnimation: letterAnimation[] = [
     { letter: 'e', animation: 'slide-left' },
 ];
 
-export default function JonlineAnimation({ fnOnceDone }: { fnOnceDone?: () => void }) {
+export default function JonlineAnimation({
+    fnOnceDone, inProp }: { fnOnceDone?: () => void, inProp: boolean }) {
     const [startAnimation, setStartAnimation] = useState(false);
 
     useEffect(() => {
@@ -36,7 +37,7 @@ export default function JonlineAnimation({ fnOnceDone }: { fnOnceDone?: () => vo
                 <TextAnimator
                   key={index}
                   animation={la.animation}
-                  shouldAnimate={startAnimation}
+                  shouldAnimate={inProp}
                   text={la.letter}
                   onEntered={index === jonlineAnimation.length - 1 ? fnOnceDone : undefined}
                 />
