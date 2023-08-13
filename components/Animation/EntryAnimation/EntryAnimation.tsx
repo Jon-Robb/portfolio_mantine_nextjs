@@ -53,8 +53,10 @@ export default function EntryAnimation() {
                 }}
                 >
                     <JonlineAnimation inProp={startAnimation} fnOnceDone={handleJolineDone} />
-                    <div>
-                        <TextAnimator animation="pop" shouldAnimate={jolineAnimationCompleted} text="Dynamics" />
+                    <div style={{ opacity: jolineAnimationCompleted ? 1 : 0, transition: 'opacity 0.5s' }}>
+                        <TextAnimator animation="pop" shouldAnimate={jolineAnimationCompleted} text="Dynamics"
+                        // onEntered={() => setShouldStartFadeOut(true)}
+                        />
                     </div>
 
                 </div>

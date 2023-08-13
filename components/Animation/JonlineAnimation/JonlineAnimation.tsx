@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { TextAnimator } from '../TextAnimator/TextAnimator';
 
 type letterAnimation = {
@@ -18,12 +17,6 @@ const jonlineAnimation: letterAnimation[] = [
 
 export default function JonlineAnimation({
     fnOnceDone, inProp }: { fnOnceDone?: () => void, inProp: boolean }) {
-    const [startAnimation, setStartAnimation] = useState(false);
-
-    useEffect(() => {
-        setStartAnimation(true);
-    }, []);
-
     return (
         <div
           style={{
@@ -33,7 +26,7 @@ export default function JonlineAnimation({
                 textAlign: 'center',
             }}
         >
-            {jonlineAnimation.map((la: letterAnimation, index:number) => (
+            {jonlineAnimation.map((la: letterAnimation, index: number) => (
                 <TextAnimator
                   key={index}
                   animation={la.animation}
