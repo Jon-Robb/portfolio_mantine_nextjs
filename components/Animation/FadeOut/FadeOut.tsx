@@ -30,7 +30,7 @@ export const FadeOut: React.FC<FadeOutProps> = ({
       duration={duration}
       mounted={inProp}
       timingFunction="ease"
-      onExited={onCompleted}
+      onExit={onCompleted}
     >
       {(styles) => (
         <div style={{

@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
+import useStyles from './EntryAnimation.styles';
 import { FadeOut } from '../FadeOut/FadeOut';
 import { TextAnimator } from '../TextAnimator/TextAnimator';
 import JonlineAnimation from '../JonlineAnimation/JonlineAnimation';
 
-export default function EntryAnimation() {
-    const [shouldStartFadeOut, setShouldStartFadeOut] = useState(false);
+interface EntryAnimationProps {
+    parentCallback?: () => void;
+}
+
+export default function EntryAnimation({ parentCallback }: EntryAnimationProps) {
+    const [startFadeOut, setStartFadeOut] = useState(false);
     const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
     const [animationCompleted, setAnimationCompleted] = useState(false);
     const [startAnimation, setStartAnimation] = useState(false);
+    const { classes } = useStyles();
 
     useEffect(() => {
         setStartAnimation(true);
@@ -15,50 +21,27 @@ export default function EntryAnimation() {
 
     return !animationCompleted ? (
         <>
-            <div
-                // TODO: put the css in a separate file using mantine useStyles
-              style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100vw',
-                    height: '100vh',
-                    // TODO: make z index layers more consistent in a separate file
-                    zIndex: 2000,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <div style={{
-                    fontSize: '3rem',
-                    color: 'white',
-                    textShadow: '0 0 10px black',
-                    display: 'flex',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    flexDirection: 'column',
-                }}
-                >
+            <div className={classes.wrapper}>
+                <div className={classes.textContainer}>
                     <JonlineAnimation inProp={startAnimation} />
                     <TextAnimator
                       animation="pop"
                       shouldAnimate={startAnimation}
                       text="Dynamics"
                       onEntered={() => {
-                            setShouldStartFadeOut(true);
+                            setStartFadeOut(true);
                             setStartAnimation(false);
                         }}
                     />
-
                 </div>
             </div>
             {!fadeOutCompleted && (
                 <FadeOut
-                  shouldFadeOut={shouldStartFadeOut}
+                  shouldFadeOut={startFadeOut}
                   onCompleted={() => {
                         setAnimationCompleted(true);
                         setFadeOutCompleted(true);
+                        parentCallback && parentCallback();
                     }}
                 />
             )}

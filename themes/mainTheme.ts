@@ -49,13 +49,13 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 lineHeight: theme.lineHeight,
             },
             h1: {
-                fontSize: '2em',
+                fontSize: '3.5em',
             },
             h2: {
-                fontSize: '1.5em',
+                fontSize: '1.75em',
             },
             h3: {
-                fontSize: '1.17em',
+                fontSize: '1.5em',
             },
             '@media (max-width: 480px)': {
                 body: {

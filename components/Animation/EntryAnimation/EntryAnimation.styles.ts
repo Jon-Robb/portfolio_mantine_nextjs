@@ -1,15 +1,25 @@
 import { createStyles } from '@mantine/core';
 
 export default createStyles(() => ({
-    fadeInWrapper: {
+    wrapper: {
         position: 'fixed',
         top: 0,
         left: 0,
         width: '100vw',
         height: '100vh',
-        zIndex: 1000,
-        background: 'black',
-        pointerEvents: 'none',
-        transition: 'opacity 2000ms ease',
+        // TODO: make z index layers more consistent in a separate file
+        zIndex: 2000,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textContainer: {
+        // fontSize: '3rem',
+        color: 'white',
+        textShadow: '0 0 10px black',
+        display: 'flex',
+        alignItems: 'center',
+        textAlign: 'center',
+        flexDirection: 'column',
     },
 }));

@@ -14,14 +14,21 @@ export default function AppShellContainer() {
   const [opened, setOpened] = useState(false);
   const toggleOpened = () => setOpened((o) => !o);
   const { classes } = useStyles();
+  const [animationCompleted, setAnimationCompleted] = useState(false);
   return (
-    <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu opened={opened} />} header={<AppHeader onClick={toggleOpened} opened={opened} />}>
-      <EntryAnimation />
-      <HomeSection />
-      <About />
-      <Projects />
-      <Services />
-      <Contact />
+    <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu animationCompleted={animationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={animationCompleted} onClick={toggleOpened} opened={opened} />}>
+      <EntryAnimation parentCallback={() => setAnimationCompleted(true)} />
+      <div style={{
+        opacity: animationCompleted ? 1 : 0,
+        transition: 'opacity 2s ease-in-out',
+      }}
+      >
+        <HomeSection />
+        <About />
+        <Projects />
+        <Services />
+        <Contact />
+      </div>
     </AppShell>
   );
 }

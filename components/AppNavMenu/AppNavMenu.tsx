@@ -7,13 +7,20 @@ import LanguageSelector from '../LanguageSelector/LanguageSelector';
 
 interface AppNavbarProps {
   opened: boolean;
+  animationCompleted?: boolean;
 }
 
-export default function AppNavMenu({ opened }: AppNavbarProps) {
+export default function AppNavMenu({ opened, animationCompleted }: AppNavbarProps) {
   const { classes } = useStyles();
   return (
     <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 250, md: 275, lg: 300 }} className={classes.fullNavbar}>
-      <div className={classes.navMenuContainer}>
+      <div
+        className={classes.navMenuContainer}
+        style={{
+          opacity: animationCompleted && animationCompleted ? 1 : 0,
+          transition: 'opacity 2s ease-in-out',
+        }}
+      >
         <Text className={classes.titleName}> <Anchor href="/"> Jonathan Robinson </Anchor> </Text>
         <NavLinkMenu />
         <LanguageSelector />
