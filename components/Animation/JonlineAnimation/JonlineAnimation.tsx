@@ -15,8 +15,16 @@ const jonlineAnimation: letterAnimation[] = [
     { letter: 'e', animation: 'slide-left' },
 ];
 
-export default function JonlineAnimation({
-    fnOnceDone, inProp }: { fnOnceDone?: () => void, inProp: boolean }) {
+interface JonlineAnimationProps {
+    inProp: boolean;
+    onEntered?: () => void;
+    onEnter?: () => void;
+    onExit?: () => void;
+    onExited?: () => void;
+}
+
+export default function JonlineAnimation(props : JonlineAnimationProps) {
+    const { inProp, onEnter, onEntered, onExit, onExited } = props;
     return (
         <div
           style={{
@@ -32,7 +40,10 @@ export default function JonlineAnimation({
                   animation={la.animation}
                   shouldAnimate={inProp}
                   text={la.letter}
-                  onEntered={index === jonlineAnimation.length - 1 ? fnOnceDone : undefined}
+                  onEnter={index === 0 ? onEnter : undefined}
+                  onEntered={index === jonlineAnimation.length - 1 ? onEntered : undefined}
+                  onExit={index === 0 ? onExit : undefined}
+                  onExited={index === jonlineAnimation.length - 1 ? onExited : undefined}
                 />
             ))}
         </div>

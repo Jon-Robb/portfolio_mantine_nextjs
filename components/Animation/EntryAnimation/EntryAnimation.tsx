@@ -52,9 +52,12 @@ export default function EntryAnimation() {
                     flexDirection: 'column',
                 }}
                 >
-                    <JonlineAnimation inProp={startAnimation} fnOnceDone={handleJolineDone} />
+                    <JonlineAnimation inProp={startAnimation} onEntered={handleJolineDone} />
                     <div style={{ opacity: jolineAnimationCompleted ? 1 : 0, transition: 'opacity 0.5s' }}>
-                        <TextAnimator animation="pop" shouldAnimate={jolineAnimationCompleted} text="Dynamics"
+                        <TextAnimator
+                          animation="pop"
+                          shouldAnimate={jolineAnimationCompleted}
+                          text="Dynamics"
                         // onEntered={() => setShouldStartFadeOut(true)}
                         />
                     </div>
