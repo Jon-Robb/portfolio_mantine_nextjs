@@ -29,6 +29,7 @@ export default function EntryAnimation() {
     return !animationCompleted ? (
         <>
             <div
+            // TODO: put the css in a separate file using mantine useStyles
               style={{
                     position: 'fixed',
                     top: 0,
