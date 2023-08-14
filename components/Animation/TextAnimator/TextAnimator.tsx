@@ -16,7 +16,7 @@ interface TextAnimatorProps {
   fontWeight?: number;
 
 }
-
+// TODO: names more consistently with other components
 export const TextAnimator: React.FC<TextAnimatorProps> = ({
     animation,
     duration = 2000,

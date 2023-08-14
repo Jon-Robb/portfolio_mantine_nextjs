@@ -16,7 +16,7 @@ export default function EntryAnimation() {
     return !animationCompleted ? (
         <>
             <div
-            // TODO: put the css in a separate file using mantine useStyles
+                // TODO: put the css in a separate file using mantine useStyles
               style={{
                     position: 'fixed',
                     top: 0,
@@ -41,24 +41,25 @@ export default function EntryAnimation() {
                 }}
                 >
                     <JonlineAnimation inProp={startAnimation} />
-                    {/* <div style={{ opacity: jolineAnimationCompleted ? 1 : 0, transition: 'opacity 0.5s' }}> */}
-                        <TextAnimator
-                          animation="pop"
-                          shouldAnimate={startAnimation}
-                          text="Dynamics"
-                          onEntered={() => {
+                    <TextAnimator
+                      animation="pop"
+                      shouldAnimate={startAnimation}
+                      text="Dynamics"
+                      onEntered={() => {
                             setShouldStartFadeOut(true);
                             setStartAnimation(false);
-                            }}
-                        />
-                    {/* </div> */}
+                        }}
+                    />
 
                 </div>
             </div>
             {!fadeOutCompleted && (
                 <FadeOut
                   shouldFadeOut={shouldStartFadeOut}
-                  onCompleted={() => setFadeOutCompleted(true)}
+                  onCompleted={() => {
+                        setAnimationCompleted(true);
+                        setFadeOutCompleted(true);
+                    }}
                 />
             )}
         </>

@@ -22,7 +22,7 @@ interface JonlineAnimationProps {
     onExit?: () => void;
     onExited?: () => void;
 }
-
+// \TODO: NAmes more consistently with other components and put style in its file
 export default function JonlineAnimation(props : JonlineAnimationProps) {
     const { inProp, onEnter, onEntered, onExit, onExited } = props;
     return (
