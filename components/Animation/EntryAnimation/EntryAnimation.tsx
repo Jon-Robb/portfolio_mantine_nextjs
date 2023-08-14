@@ -10,21 +10,33 @@ export default function EntryAnimation() {
     const [startAnimation, setStartAnimation] = useState(false);
     const [jolineAnimationCompleted, setJolineAnimationCompleted] = useState(false);
 
-    useEffect(() => {
-        setStartAnimation(true);
-    }, []);
+    // useEffect(() => {
+    //     setStartAnimation(true);
+    // }, []);
 
-    useEffect(() => {
-        console.log('jolineAnimationCompleted', jolineAnimationCompleted);
-    }, [jolineAnimationCompleted]);
+    // useEffect(() => {
+    //     console.log('jolineAnimationCompleted', jolineAnimationCompleted);
+    // }, [jolineAnimationCompleted]);
 
-    const handleJolineDone = () => {
-        setJolineAnimationCompleted(true);
-    };
+    // const handleJolineDone = () => {
+    //     setJolineAnimationCompleted(true);
+    // };
 
     useEffect(() => {
         setAnimationCompleted(fadeOutCompleted);
     }, [fadeOutCompleted]);
+
+    const start = () => {
+        setStartAnimation(true);
+        setTimeout(() => {
+            setJolineAnimationCompleted(true);
+        }, 500);
+    };
+
+    useEffect(() => {
+        start();
+    }, []);
+
 
     return !animationCompleted ? (
         <>
@@ -53,15 +65,15 @@ export default function EntryAnimation() {
                     flexDirection: 'column',
                 }}
                 >
-                    <JonlineAnimation inProp={startAnimation} onEntered={handleJolineDone} />
-                    <div style={{ opacity: jolineAnimationCompleted ? 1 : 0, transition: 'opacity 0.5s' }}>
+                    <JonlineAnimation inProp={startAnimation} />
+                    {/* <div style={{ opacity: jolineAnimationCompleted ? 1 : 0, transition: 'opacity 0.5s' }}> */}
                         <TextAnimator
                           animation="pop"
-                          shouldAnimate={jolineAnimationCompleted}
+                          shouldAnimate={startAnimation}
                           text="Dynamics"
                         // onEntered={() => setShouldStartFadeOut(true)}
                         />
-                    </div>
+                    {/* </div> */}
 
                 </div>
             </div>

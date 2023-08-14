@@ -37,6 +37,7 @@ export const TextAnimator: React.FC<TextAnimatorProps> = ({
       duration={duration}
       timingFunction="ease"
       mounted={shouldAnimate}
+      keepMounted
       onEntered={onEntered}
       onEnter={onEnter}
       onExit={onExit}
