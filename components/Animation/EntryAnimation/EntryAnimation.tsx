@@ -8,35 +8,10 @@ export default function EntryAnimation() {
     const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
     const [animationCompleted, setAnimationCompleted] = useState(false);
     const [startAnimation, setStartAnimation] = useState(false);
-    const [jolineAnimationCompleted, setJolineAnimationCompleted] = useState(false);
-
-    // useEffect(() => {
-    //     setStartAnimation(true);
-    // }, []);
-
-    // useEffect(() => {
-    //     console.log('jolineAnimationCompleted', jolineAnimationCompleted);
-    // }, [jolineAnimationCompleted]);
-
-    // const handleJolineDone = () => {
-    //     setJolineAnimationCompleted(true);
-    // };
 
     useEffect(() => {
-        setAnimationCompleted(fadeOutCompleted);
-    }, [fadeOutCompleted]);
-
-    const start = () => {
         setStartAnimation(true);
-        setTimeout(() => {
-            setJolineAnimationCompleted(true);
-        }, 500);
-    };
-
-    useEffect(() => {
-        start();
     }, []);
-
 
     return !animationCompleted ? (
         <>
@@ -71,7 +46,10 @@ export default function EntryAnimation() {
                           animation="pop"
                           shouldAnimate={startAnimation}
                           text="Dynamics"
-                        // onEntered={() => setShouldStartFadeOut(true)}
+                          onEntered={() => {
+                            setShouldStartFadeOut(true);
+                            setStartAnimation(false);
+                            }}
                         />
                     {/* </div> */}
 
