@@ -7,11 +7,12 @@ import LanguageSelector from '../LanguageSelector/LanguageSelector';
 
 interface AppNavbarProps {
   opened: boolean;
-  animationCompleted?: boolean;
+  fadeInProp?: boolean;
 }
 
-export default function AppNavMenu({ opened, animationCompleted }: AppNavbarProps) {
+export default function AppNavMenu({ opened, fadeInProp: animationCompleted }: AppNavbarProps) {
   const { classes } = useStyles();
+
   return (
     <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 250, md: 275, lg: 300 }} className={classes.fullNavbar}>
       <div

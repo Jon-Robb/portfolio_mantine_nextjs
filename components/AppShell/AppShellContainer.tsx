@@ -19,25 +19,22 @@ export default function AppShellContainer() {
 
   const handleHomeAnimationCompleted = () => {
     setHomeAnimationCompleted(true);
-    console.log('home animation completed');
   };
 
   return (
     <>
       <EntryAnimation onCompleted={() => setAnimationCompleted(true)} />
-      {animationCompleted && (
-        <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu animationCompleted={animationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={animationCompleted} onClick={toggleOpened} opened={opened} />}>
-          <HomeSection onCompleted={handleHomeAnimationCompleted} />
-          {homeAnimationCompleted ?? (
-            <>
-            <About />
-            <Projects />
-            <Services />
-            <Contact />
-            </>
+        <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu fadeInProp={homeAnimationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={homeAnimationCompleted} onClick={toggleOpened} opened={opened} />}>
+          <HomeSection inProp={animationCompleted} onCompleted={handleHomeAnimationCompleted} />
+          {homeAnimationCompleted && (
+            <div>
+              <About />
+              <Projects />
+              <Services />
+              <Contact />
+            </div>
           )}
         </AppShell>
-      )}
     </>
   );
 }
