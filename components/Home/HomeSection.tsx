@@ -5,7 +5,7 @@ import SkillBadgeContainer from '../SkillBadgesContainer/SkillBadgesContainer';
 // import useStyles from './home.styles';
 import { useSkillBadgesData } from '../../hooks/useSkillBadgesData';
 
-export default function HomeSection() {
+export default function HomeSection({ onCompleted } : { onCompleted?: () => void }) {
     const [inProp, setInProp] = useState(false);
     const { t } = useTranslation();
     // const { classes } = useStyles();
@@ -17,7 +17,7 @@ export default function HomeSection() {
 
     return (
         <section className="section" id="home">
-            <Transition transition="pop" duration={1000} timingFunction="ease" mounted={inProp} onEntered={() => console.log('home welcome')}>
+            <Transition transition="pop" duration={1000} timingFunction="ease" mounted={inProp} onEntered={onCompleted}>
                 {(styles) => <div style={styles}> <Title order={1}> {t('home.welcome')} </Title> </div>}
             </Transition>
             <Text> {t('home.desc')} </Text>

@@ -15,20 +15,29 @@ export default function AppShellContainer() {
   const toggleOpened = () => setOpened((o) => !o);
   const { classes } = useStyles();
   const [animationCompleted, setAnimationCompleted] = useState(false);
+  const [homeAnimationCompleted, setHomeAnimationCompleted] = useState(false);
+
+  const handleHomeAnimationCompleted = () => {
+    setHomeAnimationCompleted(true);
+    console.log('home animation completed');
+  };
+
   return (
-    <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu animationCompleted={animationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={animationCompleted} onClick={toggleOpened} opened={opened} />}>
+    <>
       <EntryAnimation onCompleted={() => setAnimationCompleted(true)} />
-      <div style={{
-        opacity: animationCompleted ? 1 : 0,
-        transition: 'opacity 2s ease-in-out',
-      }}
-      >
-        <HomeSection />
-        <About />
-        <Projects />
-        <Services />
-        <Contact />
-      </div>
-    </AppShell>
+      {animationCompleted && (
+        <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu animationCompleted={animationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={animationCompleted} onClick={toggleOpened} opened={opened} />}>
+          <HomeSection onCompleted={handleHomeAnimationCompleted} />
+          {homeAnimationCompleted ?? (
+            <>
+            <About />
+            <Projects />
+            <Services />
+            <Contact />
+            </>
+          )}
+        </AppShell>
+      )}
+    </>
   );
 }
