@@ -5,10 +5,10 @@ import { TextAnimator } from '../TextAnimator/TextAnimator';
 import JonlineAnimation from '../JonlineAnimation/JonlineAnimation';
 
 interface EntryAnimationProps {
-    parentCallback?: () => void;
+    onCompleted?: () => void;
 }
 
-export default function EntryAnimation({ parentCallback }: EntryAnimationProps) {
+export default function EntryAnimation({ onCompleted: parentCallback }: EntryAnimationProps) {
     const [startFadeOut, setStartFadeOut] = useState(false);
     const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
     const [animationCompleted, setAnimationCompleted] = useState(false);

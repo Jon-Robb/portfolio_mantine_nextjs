@@ -17,7 +17,7 @@ export default function AppShellContainer() {
   const [animationCompleted, setAnimationCompleted] = useState(false);
   return (
     <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu animationCompleted={animationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={animationCompleted} onClick={toggleOpened} opened={opened} />}>
-      <EntryAnimation parentCallback={() => setAnimationCompleted(true)} />
+      <EntryAnimation onCompleted={() => setAnimationCompleted(true)} />
       <div style={{
         opacity: animationCompleted ? 1 : 0,
         transition: 'opacity 2s ease-in-out',

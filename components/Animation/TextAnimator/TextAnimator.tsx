@@ -3,7 +3,7 @@ import { Transition } from '@mantine/core';
 interface TextAnimatorProps {
   animation: any; // Define the type based on Mantine's transition props
   shouldAnimate: boolean;
-  text: string;
+  text: string | JSX.Element;
   duration?: number;
   onEnter?: () => void;
   onEntered?: () => void;
