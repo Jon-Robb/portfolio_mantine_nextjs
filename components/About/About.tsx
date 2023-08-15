@@ -1,9 +1,12 @@
 import { Title, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import SkillBadgeContainer from '../SkillBadgesContainer/SkillBadgesContainer';
+import { useSkillBadgesData } from '../../hooks/useSkillBadgesData';
 // import useStyles from './About.styles';
 
 export default function About() {
     const { t } = useTranslation();
+    const skillBadges = useSkillBadgesData();
     // const { classes } = useStyles();
 
     return (
@@ -18,6 +21,9 @@ export default function About() {
             <Text>
                 {t('about.para3')}
             </Text>
+            <div id="skills">
+                <SkillBadgeContainer skillBadges={skillBadges} />
+            </div>
         </section>
     );
 }

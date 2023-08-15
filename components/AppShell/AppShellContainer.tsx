@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AppShell } from '@mantine/core';
+import { AppShell, Transition } from '@mantine/core';
 import EntryAnimation from '../Animation/EntryAnimation/EntryAnimation';
 import AppHeader from '../AppHeader/AppHeader';
 import AppNavMenu from '../AppNavMenu/AppNavMenu';
@@ -24,17 +24,20 @@ export default function AppShellContainer() {
   return (
     <>
       <EntryAnimation onCompleted={() => setAnimationCompleted(true)} />
-        <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu fadeInProp={homeAnimationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={homeAnimationCompleted} onClick={toggleOpened} opened={opened} />}>
-          <HomeSection inProp={animationCompleted} onCompleted={handleHomeAnimationCompleted} />
-          {homeAnimationCompleted && (
-            <div>
+      <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu fadeInProp={homeAnimationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={homeAnimationCompleted} onClick={toggleOpened} opened={opened} />}>
+        <HomeSection inProp={animationCompleted} onCompleted={handleHomeAnimationCompleted} />
+        {homeAnimationCompleted && (
+          <Transition transition="fade" duration={1000} timingFunction="ease" mounted={homeAnimationCompleted} keepMounted>
+            {(styles) => <div style={styles}>
+
               <About />
               <Projects />
               <Services />
               <Contact />
-            </div>
-          )}
-        </AppShell>
+                         </div>}
+          </Transition>
+        )}
+      </AppShell>
     </>
   );
 }
