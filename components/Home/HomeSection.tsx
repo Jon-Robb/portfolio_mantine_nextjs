@@ -18,7 +18,7 @@ export default function HomeSection({ onCompleted, inProp }:
             <Transition transition="pop" duration={1000} timingFunction="ease" mounted={inProp} onEntered={() => setHomeWelcomeAnimationCompleted(true)}>
                 {(styles) => <div style={styles}> <Title order={1}> {t('home.welcome')} </Title> </div>}
             </Transition>
-            <Transition transition="fade" duration={1000} timingFunction="ease" mounted={homeWelcomeAnimationCompleted} onEntered={handleAllCompleted} keepMounted>
+            <Transition transition="scale" duration={1000} timingFunction="ease" mounted={homeWelcomeAnimationCompleted} onEntered={handleAllCompleted} keepMounted>
                 {(styles) => (
                     <div style={styles}>
                         <Text> {t('home.desc')} </Text>

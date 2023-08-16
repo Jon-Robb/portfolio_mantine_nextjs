@@ -26,17 +26,15 @@ export default function AppShellContainer() {
       <EntryAnimation onCompleted={() => setAnimationCompleted(true)} />
       <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu fadeInProp={homeAnimationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={homeAnimationCompleted} onClick={toggleOpened} opened={opened} />}>
         <HomeSection inProp={animationCompleted} onCompleted={handleHomeAnimationCompleted} />
-        {homeAnimationCompleted && (
-          <Transition transition="fade" duration={1000} timingFunction="ease" mounted={homeAnimationCompleted} keepMounted>
-            {(styles) => <div style={styles}>
-
+        <Transition transition="fade" duration={1000} timingFunction="ease" mounted={homeAnimationCompleted} keepMounted>
+          {(styles) =>
+            <div style={styles}>
               <About />
               <Projects />
               <Services />
               <Contact />
-                         </div>}
-          </Transition>
-        )}
+            </div>}
+        </Transition>
       </AppShell>
     </>
   );
