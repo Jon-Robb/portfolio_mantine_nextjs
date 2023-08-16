@@ -17,7 +17,7 @@ export default function AppNavMenu({ opened, fadeInProp }: AppNavbarProps) {
     <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 250, md: 275, lg: 300 }} className={classes.fullNavbar}>
       <Transition transition="fade" duration={1000} timingFunction="ease" mounted={fadeInProp} keepMounted>
         {(styles) => (
-          <div style={styles} className={classes.navMenuContainer} >
+          <div style={styles} className={classes.navMenuContainer}>
             <Text className={classes.titleName}> <Anchor href="/"> Jonathan Robinson </Anchor> </Text>
             <NavLinkMenu />
             <LanguageSelector />

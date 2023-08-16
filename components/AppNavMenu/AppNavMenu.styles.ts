@@ -1,11 +1,17 @@
 import { createStyles } from '@mantine/core';
 
 export default createStyles((theme) => ({
+
     fullNavbar: {
         [theme.fn.largerThan('sm')]: { // equivalent to theme.mediaQuery.sm
             height: '100%',
             top: 0,
             },
+        [theme.fn.smallerThan('md')]: {
+            backdropFilter: 'blur(10px)',
+            backgroundColor: 'rgba(26, 27, 30, 0.8)',
+        },
+
     },
     titleName: {
         display: 'flex',

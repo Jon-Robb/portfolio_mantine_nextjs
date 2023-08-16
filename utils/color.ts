@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 export function colorIsBright(color: string): boolean {
     const hexColorPattern = /^#[0-9A-Fa-f]{6}$/;
 
@@ -33,4 +34,12 @@ export function getHexColor(colorName: string): string {
     const hexColor = `#${((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1).toUpperCase()}`;
 
     return hexColor;
+}
+
+export function hexToRgb(hex:string): number[] {
+        const bigInt = parseInt(hex.slice(1), 16);
+        const r = (bigInt >> 16) & 255;
+        const g = (bigInt >> 8) & 255;
+        const b = bigInt & 255;
+        return [r, g, b];
 }
