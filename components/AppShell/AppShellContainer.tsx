@@ -18,12 +18,22 @@ export default function AppShellContainer() {
   const [homeAnimationCompleted, setHomeAnimationCompleted] = useState(false);
 
   const handleHomeAnimationCompleted = () => {
-    setHomeAnimationCompleted(true);
+    setTimeout(() => {
+      setHomeAnimationCompleted(true);
+    }, 1000);
+  };
+
+  const handleEntryAnimationCompleted = () => {
+    setTimeout(() => {
+      setAnimationCompleted(true);
+    }, 1000);
   };
 
   return (
     <>
-      <EntryAnimation onCompleted={() => setAnimationCompleted(true)} />
+    {!animationCompleted && (
+      <EntryAnimation onCompleted={handleEntryAnimationCompleted} />
+    )}
       <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu fadeInProp={homeAnimationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={homeAnimationCompleted} onClick={toggleOpened} opened={opened} />}>
         <HomeSection inProp={animationCompleted} onCompleted={handleHomeAnimationCompleted} />
         <Transition transition="fade" duration={1000} timingFunction="ease" mounted={homeAnimationCompleted} keepMounted>

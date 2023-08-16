@@ -8,10 +8,9 @@ interface EntryAnimationProps {
     onCompleted?: () => void;
 }
 
-export default function EntryAnimation({ onCompleted: parentCallback }: EntryAnimationProps) {
+export default function EntryAnimation({ onCompleted }: EntryAnimationProps) {
     const [startFadeOut, setStartFadeOut] = useState(false);
     const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
-    const [animationCompleted, setAnimationCompleted] = useState(false);
     const [startAnimation, setStartAnimation] = useState(false);
     const { classes } = useStyles();
 
@@ -19,7 +18,7 @@ export default function EntryAnimation({ onCompleted: parentCallback }: EntryAni
         setStartAnimation(true);
     }, []);
 
-    return !animationCompleted ? (
+    return (
         <>
             <div className={classes.wrapper}>
                 <div className={classes.textContainer}>
@@ -39,12 +38,11 @@ export default function EntryAnimation({ onCompleted: parentCallback }: EntryAni
                 <FadeOut
                   shouldFadeOut={startFadeOut}
                   onCompleted={() => {
-                        setAnimationCompleted(true);
                         setFadeOutCompleted(true);
-                        parentCallback && parentCallback();
+                        onCompleted && onCompleted();
                     }}
                 />
             )}
         </>
-    ) : null;
+    );
 }
