@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { AppShell, Transition } from '@mantine/core';
 import EntryAnimation from '../Animation/EntryAnimation/EntryAnimation';
 import AppHeader from '../AppHeader/AppHeader';
@@ -9,6 +9,7 @@ import Projects from '../Projects/Projects';
 import Services from '../Services/Services';
 import Contact from '../Contact/Contact';
 import useStyles from './AppShellContainer.styles';
+import { EntryAnimationCompletedContext } from '../../contexts/EntryAnimationCompletedContext';
 
 export default function AppShellContainer() {
   const [opened, setOpened] = useState(false);
@@ -16,6 +17,7 @@ export default function AppShellContainer() {
   const { classes } = useStyles();
   const [animationCompleted, setAnimationCompleted] = useState(false);
   const [homeAnimationCompleted, setHomeAnimationCompleted] = useState(false);
+  const { entryAnimationCompleted } = useContext(EntryAnimationCompletedContext);
 
   const handleHomeAnimationCompleted = () => {
     setTimeout(() => {
