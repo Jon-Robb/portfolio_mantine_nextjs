@@ -6,6 +6,8 @@ export default createStyles((theme) => ({
         [theme.fn.largerThan('sm')]: { // equivalent to theme.mediaQuery.sm
             height: '100%',
             top: 0,
+            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+            border: 'none',
             },
         [theme.fn.smallerThan('md')]: {
             backdropFilter: 'blur(10px)',

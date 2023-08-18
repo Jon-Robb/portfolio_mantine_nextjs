@@ -25,22 +25,22 @@ export default function AppNavMenu({ opened }: AppNavbarProps) {
 
       return () => clearTimeout(timeout);
     }
-    return () => {};
+    return () => { };
   }, [opened]);
 
   return (
-    <Navbar p="md" hiddenBreakpoint="sm" hidden={!isNavbarVisible} width={{ sm: 250, md: 275, lg: 300, xl: 400 }} className={classes.fullNavbar}>
-          <Transition transition="scale" duration={500} timingFunction="ease" mounted={opened}>
-            {(scaleStyles) => (
-              <div style={{ ...scaleStyles }} className={classes.navMenuContainer}>
-                <Text className={classes.titleName}> <Anchor href="/"> Jonathan Robinson </Anchor> </Text>
-                <NavLinkMenu />
-                <LanguageSelector />
-                <ColorSchemeToggle />
-                <IconsContainer />
-              </div>
-            )}
-          </Transition>
-    </Navbar>
+    <Transition transition="scale" duration={500} timingFunction="ease" mounted={opened}>
+      {(scaleStyles) => (
+        <Navbar p="md" hiddenBreakpoint="sm" hidden={!isNavbarVisible} width={{ sm: 250, md: 275, lg: 300, xl: 400 }} className={classes.fullNavbar}>
+          <div style={{ ...scaleStyles }} className={classes.navMenuContainer}>
+            <Text className={classes.titleName}> <Anchor href="/"> Jonathan Robinson </Anchor> </Text>
+            <NavLinkMenu />
+            <LanguageSelector />
+            <ColorSchemeToggle />
+            <IconsContainer />
+          </div>
+        </Navbar>
+      )}
+    </Transition>
   );
 }
