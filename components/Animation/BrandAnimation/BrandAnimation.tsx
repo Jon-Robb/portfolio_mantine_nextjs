@@ -1,19 +1,19 @@
 import { useEffect, useState, useContext } from 'react';
-import useStyles from './EntryAnimation.styles';
+import useStyles from './BrandAnimation.styles';
 import { FadeOut } from '../FadeOut/FadeOut';
 import { TextAnimator } from '../TextAnimator/TextAnimator';
 import JonlineAnimation from '../JonlineAnimation/JonlineAnimation';
-import { EntryAnimationCompletedContext } from '../../../contexts/EntryAnimationCompletedContext';
+import { EntryAnimationContext } from '../../../contexts/EntryAnimationContext';
 
-interface EntryAnimationProps {
+interface BrandAnimationProps {
     onCompleted?: () => void;
 }
 
-export default function EntryAnimation({ onCompleted }: EntryAnimationProps) {
+export default function BrandAnimation({ onCompleted }: BrandAnimationProps) {
     const [startFadeOut, setStartFadeOut] = useState(false);
     const [fadeOutCompleted, setFadeOutCompleted] = useState(false);
     const [startAnimation, setStartAnimation] = useState(false);
-    const { setEntryAnimationCompleted } = useContext(EntryAnimationCompletedContext)!;
+    const { setBrandAnimationCompleted } = useContext(EntryAnimationContext)!;
     const { classes } = useStyles();
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export default function EntryAnimation({ onCompleted }: EntryAnimationProps) {
                         setFadeOutCompleted(true);
                         onCompleted && onCompleted();
                         setTimeout(() => {
-                            setEntryAnimationCompleted(true);
+                            setBrandAnimationCompleted(true);
                         }, 1000);
                     }}
                 />
