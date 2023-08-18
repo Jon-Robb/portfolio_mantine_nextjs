@@ -15,9 +15,8 @@ export default function AppShellContainer() {
   const [opened, setOpened] = useState(false);
   const toggleOpened = () => setOpened((o) => !o);
   const { classes } = useStyles();
-  const [animationCompleted, setAnimationCompleted] = useState(false);
   const [homeAnimationCompleted, setHomeAnimationCompleted] = useState(false);
-  const { entryAnimationCompleted } = useContext(EntryAnimationCompletedContext);
+  const { entryAnimationCompleted } = useContext(EntryAnimationCompletedContext)!;
 
   const handleHomeAnimationCompleted = () => {
     setTimeout(() => {
@@ -25,19 +24,13 @@ export default function AppShellContainer() {
     }, 1000);
   };
 
-  const handleEntryAnimationCompleted = () => {
-    setTimeout(() => {
-      setAnimationCompleted(true);
-    }, 1000);
-  };
-
   return (
     <>
-    {!animationCompleted && (
-      <EntryAnimation onCompleted={handleEntryAnimationCompleted} />
+    {!entryAnimationCompleted && (
+      <EntryAnimation />
     )}
       <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu fadeInProp={homeAnimationCompleted} opened={opened} />} header={<AppHeader triggerFadeIn={homeAnimationCompleted} onClick={toggleOpened} opened={opened} />}>
-        <HomeSection inProp={animationCompleted} onCompleted={handleHomeAnimationCompleted} />
+        <HomeSection onCompleted={handleHomeAnimationCompleted} />
         <Transition transition="fade" duration={1000} timingFunction="ease" mounted={homeAnimationCompleted} keepMounted>
           {(styles) =>
             <div style={styles}>
