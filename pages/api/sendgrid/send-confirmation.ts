@@ -1,12 +1,26 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail from '@sendgrid/mail';
 import { v4 as uuidv4 } from 'uuid';
-import i18nBackend from '../../../i18n/i18nBackend';
+import i18nBackend from 'i18next';
+import Backend from 'i18next-fs-backend';
 import cors, { runMiddleWare } from '../../../utils/cors';
 import { emailValidation } from '../../../utils/validation';
 import { addToken } from '../../../db/services/PendingTokenServices';
 import { EMessages } from '../../../typescript/enums/EMessages';
 import { EConstants } from '../../../typescript/enums/EConstants';
+
+i18nBackend
+    .use(Backend)
+    .init({
+        backend: {
+            loadPath: '../../../i18n/translations/{{lng}}.json',
+        },
+        lng: 'en',
+        fallbackLng: 'en',
+        interpolation: {
+            escapeValue: false,
+        },
+    });
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
