@@ -28,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const token = uuidv4();
         await addToken(token, email);
 
-        const link = `${process.env.NEXT_PUBLIC_URL}${EConstants.RECEIVE_CONFIRMATION_ROUTE}?token=${token}`;
+        const link = `${process.env.CUSTOM_URL}${EConstants.RECEIVE_CONFIRMATION_ROUTE}?token=${token}`;
 
         const confirmationMsg = {
             to: email,
