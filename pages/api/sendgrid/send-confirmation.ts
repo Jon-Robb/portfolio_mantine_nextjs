@@ -26,7 +26,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         const token = uuidv4();
-        await addToken(token, email);
 
         const link = `${process.env.CUSTOM_URL}${EConstants.RECEIVE_CONFIRMATION_ROUTE}?token=${token}`;
 
@@ -35,11 +34,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             from: `${process.env.SENDGRID_FROM}`,
             subject: i18nBackend.t('confirmationEmail.subject'),
             text:
-                i18nBackend.t('confirmationEmail.text', { userName, link }),
+            i18nBackend.t('confirmationEmail.text', { userName, link }),
         };
 
         try {
             await sgMail.send(confirmationMsg);
+            await addToken(token, email);
             res.status(200).json({ message: EMessages.EMAIL_SENT });
         } catch (error) {
             res.status(500).json({ error: EMessages.EMAIL_NOT_SENT });
