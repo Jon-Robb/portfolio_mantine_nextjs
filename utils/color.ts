@@ -1,5 +1,5 @@
 /* eslint-disable no-bitwise */
-export function colorIsBright(color: string): boolean {
+export const colorIsBright = (color: string): boolean => {
     const hexColorPattern = /^#[0-9A-Fa-f]{6}$/;
 
     if (typeof color !== 'string' || !hexColorPattern.test(color)) {
@@ -13,9 +13,9 @@ export function colorIsBright(color: string): boolean {
     const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
     return luma > 160;
-}
+};
 
-export function getHexColor(colorName: string): string {
+export const getHexColor = (colorName: string): string => {
     const fakeDiv = document.createElement('div');
     fakeDiv.style.color = colorName;
     document.body.appendChild(fakeDiv);
@@ -34,12 +34,12 @@ export function getHexColor(colorName: string): string {
     const hexColor = `#${((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1).toUpperCase()}`;
 
     return hexColor;
-}
+};
 
-export function hexToRgb(hex:string): number[] {
+export const hexToRgb = (hex:string): number[] => {
         const bigInt = parseInt(hex.slice(1), 16);
         const r = (bigInt >> 16) & 255;
         const g = (bigInt >> 8) & 255;
         const b = bigInt & 255;
         return [r, g, b];
-}
+};
