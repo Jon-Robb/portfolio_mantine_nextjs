@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import sgMail from '@sendgrid/mail';
-import i18nBackend from '../../../i18n/i18nBackend';
+import { replaceTemplateVariables } from '../../../utils/text';
+import { emailTemplates } from '../../../data/EmailsData';
 import { updateExpirationDate } from '../../../db/services/VerifiedEmailServices';
 import cors, { runMiddleWare } from '../../../utils/cors';
 import { EMessages } from '../../../typescript/enums/EMessages';
@@ -11,8 +12,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     await runMiddleWare({ req, res, fn: cors });
 
     const { name, email, message, language } = req.body;
-
-    i18nBackend.changeLanguage(language);
 
     const isEmailUpdated = await updateExpirationDate(email);
     if (!isEmailUpdated) {
@@ -31,8 +30,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const thankYouMsg = {
         to: `${email}`,
         from: `${process.env.SENDGRID_FROM}`,
-        subject: i18nBackend.t('thankyouEmail.subject', { name }),
-        text: i18nBackend.t('thankyouEmail.text', { name }),
+        subject: replaceTemplateVariables(emailTemplates[language].thankyouEmail.subject, { name }),
+        text: replaceTemplateVariables(emailTemplates[language].thankyouEmail.text, { name }),
     };
 
     try {

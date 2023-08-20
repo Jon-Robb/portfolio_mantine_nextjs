@@ -11,36 +11,21 @@ import { EConstants } from '../../../typescript/enums/EConstants';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
-        // result = result.replace(new RegExp(`{{${key}}}`, 'g'), value);
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         await runMiddleWare({ req, res, fn: cors });
 
         const { name, email, language } = req.body;
 
-        // change language before using i18nBackend
-        // i18nBackend.changeLanguage(language);
-        // const userName = name || i18nBackend.t('common.traveler');
-
-        const userName = name || defaultUsernames[language];
-
         if (!emailValidation(email)) {
             res.status(400).json({ error: 'Invalid email' });
             return;
         }
+        const userName = name || defaultUsernames[language];
 
         const token = uuidv4();
 
         const link = `${process.env.CUSTOM_URL}${EConstants.RECEIVE_CONFIRMATION_ROUTE}?token=${token}`;
-
-        // const confirmationMsg = {
-        //     to: email,
-        //     from: `${process.env.SENDGRID_FROM}`,
-        //     subject: i18nBackend.t('confirmationEmail.subject'),
-        //     text:
-        //         i18nBackend.t('confirmationEmail.text', { userName, link }),
-        // };
 
         const confirmationMsg = {
             to: email,
@@ -54,9 +39,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         };
 
         try {
-            // await sgMail.send(confirmationMsg);
-            // await addToken(token, email);
-            console.log(confirmationMsg);
+            await sgMail.send(confirmationMsg);
+            await addToken(token, email);
             res.status(200).json({ message: EMessages.EMAIL_SENT });
         } catch (error) {
             res.status(500).json({ error: EMessages.EMAIL_NOT_SENT });
