@@ -95,7 +95,13 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 height: 'min-content',
                 gap: '2rem',
                 justifyContent: 'flex-start',
-                paddingTop: '10rem',
+                paddingTop: '5rem',
+                [theme.fn.largerThan('sm')]: {
+                    paddingTop: '10rem',
+                },
+                [theme.fn.largerThan('md')]: {
+                    paddingTop: '15rem',
+                },
             },
             '.projectcard-enter': {
                 opacity: 0,

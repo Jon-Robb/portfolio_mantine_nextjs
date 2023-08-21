@@ -1,22 +1,10 @@
 import { createStyles } from '@mantine/core';
 
-export default createStyles((theme) => ({
+export default createStyles(() => ({
     wrapper: {
         gap: '1rem',
         padding: '1rem',
-        width: '100%',
-        [theme.fn.largerThan('sm')]: {
-            width: '85%',
-        },
-        [theme.fn.largerThan('md')]: {
-            width: '75%',
-        },
-        [theme.fn.largerThan('lg')]: {
-            width: '65%',
-        },
-        [theme.fn.largerThan('xl')]: {
-            width: '55%',
-        },
+        width: '85%',
     },
     form: {
         display: 'flex',

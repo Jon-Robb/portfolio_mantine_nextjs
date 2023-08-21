@@ -30,12 +30,12 @@ const LanguageSelector = () => {
   }, []);
 
   return (
-    <Select
-      label="Language"
-      data={Object.entries(supportedLanguages).map(([value, label]) => ({ value, label }))}
-      value={language}
-      onChange={handleLanguageChange}
-    />
+      <Select
+        label="Language"
+        data={Object.entries(supportedLanguages).map(([value, label]) => ({ value, label }))}
+        value={language}
+        onChange={handleLanguageChange}
+      />
   );
 };
 

@@ -34,8 +34,10 @@ export default function AppNavMenu({ opened }: AppNavbarProps) {
         <Navbar style={{ ...scaleStyles }} p="md" hiddenBreakpoint="sm" hidden={!isNavbarVisible} width={{ sm: 300, md: 400, lg: 500, xl: 600 }} className={classes.fullNavbar}>
           <div className={classes.navMenuContainer}>
             <Text className={classes.titleName}> <Anchor href="/"> Jonathan Robinson </Anchor> </Text>
-            <NavLinkMenu />
-            <LanguageSelector />
+              <NavLinkMenu />
+            <div className={classes.languageSelectorWrapper}>
+              <LanguageSelector />
+            </div>
             <ColorSchemeToggle />
             <IconsContainer />
           </div>
