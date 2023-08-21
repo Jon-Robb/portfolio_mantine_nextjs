@@ -21,7 +21,7 @@ export default function HomeSection() {
 
     return (
         <section className="section" id="home" style={{}}>
-            <Transition transition="pop" duration={1000} timingFunction="ease" mounted={brandAnimationCompleted} onEntered={() => setHomeAnimationCompleted(true)}>
+            <Transition transition="pop" duration={1000} timingFunction="ease" mounted={brandAnimationCompleted} onEntered={() => setHomeAnimationCompleted(true)} keepMounted>
                 {(styles) => <div style={styles}> <Title order={1}> {t('home.welcome')} </Title> </div>}
             </Transition>
             <Transition transition="scale" duration={1000} timingFunction="ease" mounted={homeAnimationCompleted} onEntered={handleAllCompleted} keepMounted>

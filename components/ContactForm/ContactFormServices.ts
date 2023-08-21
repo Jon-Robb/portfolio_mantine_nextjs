@@ -23,7 +23,6 @@ export const sendEmail = async (value:IConfirmationEmailData) => {
                 'Content-Type': 'application/json',
             },
         });
-        console.log(data);
         return data.message;
     } catch (error) {
         return EMessages.EMAIL_NOT_FOUND;

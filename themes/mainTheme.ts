@@ -135,5 +135,11 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 },
             },
         },
+        other: {
+            navbarBackgroundColors: {
+                light: 'rgba(248, 249, 250, 0.8)',
+                dark: 'rgba(26, 27, 30, 0.8)',
+            },
+        },
     };
 }

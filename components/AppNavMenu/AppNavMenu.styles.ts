@@ -11,7 +11,7 @@ export default createStyles((theme) => ({
             },
         [theme.fn.smallerThan('md')]: {
             backdropFilter: 'blur(10px)',
-            backgroundColor: 'rgba(26, 27, 30, 0.8)',
+            backgroundColor: theme.other.navbarBackgroundColors[theme.colorScheme],
         },
 
     },
