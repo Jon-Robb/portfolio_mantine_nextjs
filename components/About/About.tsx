@@ -11,7 +11,7 @@ export default function About() {
     // const { classes } = useStyles();
 
     return (
-        <section className="section" id="about">
+        <section className="section" id="about" style={{ paddingTop: 0 }}>
             <StickyTitle title={t('about.title')} />
             <Text>
                 {t('about.para1')}

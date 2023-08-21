@@ -11,4 +11,12 @@ export default createStyles(() => ({
     },
     text: {
     },
+    collaboratorsContainer: {
+        display: 'flex',
+        alignContent: 'center',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        width: '100%',
+        gap: '0.5rem',
+    },
 }));

@@ -18,11 +18,12 @@ export default createStyles((theme) => ({
         '@media screen and (min-width: 1000px) and (max-height: 615px)': {
             padding: 0,
             margin: 0,
-            fontSize: theme.fontSizes.md,
+            fontSize: theme.fontSizes.xs,
             gap: '5rem',
         },
         '@media screen and (min-width: 1250px) and (max-height: 815px)': {
             paddingTop: '5rem',
+            fontSize: theme.fontSizes.sm,
         },
     },
 }));

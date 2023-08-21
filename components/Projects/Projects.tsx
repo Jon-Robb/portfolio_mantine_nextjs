@@ -15,7 +15,7 @@ export default function Projects() {
   const [visibleIncrement, setVisibleIncrement] = useState<number>(1);
 
   useEffect(() => {
-    setVisibleCount(screenWidth > 1184 ? 2 : 1);
+    setVisibleCount(screenWidth > 1184 ? 4 : 2);
     setVisibleIncrement(screenWidth > 1184 ? 2 : 1);
   }, [screenWidth]);
 
@@ -30,7 +30,6 @@ export default function Projects() {
   return (
     <section className="section" id="projects">
       <StickyTitle title={t('projects.title')} />
-      {/* <Title order={2}> {t('projects.title')} </Title> */}
       <ProjectCardGrid visibleCount={visibleCount} />
       <Button.Group className={classes.buttonGroup}>
         <Button onClick={handleLoadLess} variant="gradient" disabled={visibleCount <= visibleIncrement} className={classes.button}>

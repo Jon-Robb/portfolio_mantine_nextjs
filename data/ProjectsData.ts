@@ -26,6 +26,8 @@ export const ProjectsData: ProjectCardProps[] = [
         collaborators: [
             { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
             { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
+            { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
+            { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
 
         ],
     },

@@ -36,12 +36,7 @@ export default function ProjectCardGrid({ visibleCount }: { visibleCount: number
           timeout={500}
           in
           appear
-          classNames={{
-            enter: classes.enter,
-            enterActive: classes.enterActive,
-            exit: classes.exit,
-            exitActive: classes.exitActive,
-          }}
+          classNames="projectcard"
         >
           <div ref={project.nodeRef} key={project.id}>
             <ProjectCard

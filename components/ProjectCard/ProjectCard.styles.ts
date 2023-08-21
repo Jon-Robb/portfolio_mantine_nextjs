@@ -13,7 +13,7 @@ export default createStyles((theme) => ({
         gap: '1rem',
         height: '100%',
         [theme.fn.largerThan('lg')]: {
-            gridTemplateColumns: '1fr 0.5fr',
+            gridTemplateColumns: '1fr 1fr',
             gridTemplateRows: '1fr',
         },
     },

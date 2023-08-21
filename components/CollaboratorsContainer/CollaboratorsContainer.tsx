@@ -7,7 +7,8 @@ export default function CollaboratorsContainer({ collaborators }: CollaboratorsC
 
     return (
         <div className={classes.wrapper}>
-            <Text className={classes.text}>Collaborator{collaborators.length > 1 ? 's' : ''}:</Text>
+            <Text> Collaborator{collaborators.length > 1 ? 's' : ''}:</Text>
+            <div className={classes.collaboratorsContainer}>
             {collaborators.map((collaborator:Collaborator, index:number) => (
                 <Anchor
                   key={index}
@@ -16,6 +17,7 @@ export default function CollaboratorsContainer({ collaborators }: CollaboratorsC
                     {collaborator.name}
                 </Anchor>
             ))}
+            </div>
         </div>
     );
 }
