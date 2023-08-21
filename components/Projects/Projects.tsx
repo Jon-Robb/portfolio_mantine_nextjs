@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Button, Title } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import StickyTitle from '../StickyTitle/StickyTitle';
 import { useScreenWidth } from '../../hooks/useScreenSize';
 import ProjectCardGrid from '../ProjectCardGrid/ProjectCardGrid';
 import { ProjectsData } from '../../data/ProjectsData';
@@ -28,7 +29,8 @@ export default function Projects() {
 
   return (
     <section className="section" id="projects">
-      <Title style={{ position: 'sticky', top: 16, zIndex: 1 }} order={2} mt={32} mb={32}> {t('projects.title')} </Title>
+      <StickyTitle title={t('projects.title')} />
+      {/* <Title order={2}> {t('projects.title')} </Title> */}
       <ProjectCardGrid visibleCount={visibleCount} />
       <Button.Group className={classes.buttonGroup}>
         <Button onClick={handleLoadLess} variant="gradient" disabled={visibleCount <= visibleIncrement} className={classes.button}>

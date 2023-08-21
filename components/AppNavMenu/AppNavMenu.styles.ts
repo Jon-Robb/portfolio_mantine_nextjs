@@ -9,9 +9,9 @@ export default createStyles((theme) => ({
             backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
             border: 'none',
             },
-        [theme.fn.smallerThan('md')]: {
+        [theme.fn.smallerThan('sm')]: {
             backdropFilter: 'blur(10px)',
-            backgroundColor: theme.other.navbarBackgroundColors[theme.colorScheme],
+            backgroundColor: theme.other.blurriedBackgrounds[theme.colorScheme],
         },
 
     },

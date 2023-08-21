@@ -1,5 +1,6 @@
-import { Title, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import StickyTitle from '../StickyTitle/StickyTitle';
 import SkillBadgeContainer from '../SkillBadgesContainer/SkillBadgesContainer';
 import { useSkillBadgesData } from '../../hooks/useSkillBadgesData';
 // import useStyles from './About.styles';
@@ -11,7 +12,7 @@ export default function About() {
 
     return (
         <section className="section" id="about">
-            <Title order={2} mt={32}> {t('about.title')} </Title>
+            <StickyTitle title={t('about.title')} />
             <Text>
                 {t('about.para1')}
             </Text>

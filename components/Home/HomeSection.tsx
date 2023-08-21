@@ -2,11 +2,11 @@ import { Text, Title, Transition } from '@mantine/core';
 import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { EntryAnimationContext } from '../../contexts/EntryAnimationContext';
-// import useStyles from './home.styles';
+import useStyles from './HomeSection.styles';
 
 export default function HomeSection() {
     const { t } = useTranslation();
-    // const { classes } = useStyles();
+    const { classes } = useStyles();
     const {
         brandAnimationCompleted,
         homeAnimationCompleted,
@@ -20,7 +20,7 @@ export default function HomeSection() {
     };
 
     return (
-        <section className="section" id="home" style={{}}>
+        <section className={classes.wrapper} id="home">
             <Transition transition="pop" duration={1000} timingFunction="ease" mounted={brandAnimationCompleted} onEntered={() => setHomeAnimationCompleted(true)} keepMounted>
                 {(styles) => <div style={styles}> <Title order={1}> {t('home.welcome')} </Title> </div>}
             </Transition>

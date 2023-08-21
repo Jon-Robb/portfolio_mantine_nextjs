@@ -5,11 +5,11 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         colorScheme,
         fontFamily: 'Open Sans, sans serif',
         fontSizes: {
-            xs: '1rem',
-            sm: '1.125rem',
-            md: '1.25rem',
-            lg: '1.365rem',
-            xl: '1.5rem',
+            xs: '1.125rem',
+            sm: '1.25rem',
+            md: '1.365rem',
+            lg: '1.5rem',
+            xl: '1.65rem',
         },
         headings: {
             sizes: {
@@ -136,7 +136,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
             },
         },
         other: {
-            navbarBackgroundColors: {
+            blurriedBackgrounds: {
                 light: 'rgba(248, 249, 250, 0.8)',
                 dark: 'rgba(26, 27, 30, 0.8)',
             },

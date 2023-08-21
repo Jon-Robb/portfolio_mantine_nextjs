@@ -1,5 +1,6 @@
-import { Title } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import { Text } from '@mantine/core';
+import StickyTitle from '../StickyTitle/StickyTitle';
 import useStyles from './Services.styles';
 
 export default function Services() {
@@ -7,9 +8,12 @@ export default function Services() {
     const { t } = useTranslation();
     return (
         <section className="section" id="services">
-            <Title order={2} mt={32} mb={32}> {t('services.title')} </Title>
+            <StickyTitle title={t('services.title')} />
+            {/* <Title order={2}> {t('services.title')} </Title> */}
             <div className={classes.servicesWrapper}>
-                Services Container
+                <Text>
+                    Coming Soon...
+                </Text>
             </div>
         </section>
     );
