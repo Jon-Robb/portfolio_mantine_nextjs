@@ -7,8 +7,8 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         fontSizes: {
             xs: '1.125rem',
             sm: '1.25rem',
-            md: '1.365rem',
-            lg: '1.5rem',
+            md: '1.5rem',
+            lg: '1.575rem',
             xl: '1.65rem',
         },
         headings: {
@@ -20,11 +20,11 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
             },
         },
         breakpoints: {
-            xs: '30em',
-            sm: '48em',
-            md: '64em',
-            lg: '74em',
-            xl: '90em',
+            xs: '30em', // 480px
+            sm: '48em', // 768px
+            md: '64em', // 1024px
+            lg: '74em', // 1184px
+            xl: '90em', // 1440px
         },
         spacing: { xs: '1rem', sm: '1.2rem', md: '1.8rem', lg: '2.2rem', xl: '2.8rem' },
         activeStyles: { transform: 'scale(0.95)' },
@@ -34,7 +34,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
         colors: {
             green: ['#F0FFF4', '#C6F6D5', '#9AE6B4', '#68D391', '#48BB78', '#38A169', '#2F855A', '#276749', '#22543D', '#1C4532'],
         },
-        primaryColor: 'green',
+        // primaryColor: 'green',
         globalStyles: (theme) => ({
             '*, *::before, *::after': {
                 boxSizing: 'border-box',
