@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 import StickyTitle from '../StickyTitle/StickyTitle';
@@ -6,7 +6,7 @@ import { useScreenWidth } from '../../hooks/useScreenSize';
 import ProjectCardGrid from '../ProjectCardGrid/ProjectCardGrid';
 import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './Projects.styles';
-import useIsInViewport from '../../hooks/useVisibility';
+// import useIsInViewport from '../../hooks/useIsInViewport';
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -14,12 +14,12 @@ export default function Projects() {
   const screenWidth = useScreenWidth();
   const [visibleCount, setVisibleCount] = useState<number>(0);
   const [visibleIncrement, setVisibleIncrement] = useState<number>(1);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInViewport = useIsInViewport(ref); // [0.5] is the threshold, [0] is the default value
+  // const ref = useRef<HTMLDivElement>(null);
+  // const entry = useIsInViewport(ref); // [0.5] is the threshold, [0] is the default value
 
-  useEffect(() => {
-    console.log('isInViewport', isInViewport);
-  }, [isInViewport]);
+  // useEffect(() => {
+  //   console.log('isInViewport', entry);
+  // }, [entry]);
 
   useEffect(() => {
     setVisibleCount(screenWidth > 1184 ? 4 : 2);
@@ -35,7 +35,8 @@ export default function Projects() {
   };
 
   return (
-    <section ref={ref} className="section" id="projects">
+    // put ref={ref} on the section tag to use useIsInViewport
+    <section className="section" id="projects">
       <StickyTitle title={t('projects.title')} />
       <ProjectCardGrid visibleCount={visibleCount} />
       <Button.Group className={classes.buttonGroup}>
