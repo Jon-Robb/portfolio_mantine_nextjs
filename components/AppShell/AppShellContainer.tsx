@@ -6,7 +6,7 @@ import AppNavMenu from '../AppNavMenu/AppNavMenu';
 import HomeSection from '../Home/HomeSection';
 import About from '../About/About';
 import Projects from '../Projects/Projects';
-import Services from '../Services/Services';
+// import Services from '../Services/Services';
 import Contact from '../Contact/Contact';
 import useStyles from './AppShellContainer.styles';
 import { useScreenWidth } from '../../hooks/useScreenSize';
@@ -37,7 +37,7 @@ export default function AppShellContainer() {
             <div style={styles}>
               <About />
               <Projects />
-              <Services />
+              {/* <Services /> */}
               <Contact />
             </div>}
         </Transition>

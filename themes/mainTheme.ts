@@ -93,14 +93,15 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 alignItems: 'center',
                 textAlign: 'center',
                 height: 'min-content',
+                minHeight: '100vh',
                 gap: '2rem',
-                justifyContent: 'flex-start',
+                justifyContent: 'space-around',
                 paddingTop: '5rem',
                 [theme.fn.largerThan('sm')]: {
-                    paddingTop: '10rem',
+                    marginTop: '10rem',
                 },
                 [theme.fn.largerThan('md')]: {
-                    paddingTop: '15rem',
+                    marginTop: '15rem',
                 },
             },
             '.projectcard-enter': {

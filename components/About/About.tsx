@@ -9,7 +9,7 @@ export default function About() {
     const skillBadges = useSkillBadgesData();
 
     return (
-        <section className="section" id="about" style={{ paddingTop: 0 }}>
+        <section className="section" id="about" style={{ marginTop: 0 }}>
             <StickyTitle title={t('about.title')} />
             <Text>
                 {t('about.para1')}
