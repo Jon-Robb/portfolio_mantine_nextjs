@@ -20,16 +20,22 @@ export default function AppShellContainer() {
   const { entryAnimationCompleted } = useContext(EntryAnimationContext)!;
   const screenWidth = useScreenWidth();
 
-  // const homeRef = useRef<HTMLDivElement>(null);
-  // const aboutRef = useRef<HTMLDivElement>(null);
+  const homeRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
-  // const homeEntry = useIsInViewport(homeRef);
-  // const aboutEntry = useIsInViewport(aboutRef);
+  const homeEntry = useIsInViewport(homeRef);
+  const aboutEntry = useIsInViewport(aboutRef);
+  const projectsEntry = useIsInViewport(projectsRef);
+  const contactEntry = useIsInViewport(contactRef);
 
-  // useEffect(() => {
-  //   console.log('homeInViewPort', homeEntry);
-  //   // console.log('aboutInViewPort', aboutEntry);
-  // }, [homeEntry]);
+  useEffect(() => {
+    console.log('home in view port ', homeEntry);
+    console.log('aboutInViewPort', aboutEntry);
+    console.log('projects in view port ', projectsEntry);
+    console.log('contact in view port ', contactEntry);
+  }, [projectsEntry, aboutEntry, homeEntry, contactEntry]);
 
   useEffect(() => {
     if (!entryAnimationCompleted) return;
@@ -43,14 +49,14 @@ export default function AppShellContainer() {
         <BrandAnimation />
       )}
       <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu opened={opened} />} header={<AppHeader onClick={toggleOpened} opened={opened} />}>
-          <HomeSection />
+          <HomeSection nodeRef={homeRef} />
         <Transition transition="fade" duration={1000} timingFunction="ease" mounted={entryAnimationCompleted} keepMounted>
           {(styles) =>
             <div style={styles}>
-              <About />
-              <Projects />
+              <About nodeRef={aboutRef} />
+              <Projects nodeRef={projectsRef} />
               {/* <Services /> */}
-              <Contact />
+              <Contact nodeRef={contactRef} />
             </div>}
         </Transition>
       </AppShell>

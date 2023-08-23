@@ -8,18 +8,16 @@ import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './Projects.styles';
 import useIsInViewport from '../../hooks/useIsInViewport';
 
-export default function Projects() {
+interface ProjectsProps {
+  nodeRef?: React.RefObject<HTMLElement>;
+}
+
+export default function Projects({ nodeRef }: ProjectsProps) {
   const { t } = useTranslation();
   const { classes } = useStyles();
   const screenWidth = useScreenWidth();
   const [visibleCount, setVisibleCount] = useState<number>(0);
   const [visibleIncrement, setVisibleIncrement] = useState<number>(1);
-  const ref = useRef<HTMLDivElement>(null);
-  const entry = useIsInViewport(ref);
-
-  useEffect(() => {
-    console.log('projects in view', entry);
-  }, [entry]);
 
   useEffect(() => {
     setVisibleCount(screenWidth > 1184 ? 4 : 2);
@@ -36,7 +34,7 @@ export default function Projects() {
 
   return (
     // put ref={ref} on the section tag to use useIsInViewport
-    <section ref={ref} className="section" id="projects">
+    <section ref={nodeRef} className="section" id="projects">
       <StickyTitle title={t('projects.title')} />
       <ProjectCardGrid visibleCount={visibleCount} />
       <Button.Group className={classes.buttonGroup}>
