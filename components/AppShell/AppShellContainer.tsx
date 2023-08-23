@@ -30,12 +30,24 @@ export default function AppShellContainer() {
   const projectsEntry = useIsInViewport(projectsRef);
   const contactEntry = useIsInViewport(contactRef);
 
+  const entries = [homeEntry, aboutEntry, projectsEntry, contactEntry];
+
+  const [activeSection, setActiveSection] = useState<string>('');
+
   useEffect(() => {
-    console.log('home in view port ', homeEntry);
-    console.log('aboutInViewPort', aboutEntry);
-    console.log('projects in view port ', projectsEntry);
-    console.log('contact in view port ', contactEntry);
-  }, [projectsEntry, aboutEntry, homeEntry, contactEntry]);
+    const activeSections:string[] = [];
+    entries.forEach((entry) => {
+      if (!entry) return;
+      if (entry.isIntersecting) {
+        activeSections.push(entry.target.id);
+      }
+    });
+    if (activeSections.length > 1) {
+      setActiveSection('about');
+    } else {
+      setActiveSection(activeSections[0]);
+    }
+  }, [entries]);
 
   useEffect(() => {
     if (!entryAnimationCompleted) return;
@@ -48,7 +60,7 @@ export default function AppShellContainer() {
       {!entryAnimationCompleted && (
         <BrandAnimation />
       )}
-      <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu opened={opened} />} header={<AppHeader onClick={toggleOpened} opened={opened} />}>
+      <AppShell className={classes.appshell} navbarOffsetBreakpoint="sm" navbar={<AppNavMenu activeSection={activeSection} opened={opened} />} header={<AppHeader onClick={toggleOpened} opened={opened} />}>
           <HomeSection nodeRef={homeRef} />
         <Transition transition="fade" duration={1000} timingFunction="ease" mounted={entryAnimationCompleted} keepMounted>
           {(styles) =>

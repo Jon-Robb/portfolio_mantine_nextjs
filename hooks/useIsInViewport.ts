@@ -29,7 +29,8 @@ import { useEffect, useState, useMemo } from 'react';
  * Note: Ensure that the target element is attached to the DOM and has dimensions (i.e., height and width)
  *       before using this hook to get accurate results.
  */
-const useIsInViewport = (ref: React.RefObject<HTMLElement>): IntersectionObserverEntry | null => {
+const useIsInViewport = (ref: React.RefObject<HTMLElement>, threshold: number = 0.2):
+  IntersectionObserverEntry | null => {
   if (typeof IntersectionObserver === 'undefined') return null;
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
 
@@ -38,9 +39,9 @@ const useIsInViewport = (ref: React.RefObject<HTMLElement>): IntersectionObserve
       new IntersectionObserver(([newEntry]) => {
         setEntry(newEntry);
       },
-      {
-        threshold: 0.2,
-      }),
+        {
+          threshold,
+        }),
     []
   );
 

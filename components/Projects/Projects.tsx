@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 import StickyTitle from '../StickyTitle/StickyTitle';
@@ -6,7 +6,6 @@ import { useScreenWidth } from '../../hooks/useScreenSize';
 import ProjectCardGrid from '../ProjectCardGrid/ProjectCardGrid';
 import { ProjectsData } from '../../data/ProjectsData';
 import useStyles from './Projects.styles';
-import useIsInViewport from '../../hooks/useIsInViewport';
 
 interface ProjectsProps {
   nodeRef?: React.RefObject<HTMLElement>;
