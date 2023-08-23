@@ -4,7 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { EntryAnimationContext } from '../../contexts/EntryAnimationContext';
 import useStyles from './HomeSection.styles';
 
-export default function HomeSection() {
+interface HomeSectionProps {
+    nodeRef? : React.RefObject<HTMLElement>;
+}
+
+export default function HomeSection({ nodeRef }: HomeSectionProps) {
     const { t } = useTranslation();
     const { classes } = useStyles();
     const {
@@ -20,7 +24,7 @@ export default function HomeSection() {
     };
 
     return (
-        <section className={classes.wrapper} id="home">
+        <section ref={nodeRef} className={classes.wrapper} id="home">
             <Transition transition="pop" duration={1000} timingFunction="ease" mounted={brandAnimationCompleted} onEntered={() => setHomeAnimationCompleted(true)} keepMounted>
                 {(styles) => <div style={styles}> <Title order={1}> {t('home.welcome')} </Title> </div>}
             </Transition>

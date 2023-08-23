@@ -30,6 +30,7 @@ import { useEffect, useState, useMemo } from 'react';
  *       before using this hook to get accurate results.
  */
 const useIsInViewport = (ref: React.RefObject<HTMLElement>): IntersectionObserverEntry | null => {
+  if (typeof IntersectionObserver === 'undefined') return null;
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
 
   const observer = useMemo(

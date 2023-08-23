@@ -4,12 +4,16 @@ import StickyTitle from '../StickyTitle/StickyTitle';
 import SkillBadgeContainer from '../SkillBadgesContainer/SkillBadgesContainer';
 import { useSkillBadgesData } from '../../hooks/useSkillBadgesData';
 
-export default function About() {
+interface AboutProps {
+    nodeRef?: React.RefObject<HTMLElement>;
+}
+
+export default function About({ nodeRef }: AboutProps) {
     const { t } = useTranslation();
     const skillBadges = useSkillBadgesData();
 
     return (
-        <section className="section" id="about" style={{ marginTop: 0 }}>
+        <section ref={nodeRef} className="section" id="about" style={{ marginTop: 0 }}>
             <StickyTitle title={t('about.title')} />
             <Text>
                 {t('about.para1')}
