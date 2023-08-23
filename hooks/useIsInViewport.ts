@@ -37,6 +37,9 @@ const useIsInViewport = (ref: React.RefObject<HTMLElement>): IntersectionObserve
     () =>
       new IntersectionObserver(([newEntry]) => {
         setEntry(newEntry);
+      },
+      {
+        threshold: 0.2,
       }),
     []
   );
