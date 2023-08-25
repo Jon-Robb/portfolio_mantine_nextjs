@@ -8,10 +8,46 @@ interface NavBarNavLinkMenuProps {
     activeSection: string;
 }
 
+type NavLinkType = {
+    label: string;
+    icon: React.ReactNode;
+    description?: string;
+    href: string;
+    rightSection?: React.ReactNode;
+};
+
 export default function NavBarNavLinkMenu({ activeSection }: NavBarNavLinkMenuProps) {
     const { t } = useTranslation();
     const { classes } = useStyles();
     const [localActiveSection, setLocalActiveSection] = useState<string>('');
+
+    const navLinks: NavLinkType[] = [
+        {
+            label: t('home.title'),
+            icon: <IconHome2 size={16} stroke={1.5} />,
+            href: 'home',
+        },
+        {
+            label: t('about.title'),
+            icon: <IconAccessible size="1rem" stroke={1.5} />,
+            href: 'about',
+        },
+        {
+            label: t('projects.title'),
+            icon: <IconDeviceAnalytics size="1rem" stroke={1.5} />,
+            href: 'projects',
+        },
+        // {
+        //     label: t('services.title'),
+        //     icon: <IconReportMoney size="1rem" stroke={1.5} />,
+        //     href: '#services',
+        // },
+        {
+            label: t('contact.title'),
+            icon: <IconMail size="1rem" stroke={1.5} />,
+            href: 'contact',
+        },
+    ];
 
     useEffect(() => {
         if (activeSection === undefined) return;
@@ -20,11 +56,18 @@ export default function NavBarNavLinkMenu({ activeSection }: NavBarNavLinkMenuPr
 
     return (
         <div className={classes.navlinksContainer}>
-            <NavLink label={t('home.title')} component="a" href="#home" variant={localActiveSection === 'home' ? 'light' : 'subtle'} active icon={<IconHome2 size={16} stroke={1.5} />} />
-            <NavLink label={t('about.title')} component="a" href="#about" variant={localActiveSection === 'about' ? 'light' : 'subtle'} active icon={<IconAccessible size="1rem" stroke={1.5} />} />
-            <NavLink label={t('projects.title')} component="a" href="#projects" variant={localActiveSection === 'projects' ? 'light' : 'subtle'} active icon={<IconDeviceAnalytics size="1rem" stroke={1.5} />} />
-            {/* <NavLink label={t('services.title')} component="a" href="#services" variant="subtle" active icon={<IconReportMoney size="1rem" stroke={1.5} />} /> */}
-            <NavLink label={t('contact.title')} component="a" href="#contact" variant={localActiveSection === 'contact' ? 'light' : 'subtle'} active icon={<IconMail size="1rem" stroke={1.5} />} />
+            {navLinks.map((navLink) => (
+                <NavLink
+                  key={navLink.label}
+                  className={classes.navlink}
+                  label={navLink.label}
+                  component="a"
+                  href={`#${navLink.href}`}
+                  active
+                  variant={localActiveSection === navLink.href.toLowerCase() ? 'light' : 'subtle'}
+                  icon={navLink.icon}
+                />
+            ))}
         </div>
     );
 }
