@@ -7,14 +7,8 @@ export default createStyles(() => ({
         justifyContent: 'center',
         flexDirection: 'column',
         alignContent: 'center',
-        // width: '100%',
-        // // [theme.fn.largerThan('sm')]: {
-        // //     display: 'none',
-        // // },
     },
     navlink: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        transition: 'all 0.3s ease-in-out',
     },
 }));

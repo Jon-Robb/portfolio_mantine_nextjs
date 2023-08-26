@@ -56,18 +56,24 @@ export default function NavBarNavLinkMenu({ activeSection }: NavBarNavLinkMenuPr
 
     return (
         <div className={classes.navlinksContainer}>
-            {navLinks.map((navLink) => (
-                <NavLink
-                  key={navLink.label}
-                  className={classes.navlink}
-                  label={navLink.label}
-                  component="a"
-                  href={`#${navLink.href}`}
-                  active
-                  variant={localActiveSection === navLink.href.toLowerCase() ? 'light' : 'subtle'}
-                  icon={navLink.icon}
-                />
-            ))}
+            {navLinks.map((navLink) => {
+                const isActiveSection = localActiveSection === navLink.href.toLowerCase();
+                return (
+                    <NavLink
+                      key={navLink.label}
+                      className={classes.navlink}
+                      label={navLink.label}
+                      component="a"
+                      href={`#${navLink.href}`}
+                      active={isActiveSection}
+                      variant="light"
+                      icon={navLink.icon}
+                      style={{
+                            transform: isActiveSection ? 'scale(1.1) translateX(1rem)' : 'none',
+                        }}
+                    />
+                );
+            })}
         </div>
     );
 }

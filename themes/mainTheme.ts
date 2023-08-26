@@ -103,6 +103,9 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                 [theme.fn.largerThan('md')]: {
                     marginTop: '15rem',
                 },
+                [theme.fn.largerThan('lg')]: {
+                    padding: '10rem 10rem 0 10rem',
+                },
             },
             '.projectcard-enter': {
                 opacity: 0,
