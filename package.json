@@ -21,7 +21,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
-    "@mantine/carousel": "6.0.2",
+    "@mantine/carousel": "^6.0.2",
     "@mantine/core": "6.0.2",
     "@mantine/dates": "6.0.2",
     "@mantine/form": "^6.0.17",
@@ -41,7 +41,7 @@
     "cors": "^2.8.5",
     "dayjs": "^1.11.6",
     "dotenv": "^16.3.1",
-    "embla-carousel-react": "^7.0.3",
+    "embla-carousel-react": "^7.1.0",
     "i18next": "^23.4.3",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-fs-backend": "^2.1.5",
