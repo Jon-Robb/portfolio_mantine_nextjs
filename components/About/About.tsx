@@ -4,6 +4,7 @@ import StickyTitle from '../StickyTitle/StickyTitle';
 import SkillBadgeContainer from '../SkillBadgesContainer/SkillBadgesContainer';
 import PicCarousel from '../PicCarousel/PicCarousel';
 import { useSkillBadgesData } from '../../hooks/useSkillBadgesData';
+import { useScreenWidth } from '../../hooks/useScreenSize';
 
 interface AboutProps {
     nodeRef?: React.RefObject<HTMLElement>;
@@ -18,6 +19,7 @@ const images: string[] = [
 export default function About({ nodeRef }: AboutProps) {
     const { t } = useTranslation();
     const skillBadges = useSkillBadgesData();
+    const screenWidth = useScreenWidth();
 
     return (
         <section ref={nodeRef} className="section" id="about" style={{ marginTop: 0 }}>
@@ -35,7 +37,7 @@ export default function About({ nodeRef }: AboutProps) {
                 <SkillBadgeContainer skillBadges={skillBadges} />
             </div>
             <div style={{
-                height: rem(400),
+                height: rem(0.5 * screenWidth),
             }}
             >
                 <PicCarousel imagesUrl={images} />
