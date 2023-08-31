@@ -43,3 +43,12 @@ export const hexToRgb = (hex:string): number[] => {
         const b = bigInt & 255;
         return [r, g, b];
 };
+
+export const getRandomHexColor = () => {
+    const letters = '0123456789ABCDEF';
+    let col = '#';
+    for (let i = 0; i < 6; i += 1) {
+        col += letters[Math.floor(Math.random() * 16)];
+    }
+    return col;
+};

@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { useMediaQuery } from '@mantine/hooks';
 import { Badge } from '@mantine/core';
 import { AnimateCssKeys } from '../../animation/AnimateCssKeys';
-import { cssColors } from './CssColors';
 import { useScreenSize } from '../../hooks/useScreenSize';
-import { colorIsBright, getHexColor } from '../../utils/color';
+import { colorIsBright, getHexColor, getRandomHexColor } from '../../utils/color';
 import { GradientColors, SkillBadgeData } from '../../typescript/interfaces/SkillBadgeInterfaces';
 
 export default function SkillBadge({
@@ -20,25 +18,10 @@ export default function SkillBadge({
   const [textColor, setTextColor] = useState<string>('');
   const screenSize:string = useScreenSize();
   const animations: string[] = AnimateCssKeys;
-  // const isMobile:boolean = useMediaQuery('(max-width: 768px)');
 
   const getRandomAnimation = () : string => {
     const randomIndex = Math.floor(Math.random() * animations.length);
     return AnimateCssKeys[randomIndex];
-  };
-
-  function getRandomHexColor() {
-    const letters = '0123456789ABCDEF';
-    let col = '#';
-    for (let i = 0; i < 6; i += 1) {
-        col += letters[Math.floor(Math.random() * 16)];
-    }
-    return col;
-}
-
-  const getRandomColor = () : string => {
-    const randomIndex = Math.floor(Math.random() * cssColors.length);
-    return cssColors[randomIndex];
   };
 
   const handleAnimation = () : void => {
@@ -61,8 +44,6 @@ export default function SkillBadge({
   return (
     <Badge
       className={`animate__animated ${animation}`}
-      // onMouseEnter={isMobile && animated ? undefined : handleAnimation}
-      // onClick={isMobile && animated ? handleAnimation : undefined}
       onClick={animated ? handleAnimation : undefined}
       style={animated ? { cursor: 'pointer' } : { cursor: 'default' }}
       leftSection={leftIcon}
@@ -70,7 +51,6 @@ export default function SkillBadge({
       color={color}
       variant={randomGradient ? 'gradient' : 'filled'}
       gradient={gradientColors}
-      // pl={10}
       size={screenSize}
       radius={screenSize}
       styles={{

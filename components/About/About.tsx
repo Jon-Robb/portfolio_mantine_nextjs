@@ -88,7 +88,7 @@ export default function About({ nodeRef }: AboutProps) {
                 </div>
                 <Transition
                   mounted={showCarousel}
-                  transition="skew-down"
+                  transition="pop"
                   duration={1000}
                   timingFunction="ease"
                 >

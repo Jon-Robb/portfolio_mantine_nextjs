@@ -3,7 +3,7 @@ import { MantineThemeOverride, ColorScheme } from '@mantine/core';
 export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOverride {
     return {
         colorScheme,
-        fontFamily: 'Open Sans, sans serif',
+        fontFamily: 'Calibri, sans-serif',
         fontSizes: {
             xs: '1.125rem',
             sm: '1.25rem',

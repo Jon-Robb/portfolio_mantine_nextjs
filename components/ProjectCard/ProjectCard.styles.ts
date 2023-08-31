@@ -16,6 +16,10 @@ export default createStyles((theme) => ({
             gridTemplateColumns: '1fr 1fr',
             gridTemplateRows: '1fr',
         },
+        '@media screen and (min-width: 1250px) and (max-height: 815px)': {
+            gridTemplateColumns: '1fr',
+            gridTemplateRows: '1fr 1fr',
+        },
     },
     imageWrapper: {
         height: '10rem',
