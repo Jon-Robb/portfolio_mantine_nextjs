@@ -27,6 +27,15 @@ export default function SkillBadge({
     return AnimateCssKeys[randomIndex];
   };
 
+  function getRandomHexColor() {
+    const letters = '0123456789ABCDEF';
+    let col = '#';
+    for (let i = 0; i < 6; i += 1) {
+        col += letters[Math.floor(Math.random() * 16)];
+    }
+    return col;
+}
+
   const getRandomColor = () : string => {
     const randomIndex = Math.floor(Math.random() * cssColors.length);
     return cssColors[randomIndex];
@@ -39,10 +48,10 @@ export default function SkillBadge({
 
   useEffect(() => {
     if (randomGradient) {
-      const color1 = getRandomColor();
-      let color2 = getRandomColor();
+      const color1 = getRandomHexColor();
+      let color2 = getRandomHexColor();
       while (color1 === color2) {
-        color2 = getRandomColor();
+        color2 = getRandomHexColor();
       }
       setGradientColors({ from: color1, to: color2 });
       setTextColor(colorIsBright(getHexColor(color1)) || colorIsBright(getHexColor(color2)) ? 'black' : 'white');

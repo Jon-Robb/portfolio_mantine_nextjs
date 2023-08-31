@@ -104,7 +104,7 @@ export default function getMainTheme(colorScheme: ColorScheme): MantineThemeOver
                     marginTop: '15rem',
                 },
                 [theme.fn.largerThan('lg')]: {
-                    padding: '10rem 10rem 0 10rem',
+                    padding: '0rem 10rem 0 10rem',
                 },
             },
             '.projectcard-enter': {

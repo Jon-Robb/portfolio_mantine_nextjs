@@ -9,7 +9,10 @@
         "para1": "Soy un desarrollador de software con sede en Toronto, Canadá. Me gradué de la Universidad de Toronto con una licenciatura en Ciencias de la Computación y un certificado en Desarrollo de Videojuegos. Actualmente trabajo como desarrollador de software en la industria de la salud, donde me especializo en el desarrollo de aplicaciones web y móviles.",
         "para2": "Soy un desarrollador de software con sede en Toronto, Canadá. Me gradué de la Universidad de Toronto con una licenciatura en Ciencias de la Computación y un certificado en Desarrollo de Videojuegos. Actualmente trabajo como desarrollador de software en la industria de la salud, donde me especializo en el desarrollo de aplicaciones web y móviles.",
         "para3": "En mi tiempo libre, me encanta crear juegos y aplicaciones web, y aprender nuevas tecnologías.",
-        "skills": "Habilidades"
+        "skills": "Habilidades",
+        "showPics": "Mostrar unas imágenes de yo",
+        "hidePics": "Ocultar imágenes"
+
     },
     "projects": {
         "title": "Proyectos",

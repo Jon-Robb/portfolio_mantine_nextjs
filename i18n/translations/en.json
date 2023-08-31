@@ -9,7 +9,9 @@
         "para1": "I am a web and game developer based in the Greater Toronto Area. I have a passion for creating intuitive, dynamic user experiences and captivating game environments. I am a graduate of the Game Development program at George Brown College, and I am currently working as a freelance web developer.",
         "para2": "I am a lifelong learner, and I am always looking for new opportunities to expand my skillset. I am currently learning React, and I am looking forward to learning more about the MERN stack.",
         "para3": "When I'm not coding, I enjoy playing video games, reading, and spending time with my family.",
-        "skills": "Skills"
+        "skills": "Skills",
+        "showPics": "Show some of my pictures",
+        "hidePics": "Hide my pictures"
     },
     "projects": {
         "title": "Projects",

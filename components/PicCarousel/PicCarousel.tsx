@@ -36,8 +36,8 @@ export default function PicCarousel({ imagesUrl }: PicCarouselProps) {
                 slide: classes.slide,
                 container: classes.container,
               }}
-              slidesToScroll={1}
-              slideSize={screenWidth > 1440 ? '50%' : '100%'}
+              slidesToScroll="auto"
+            //   slideSize="100%"
             >
                 {slides}
             </Carousel>
