@@ -6,6 +6,7 @@ import SkillBadgeContainer from '../SkillBadgesContainer/SkillBadgesContainer';
 import PicCarousel from '../PicCarousel/PicCarousel';
 import { useSkillBadgesData } from '../../hooks/useSkillBadgesData';
 import { useScreenWidth } from '../../hooks/useScreenSize';
+import useStyles from './About.styles';
 
 interface AboutProps {
     nodeRef?: React.RefObject<HTMLElement>;
@@ -23,6 +24,7 @@ export default function About({ nodeRef }: AboutProps) {
     const screenWidth = useScreenWidth();
     const [carouselWidth, setCarouselWidth] = useState(0);
     const [showCarousel, setShowCarousel] = useState(false);
+    const { classes } = useStyles();
 
     useEffect(() => {
         const breakpoints = [
@@ -62,26 +64,13 @@ export default function About({ nodeRef }: AboutProps) {
             <div id="skills">
                 <SkillBadgeContainer skillBadges={skillBadges} />
             </div>
-            <div style={{
-                display: 'flex',
-                alignContent: 'center',
-                justifyContent: 'center',
-                width: '100%',
-                flexDirection: 'column',
-                alignItems: 'center',
-            }}
-            >
-                <div style={{
-                    width: '100%',
-                }}
-                >
-
+            <div className={classes.carouselContainer}>
+                <div className={classes.textWrapper}>
                     <Text
                       variant="gradient"
-                        //   gradient={{ from: 'indigo', to: 'cyan' }}
-                        //   style={{ marginTop: '2rem' }}
                       ta={screenWidth < 768 ? 'center' : 'left'}
                       onClick={() => setShowCarousel(!showCarousel)}
+                      className={classes.text}
                     >
                         {showCarousel ? t('about.hidePics') : t('about.showPics')}
                     </Text>
@@ -103,13 +92,6 @@ export default function About({ nodeRef }: AboutProps) {
                             </div>
                         )}
                 </Transition>
-                {/* <div style={{
-                    width: carouselWidth,
-                    marginTop: '2rem',
-                }}
-                >
-                    <PicCarousel imagesUrl={images} />
-                </div> */}
             </div>
         </section>
     );
