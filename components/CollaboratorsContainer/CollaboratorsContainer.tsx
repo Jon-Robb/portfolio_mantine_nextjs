@@ -14,7 +14,7 @@ export default function CollaboratorsContainer({ collaborators }: CollaboratorsC
                   key={index}
                   href={collaborator.githubLink}
                 >
-                    {collaborator.name}
+                    {collaborator.name} {index < collaborators.length - 1 ? '-' : ''}
                 </Anchor>
             ))}
             </div>
