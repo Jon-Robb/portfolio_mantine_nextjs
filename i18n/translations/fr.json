@@ -18,6 +18,9 @@
         "tls": {
             "title": "The Last Stand",
             "desc": "Preuve de concept pour un jeu multijoueur de type Smash"
+        },
+        "boids": {
+            "desc": "Un programme Boids utilisant des comportements de pilotage pour simuler le mouvement de groupement."
         }
     },
     "services": {

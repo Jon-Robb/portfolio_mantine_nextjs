@@ -9,15 +9,15 @@ export const ProjectsData: ProjectCardProps[] = [
         // videoSrc: '',
         projectUrl: 'https://tls.andrzejw.com/login',
         codeUrl: 'https://www.google.com',
-        techs: ['React', 'Typescript', 'Phaser3', 'Colyseus', 'WebSockets', 'TailwindCSS', 'Node'],
+        techs: ['React', 'Typescript', 'Phaser3', 'Colyseus', 'WebSockets', 'TailwindCSS', 'Node', ' ExpressJS'],
         collaborators: [
             { name: 'Cryptoblivious', githubLink: 'https://github.com/cryptoblivious/' },
         ],
     },
 
     {
-        title: '2',
-        description: 'projects.tls.desc',
+        title: 'Boids',
+        description: 'projects.boids.desc',
         imageUrl: '../../images/profilepic.jpg',
         videoSrc: '../../videos/test.mp4',
         projectUrl: 'https://www.google.com',

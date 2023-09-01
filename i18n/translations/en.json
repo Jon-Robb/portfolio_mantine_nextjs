@@ -18,6 +18,9 @@
         "tls": {
             "title": "The Last Stand",
             "desc": "Proof of concept for a multiplayer smashlike game"
+        },
+        "boids": {
+            "desc": "A Boids program that uses steering behaviors to simulate flocking movement."
         }
     },
     "services": {

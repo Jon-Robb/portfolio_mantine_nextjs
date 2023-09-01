@@ -19,6 +19,9 @@
         "tls": {
             "title": "The Last Stand",
             "desc": "Prueba de concepto para un juego estilo Smash multijugador"
+        },
+        "boids": {
+            "desc": "Un programa Boids que utiliza comportamientos de dirección para simular el movimiento de agrupación."
         }
     },
     "services": {

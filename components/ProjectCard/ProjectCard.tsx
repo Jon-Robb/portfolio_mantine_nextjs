@@ -32,7 +32,7 @@ export default function ProjectCard({
                     <ProjectCardImage src={imageUrl} videoSrc={videoSrc} />
                 </div>
                 <div className={classes.content}>
-                    <Title order={4} className={classes.title}> {title} </Title>
+                    <Title variant="gradient" order={4} className={classes.title}> {title} </Title>
                     <Text className={classes.description}> {description} </Text>
                     {projectUrl ? (
                         <Button.Group className={classes.buttonGroup}>
