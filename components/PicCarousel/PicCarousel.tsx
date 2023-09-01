@@ -1,6 +1,8 @@
 import { Carousel } from '@mantine/carousel';
 import { Image } from '@mantine/core';
-import { useScreenWidth, useScreenSize } from '../../hooks/useScreenSize';
+import { useScreenWidth,
+    // useScreenSize
+} from '../../hooks/useScreenSize';
 import useStyles from './PicCarousel.styles';
 
 interface PicCarouselProps {
@@ -9,7 +11,7 @@ interface PicCarouselProps {
 
 export default function PicCarousel({ imagesUrl }: PicCarouselProps) {
     const screenWidth = useScreenWidth();
-    const screenSize = useScreenSize();
+    // const screenSize = useScreenSize();
     const slides = imagesUrl.map((url, index) => (
         <Carousel.Slide key={index}>
             <Image src={url} alt="Random image from unsplash" />
@@ -31,12 +33,12 @@ export default function PicCarousel({ imagesUrl }: PicCarouselProps) {
               height="100%"
               sx={{ flex: 1 }}
               align="center"
-              slideGap={screenSize}
+            //   slideGap={screenSize}
               classNames={{
                 slide: classes.slide,
                 container: classes.container,
               }}
-              slidesToScroll="auto"
+            //   slidesToScroll="auto"
             //   slideSize="100%"
             >
                 {slides}

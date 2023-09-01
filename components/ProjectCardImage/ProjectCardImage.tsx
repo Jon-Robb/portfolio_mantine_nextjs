@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-// import { Image } from '@mantine/core';
 import useStyles from './ProjectCardImage.styles';
 
 interface ProjectCardImageProps {
@@ -31,7 +30,7 @@ export default function ProjectCardImage({ src, videoSrc }: ProjectCardImageProp
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-            {/* {isHovered && videoSrc ? ( */}
+            {videoSrc ? (
                 <video
                   ref={videoRef}
                   className={`${classes.media} ${isHovered ? classes.show : classes.hide}`}
@@ -40,20 +39,15 @@ export default function ProjectCardImage({ src, videoSrc }: ProjectCardImageProp
                   muted
                   onCanPlay={() => setVideoIsReady(true)}
                 />
-            {/* ) : ( */}
+            ) : null}
             <div
               style={{
                 backgroundImage: `url(${src})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
             }}
-              className={`${classes.media} ${isHovered ? classes.hide : classes.show}`}
-            />                {/* <Image
-                  className={`${classes.media} ${isHovered ? classes.hide : classes.show}`}
-                  src={src}
-                  alt={alt}
-                /> */}
-            {/* )} */}
+              className={`${classes.media} ${isHovered && videoSrc ? classes.hide : classes.show}`}
+            />
         </div>
     );
 }

@@ -12,7 +12,7 @@ export default createStyles((theme) => ({
         gridTemplateRows: '1fr 1fr',
         gap: '1rem',
         height: '100%',
-        [theme.fn.largerThan('lg')]: {
+        [theme.fn.largerThan('xl')]: {
             gridTemplateColumns: '1fr 1fr',
             gridTemplateRows: '1fr',
         },
