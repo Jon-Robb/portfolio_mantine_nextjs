@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Model } from 'mongoose';
 
-interface IEmail {
+interface IEmail extends Document {
     email: string;
     createdAt: Date;
 }
@@ -21,12 +21,14 @@ const EmailSchema = new mongoose.Schema<IEmail>({
 
 // This is a Singleton like, this that has to be done because of NextJs seemly double compiling
 // eslint-disable-next-line import/no-mutable-exports
-let VerifiedEmail: mongoose.Model<IEmail>;
+// let VerifiedEmail: mongoose.Model<IEmail>;
 
-if (mongoose.models.VerifiedEmail) {
-    VerifiedEmail = mongoose.model('VerifiedEmail');
-} else {
-    VerifiedEmail = mongoose.model<IEmail>('VerifiedEmail', EmailSchema);
-}
+// if (mongoose.models.VerifiedEmail) {
+//     VerifiedEmail = mongoose.model('VerifiedEmail');
+// } else {
+//     VerifiedEmail = mongoose.model<IEmail>('VerifiedEmail', EmailSchema);
+// }
+
+const VerifiedEmail: Model<IEmail> = mongoose.model<IEmail>('VerifiedEmail', EmailSchema);
 
 export default VerifiedEmail;
