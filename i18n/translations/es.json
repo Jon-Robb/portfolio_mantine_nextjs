@@ -22,6 +22,9 @@
         },
         "boids": {
             "desc": "Un programa Boids que utiliza comportamientos de dirección para simular el movimiento de agrupación."
+        },
+        "magix": {
+            "desc": "Un juego de cartas multijugador similar a Hearthstone que se conecta a una base de datos y a la API de un servidor para obtener y mostrar el estado actual del juego."
         }
     },
     "services": {

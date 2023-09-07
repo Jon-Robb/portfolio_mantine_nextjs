@@ -21,6 +21,9 @@
         },
         "boids": {
             "desc": "A Boids program that uses steering behaviors to simulate flocking movement."
+        },
+        "magix": {
+            "desc": "A multiplayer card game, akin to Hearthstone, that interfaces with a database and a server's API to retrieve and display the game's current state."
         }
     },
     "services": {

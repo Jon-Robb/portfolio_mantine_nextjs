@@ -21,6 +21,9 @@
         },
         "boids": {
             "desc": "Un programme Boids utilisant des comportements de pilotage pour simuler le mouvement de groupement."
+        },
+        "magix": {
+            "desc": "Un jeu de cartes multijoueur similaire à Hearthstone qui se connecte à une base de données et à l'API d'un serveur pour récupérer et afficher l'état actuel du jeu."
         }
     },
     "services": {
