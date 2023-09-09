@@ -29,7 +29,7 @@ export default function AppHeader({
             style={styles}
             className={classes.headerContainer}
           >
-            <Title order={2}>
+            <Title order={3}>
               {titleIsAnchor ? <Anchor href={anchorLink}> {headerTitle} </Anchor> : headerTitle}
             </Title>
             <Burger
