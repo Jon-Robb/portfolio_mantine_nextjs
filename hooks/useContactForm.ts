@@ -11,7 +11,7 @@ export default function useContactForm() {
       validate: {
         name: (value: string) => {
           if (!value.trim()) return 'Please enter your name';
-          if (!/^[a-zA-Z ]+$/.test(value)) return 'Name can only contain letters and spaces';
+          if (!/^[a-zA-Z .-]+$/.test(value)) return 'Name can only contain letters, spaces, dots, and dashes, ';
           if (value.length < 2) return 'Name must be at least 2 characters long';
           if (value.length > 50) return 'Name must be less than 50 characters long';
           return null;
