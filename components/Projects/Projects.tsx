@@ -19,7 +19,7 @@ export default function Projects({ nodeRef }: ProjectsProps) {
   const [visibleIncrement, setVisibleIncrement] = useState<number>(1);
 
   useEffect(() => {
-    setVisibleCount(screenWidth > 1184 ? 4 : 2);
+    setVisibleCount(screenWidth > 1184 ? 20 : 10);
     setVisibleIncrement(screenWidth > 1184 ? 2 : 1);
   }, [screenWidth]);
 

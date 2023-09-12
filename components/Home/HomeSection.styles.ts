@@ -6,7 +6,7 @@ export default createStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
-        height: '100vh',
+        // height: '100vh',
         justifyContent: 'flex-start',
         gap: '5rem',
         [theme.fn.largerThan('sm')]: {

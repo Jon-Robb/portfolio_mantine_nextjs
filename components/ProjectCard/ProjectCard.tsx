@@ -44,7 +44,7 @@ export default function ProjectCard({
                             </Button>
                         </Button.Group>
                     ) : (
-                        <Button variant="gradient" component="a" href={codeUrl} fullWidth rel="noopener noreferer">
+                        <Button variant="gradient" component="a" href={codeUrl} fullWidth rel="noopener noreferer" target="_blank">
                             {t('common.viewcode')}
                         </Button>
                     )}

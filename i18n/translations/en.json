@@ -24,6 +24,9 @@
         },
         "magix": {
             "desc": "A multiplayer card game, akin to Hearthstone, that interfaces with a database and a server's API to retrieve and display the game's current state."
+        },
+        "textanalyzer": {
+            "desc": "Program that analyzes text and searches for synonyms."
         }
     },
     "services": {

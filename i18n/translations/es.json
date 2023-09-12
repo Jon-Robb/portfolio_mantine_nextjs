@@ -25,6 +25,9 @@
         },
         "magix": {
             "desc": "Un juego de cartas multijugador similar a Hearthstone que se conecta a una base de datos y a la API de un servidor para obtener y mostrar el estado actual del juego."
+        },
+        "textanalyzer": {
+            "desc": "Programa que analiza texto y busca sinónimos."
         }
     },
     "services": {

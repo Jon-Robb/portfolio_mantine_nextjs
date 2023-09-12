@@ -12,6 +12,7 @@ export default function CollaboratorsContainer({ collaborators }: CollaboratorsC
             {collaborators.map((collaborator:Collaborator, index:number) => (
                 <Anchor
                   key={index}
+                  target="_blank"
                   href={collaborator.githubLink}
                 >
                     {collaborator.name} {index < collaborators.length - 1 ? '-' : ''}

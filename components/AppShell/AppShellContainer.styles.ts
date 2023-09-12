@@ -5,4 +5,9 @@ export default createStyles((theme) => ({
         background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
         padding: '1rem',
     },
+    contentWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: 'min-content',
+    },
 }));
