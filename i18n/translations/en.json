@@ -26,11 +26,11 @@
             "desc": "A multiplayer card game, akin to Hearthstone, that interfaces with a database and a server's API to retrieve and display the game's current state."
         },
         "textanalyzer": {
-            "title": "Text Analyzer - Synonyms & Word types",
+            "title": "Text Analyzer",
             "desc": "Program that analyzes text and searches for synonyms."
         },
         "fsm": {
-            "title": "Finite State Machine Library",
+            "title": "Finite State Machine",
             "desc": "A finite state machine that can be used to control a GoPiGo3 robot."
         },
         "ga": {
@@ -41,7 +41,7 @@
             "desc": "A paint program that allows the user to draw on a canvas anf other simple things."
         },
         "playerspotify": {
-            "title": "Spotify Radiohead Player",
+            "title": "Radiohead Player",
             "desc": "A program that allows the user to play Radiohead playlists using the spotify API."
         },
         "quizspotify": {

@@ -94,9 +94,11 @@ export const ProjectsData: ProjectCardProps[] = [
         codeUrl: 'https://github.com/Jon-Robb/spotify_api_quiz_tributetorickgoodness',
         techs: ['Java', 'Android', 'Spotify API'],
     },
-    // {
-    //     title:'projects.portfolio.title',
-    //     description:'projects.portfolio.desc',
-
-    // }
+    {
+        title: 'projects.portfolio.title',
+        description: 'projects.portfolio.desc',
+        imageUrl: '../../images/portfolio_mainpic.png',
+        codeUrl: 'https://github.com/Jon-Robb/portfolio_mantine_nextjs',
+        techs: ['React', 'NextJS', 'Mantine', 'Typescript', 'MongoDB', 'SendGrid API'],
+    },
 ];

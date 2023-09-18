@@ -26,7 +26,7 @@
             "desc": "Un juego de cartas multijugador similar a Hearthstone que se conecta a una base de datos y a la API de un servidor para obtener y mostrar el estado actual del juego."
         },
         "textanalyzer": {
-            "title": "Analizador de texto - Sinónimos & tipos de palabras",
+            "title": "Analizador de texto",
             "desc": "Programa que analiza texto y busca sinónimos."
         },
         "fsm": {
@@ -41,11 +41,11 @@
             "desc": "Un programa de pintura que permite al usuario dibujar en un lienzo y otras cosas simples."
         },
         "playerspotify": {
-            "title": "Reproductor de Radiohead en Spotify",
+            "title": "Reproductor de Radiohead",
             "desc": "Un programa que permite al usuario reproducir listas de reproducción de Radiohead utilizando la API de Spotify."
         },
         "quizspotify": {
-            "title": "Trivia de Radiohead en Spotify",
+            "title": "Trivia de Muscia",
             "desc": "Un programa que permite al usuario jugar un juego de trivia utilizando la API de Spotify."
         },
         "portfolio": {
