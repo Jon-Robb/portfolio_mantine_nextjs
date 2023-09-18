@@ -12,7 +12,6 @@
         "skills": "Habilidades",
         "showPics": "Mostrar unas imágenes de yo",
         "hidePics": "Ocultar imágenes"
-
     },
     "projects": {
         "title": "Proyectos",
@@ -27,7 +26,31 @@
             "desc": "Un juego de cartas multijugador similar a Hearthstone que se conecta a una base de datos y a la API de un servidor para obtener y mostrar el estado actual del juego."
         },
         "textanalyzer": {
+            "title": "Analizador de texto - Sinónimos & tipos de palabras",
             "desc": "Programa que analiza texto y busca sinónimos."
+        },
+        "fsm": {
+            "title": "Máquina de estados finitos",
+            "desc": "Una máquina de estados finitos que puede ser utilizada para controlar un robot GoPiGo3."
+        },
+        "ga": {
+            "title": "Algoritmo genético",
+            "desc": "Un algoritmo genético usado para proporcionar diferentes soluciones a problemas comunes"
+        },
+        "paint": {
+            "desc": "Un programa de pintura que permite al usuario dibujar en un lienzo y otras cosas simples."
+        },
+        "playerspotify": {
+            "title": "Reproductor de Radiohead en Spotify",
+            "desc": "Un programa que permite al usuario reproducir listas de reproducción de Radiohead utilizando la API de Spotify."
+        },
+        "quizspotify": {
+            "title": "Trivia de Radiohead en Spotify",
+            "desc": "Un programa que permite al usuario jugar un juego de trivia utilizando la API de Spotify."
+        },
+        "portfolio": {
+            "title": "Portafolio",
+            "desc": "Este sitio web, un portafolio para Jonathan Robinson."
         }
     },
     "services": {

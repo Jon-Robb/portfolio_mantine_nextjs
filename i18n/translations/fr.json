@@ -26,7 +26,31 @@
             "desc": "Un jeu de cartes multijoueur similaire à Hearthstone qui se connecte à une base de données et à l'API d'un serveur pour récupérer et afficher l'état actuel du jeu."
         },
         "textanalyzer": {
+            "title": "Analyseur de texte - Synonymes et types de mots",
             "desc": "Programme qui analyse du texte et recherche des synonymes"
+        },
+        "fsm": {
+            "title": "Machine à états finis",
+            "desc": "Une machine à états finis qui peut être utilisée pour contrôler un robot GoPiGo3."
+        },
+        "ga": {
+            "title": "Algorithme génétique",
+            "desc": "Un algorithme génétique utilisé pour fournir différentes solutions aux problèmes courants"
+        },
+        "paint": {
+            "desc": "Un programme de dessin qui permet à l'utilisateur de dessiner sur une toile et d'autres choses simples."
+        },
+        "playerspotify": {
+            "title": "Lecteur Spotify Radiohead",
+            "desc": "Un programme qui permet à l'utilisateur de jouer des playlists de Radiohead en utilisant l'API Spotify."
+        },
+        "quizspotify": {
+            "title": "Quiz Spotify",
+            "desc": "Un programme qui permet à l'utilisateur de jouer à un jeu quiz en utilisant l'API Spotify."
+        },
+        "portfolio": {
+            "title": "Portfolio",
+            "desc": "Ce site web, un portfolio pour Jonathan Robinson."
         }
     },
     "services": {
