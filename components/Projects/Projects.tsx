@@ -16,10 +16,10 @@ export default function Projects({ nodeRef }: ProjectsProps) {
   const { classes } = useStyles();
   const screenWidth = useScreenWidth();
   const [visibleCount, setVisibleCount] = useState<number>(0);
-  const [visibleIncrement, setVisibleIncrement] = useState<number>(1);
+  const [visibleIncrement, setVisibleIncrement] = useState<number>(0);
 
   useEffect(() => {
-    setVisibleCount(screenWidth > 1184 ? 20 : 10);
+    setVisibleCount(screenWidth > 1184 ? 5 : 3);
     setVisibleIncrement(screenWidth > 1184 ? 2 : 1);
   }, [screenWidth]);
 

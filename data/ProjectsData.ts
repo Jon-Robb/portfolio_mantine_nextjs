@@ -38,29 +38,6 @@ export const ProjectsData: ProjectCardProps[] = [
         techs: ['PHP', 'JavaScript', 'CSS', 'HTML', 'PostgreSQL', 'Ajax'],
     },
     {
-        title: 'projects.textanalyzer.title',
-        description: 'projects.textanalyzer.desc',
-        imageUrl: '../../images/textanalyzer_mainmenu.png',
-        // videoSrc: '../../videos/test.mp4',
-        codeUrl: 'https://github.com/Jon-Robb/text_analyzer_synonyms_finder',
-        techs: ['Python', 'Numpy', 'CLI'],
-        collaborators: [
-            { name: 'Andrzej Wisniowski', githubLink: 'https://github.com/cryptoblivious/' },
-        ],
-    },
-    {
-        title: 'projects.fsm.title',
-        description: 'projects.fsm.desc',
-        imageUrl: '../../images/fsm_mainpic.png',
-        codeUrl: 'https://github.com/Jon-Robb/finite_state_machine_library',
-        techs: ['Python'],
-        collaborators: [
-            { name: 'Andrzej Wisniowski', githubLink: 'https://github.com/cryptoblivious/' },
-            { name: 'Nathaelle Fournier', githubLink: 'https://github.com/SakyunBuns' },
-            { name: 'Quoc Huann Tran', githubLink: 'https://github.com/ArsenTigor' },
-        ],
-    },
-    {
         title: 'projects.ga.title',
         description: 'projects.ga.desc',
         imageUrl: '../../images/ga_mainpic.png',
@@ -74,11 +51,22 @@ export const ProjectsData: ProjectCardProps[] = [
         ],
     },
     {
-        title: 'Paint',
-        description: 'projects.paint.desc',
-        imageUrl: '../../images/paint_mainpic.png',
-        codeUrl: 'https://github.com/Jon-Robb/simple_paint_android',
-        techs: ['Java', 'Android'],
+        title: 'projects.quizspotify.title',
+        description: 'projects.quizspotify.desc',
+        imageUrl: '../../images/quizspotify_mainpic.png',
+        codeUrl: 'https://github.com/Jon-Robb/spotify_api_quiz_tributetorickgoodness',
+        techs: ['Java', 'Android', 'Spotify API'],
+    },
+    {
+        title: 'projects.textanalyzer.title',
+        description: 'projects.textanalyzer.desc',
+        imageUrl: '../../images/textanalyzer_mainmenu.png',
+        // videoSrc: '../../videos/test.mp4',
+        codeUrl: 'https://github.com/Jon-Robb/text_analyzer_synonyms_finder',
+        techs: ['Python', 'Numpy', 'CLI'],
+        collaborators: [
+            { name: 'Andrzej Wisniowski', githubLink: 'https://github.com/cryptoblivious/' },
+        ],
     },
     {
         title: 'projects.playerspotify.title',
@@ -88,11 +76,11 @@ export const ProjectsData: ProjectCardProps[] = [
         techs: ['Java', 'Android', 'Spotify API'],
     },
     {
-        title: 'projects.quizspotify.title',
-        description: 'projects.quizspotify.desc',
-        imageUrl: '../../images/quizspotify_mainpic.png',
-        codeUrl: 'https://github.com/Jon-Robb/spotify_api_quiz_tributetorickgoodness',
-        techs: ['Java', 'Android', 'Spotify API'],
+        title: 'Paint',
+        description: 'projects.paint.desc',
+        imageUrl: '../../images/paint_mainpic.png',
+        codeUrl: 'https://github.com/Jon-Robb/simple_paint_android',
+        techs: ['Java', 'Android'],
     },
     {
         title: 'projects.portfolio.title',
@@ -100,5 +88,17 @@ export const ProjectsData: ProjectCardProps[] = [
         imageUrl: '../../images/portfolio_mainpic.png',
         codeUrl: 'https://github.com/Jon-Robb/portfolio_mantine_nextjs',
         techs: ['React', 'NextJS', 'Mantine', 'Typescript', 'MongoDB', 'SendGrid API'],
+    },
+    {
+        title: 'projects.fsm.title',
+        description: 'projects.fsm.desc',
+        imageUrl: '../../images/fsm_mainpic.png',
+        codeUrl: 'https://github.com/Jon-Robb/finite_state_machine_library',
+        techs: ['Python'],
+        collaborators: [
+            { name: 'Andrzej Wisniowski', githubLink: 'https://github.com/cryptoblivious/' },
+            { name: 'Nathaelle Fournier', githubLink: 'https://github.com/SakyunBuns' },
+            { name: 'Quoc Huann Tran', githubLink: 'https://github.com/ArsenTigor' },
+        ],
     },
 ];

@@ -6,7 +6,7 @@ export default createStyles(() => ({
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: '1rem',
+        gap: '2rem',
         marginTop: '1rem',
         flexDirection: 'column',
     },
@@ -18,6 +18,6 @@ export default createStyles(() => ({
             alignContent: 'center',
             width: '100%',
             height: '100%',
-            gap: '0.25rem',
+            gap: '0.5rem',
     },
 }));
