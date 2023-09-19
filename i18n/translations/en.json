@@ -2,13 +2,13 @@
     "home": {
         "title": "Home",
         "welcome": "Hello, I'm Jonathan Robinson",
-        "desc": "A passionate web and game developer, driven by a lifelong fascination with technology and the thrill of problem-solving. I find immense joy in creating intuitive, dynamic user experiences and captivating game environments."
+        "desc": "A passionate computer science enthusiast, driven by a lifelong fascination with technology and the thrill of problem-solving. I am currently seeking opportunities to dive in and make an active contribution to the world of technology."
     },
     "about": {
         "title": "About me",
-        "para1": "I am a web and game developer based in the Greater Toronto Area. I have a passion for creating intuitive, dynamic user experiences and captivating game environments. I am a graduate of the Game Development program at George Brown College, and I am currently working as a freelance web developer.",
-        "para2": "I am a lifelong learner, and I am always looking for new opportunities to expand my skillset. I am currently learning React, and I am looking forward to learning more about the MERN stack.",
-        "para3": "When I'm not coding, I enjoy playing video games, reading, and spending time with my family.",
+        "para1": "Having worked for several years in logistics and transportation, particularly as a forklift driver, I have cultivated a meticulousness and attention to detail that has allowed me to excel in everything I undertake. My prior experiences equipped me with essential teamwork and communication skills, key elements for success in any field.",
+        "para2": "Now in my thirties and a recent computer science graduate, I am eager to leverage my strong skill base and passion for technology in the digital industry. While my journey might seem unconventional, I firmly believe that my past experiences provide me with a unique and valuable perspective. As a devoted father, I am driven by the desire to offer the best for my family, which is reflected in my professional commitment where I always strive to exceed expectations.",
+        "para3": "The realm of computer science has always fascinated me with its boundless possibilities and the innovations it brings. I'm convinced that the challenges I've faced and the skills I've acquired in the past ideally prepare me for a fruitful career in tech. I am currently seeking opportunities to dive in and make an active contribution to the world of technology.",
         "skills": "Technologies I use",
         "showPics": "Show some of my pictures",
         "hidePics": "Hide my pictures"
