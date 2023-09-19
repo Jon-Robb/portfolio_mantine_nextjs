@@ -12,14 +12,14 @@ export default createStyles((theme) => ({
         gridTemplateRows: '1fr 1fr',
         gap: '1rem',
         height: '100%',
-        [theme.fn.largerThan('xl')]: {
-            gridTemplateColumns: '1fr 1fr',
-            gridTemplateRows: '1fr',
-        },
-        '@media screen and (min-width: 1250px) and (max-height: 815px)': {
-            gridTemplateColumns: '1fr',
-            gridTemplateRows: '1fr 1fr',
-        },
+        // [theme.fn.largerThan('xl')]: {
+        //     gridTemplateColumns: '1fr 1fr',
+        //     gridTemplateRows: '1fr',
+        // },
+        // '@media screen and (min-width: 1250px) and (max-height: 815px)': {
+        //     gridTemplateColumns: '1fr',
+        //     gridTemplateRows: '1fr 1fr',
+        // },
     },
     imageWrapper: {
         height: '10rem',
