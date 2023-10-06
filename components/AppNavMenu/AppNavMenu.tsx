@@ -32,7 +32,7 @@ export default function AppNavMenu({ opened, activeSection }: AppNavbarProps) {
   return (
     <Transition transition="scale" duration={500} timingFunction="ease" mounted={opened} keepMounted>
       {(scaleStyles) => (
-        <Navbar style={{ ...scaleStyles }} p="md" hiddenBreakpoint="sm" hidden={!isNavbarVisible} width={{ sm: 300, md: 400, lg: 500, xl: 600 }} className={classes.fullNavbar}>
+        <Navbar style={{ ...scaleStyles }} p="md" hiddenBreakpoint="sm" hidden={!isNavbarVisible} width={{ sm: 200, md: 300, lg: 400, xl: 500 }} className={classes.fullNavbar}>
           <div className={classes.navMenuContainer}>
             <Text className={classes.titleName}> <Anchor href="/"> Jonathan Robinson </Anchor> </Text>
               <NavLinkMenu activeSection={activeSection} />

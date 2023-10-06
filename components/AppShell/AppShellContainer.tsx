@@ -42,9 +42,12 @@ export default function AppShellContainer() {
         activeSections.push(entry.target.id);
       }
     });
-      if (activeSections[0] !== activeSection) {
-        setActiveSection(activeSections[0]);
-      }
+    if (activeSections.length > 0) {
+      setActiveSection(activeSections[0]);
+    }
+      // if (activeSections[0] !== activeSection) {
+      //   setActiveSection(activeSections[0]);
+      // }
   }, [entries]);
 
   useEffect(() => {
