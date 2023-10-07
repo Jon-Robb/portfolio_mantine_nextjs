@@ -19,8 +19,8 @@ export default function Projects({ nodeRef }: ProjectsProps) {
   const [visibleIncrement, setVisibleIncrement] = useState<number>(0);
 
   useEffect(() => {
-    setVisibleCount(screenWidth > 1184 ? 5 : 3);
-    setVisibleIncrement(screenWidth > 1184 ? 2 : 1);
+    setVisibleCount(screenWidth > 1184 ? 3 : 2);
+    setVisibleIncrement(screenWidth > 1184 ? 1 : 1);
   }, [screenWidth]);
 
   const handleLoadMore = () => {
